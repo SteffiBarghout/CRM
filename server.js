@@ -24,7 +24,11 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
-app.use(routes);
+app.get("/views/dash", function (req, res) {
+  res.render("dash");
+});
+
+// app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {
