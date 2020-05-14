@@ -24,8 +24,8 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
-app.get("/views/dash", function (req, res) {
-  res.render("dash");
+app.get("/ticket", function (req, res) {
+  res.render("ticket");
 });
 
 // app.use(routes);
