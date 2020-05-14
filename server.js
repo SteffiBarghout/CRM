@@ -24,8 +24,8 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
-app.get("/views/dash", function (req, res) {
-  res.render("dash");
+app.get("/settings", function (req, res) {
+  res.render("settings");
 });
 
 // app.use(routes);
