@@ -1,87 +1,114 @@
 body {
-  background: #141e30;
-  background: -webkit-linear-gradient(to right, #243b55, #141e30);
-  background: linear-gradient(to right, #243b55, #141e30);
+  background: #fafafa;
 }
 
-.separator {
-  margin: 3rem 0;
-  border-bottom: 1px dashed #fff;
+p {
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
 }
 
-.text-uppercase {
-  letter-spacing: 0.1em;
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
-.text-gray {
-  color: #aaa;
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
 }
 
-.vertical-nav {
-  min-width: 17rem;
-  width: 17rem;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s;
+i,
+span {
+  display: inline-block;
 }
 
-.page-content {
-  width: calc(100% - 17rem);
-  margin-left: 17rem;
-  transition: all 0.4s;
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 275px;
+  max-width: 275px;
+  background: #7386d5;
+  color: #fff;
+  transition: all 0.3s;
 }
 
 #sidebar.active {
-  margin-left: -17rem;
+  min-width: 80px;
+  max-width: 80px;
 }
 
-#content.active {
-  width: 100%;
-  margin: 0;
+#sidebar.active .sidebar-header h3,
+#sidebar.active #profileImage {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -17rem;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #content {
-    width: 100%;
-    margin: 0;
-  }
-  #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
-  }
+#sidebar.active .sidebar-header strong {
+  display: block;
 }
 
-/* 
-
-.navbar-fixed-left {
-  width: 140px;
-  position: fixed;
-  border-radius: 0;
-  height: 100%;
+#sidebar ul li a {
+  text-align: left;
 }
 
-.navbar-fixed-left .navbar-nav > li {
-  float: none; 
-  width: 139px;
+#sidebar.active ul li a {
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 0.85em;
 }
 
-.navbar-fixed-left + .container {
-  padding-left: 160px;
+#sidebar.active ul li a i {
+  margin-right: 0;
+  display: block;
+  font-size: 1.8em;
+  margin-bottom: 5px;
 }
 
-.container {
-  height: 1000px;
+#sidebar.active .dropdown-toggle::after {
+  top: auto;
+  bottom: 10px;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
 }
 
-.wrapper {
-  margin-left: 140px;
-} */
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #6d7fcc;
+}
+
+#sidebar .sidebar-header strong {
+  display: none;
+  font-size: 1.8em;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  color: #7386d5;
+  background: #fff;
+}
+
+#profileImage {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
