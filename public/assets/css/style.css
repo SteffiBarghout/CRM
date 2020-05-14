@@ -52,7 +52,8 @@ span {
 }
 
 #sidebar.active .sidebar-header h3,
-#sidebar.active #profileImage {
+#sidebar.active #profileImage,
+#sidebar.active #jobTitle {
   display: none;
 }
 
