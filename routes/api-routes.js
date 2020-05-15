@@ -3,7 +3,12 @@
 var db = require("../models");
 const bcrypt = require("bcrypt");
 // var passport = require("passport");
-module.exports = function (app, passport) {
+module.exports = function (
+  app,
+  passport,
+  isAuthenticatedMiddleware,
+  isNotAuthenticatedMiddleware
+) {
   app.post("/login", (req, res) => {
     db.Users.findOne({
       where: { username: req.body.username },
@@ -37,25 +42,21 @@ module.exports = function (app, passport) {
     });
   });
 
-  app.post("/addUser", async (req, res) => {
-    if (req.isAuthenticated()) {
-      if (req.user === "admin") {
-        try {
-          const hashedPassword = await bcrypt.hash(req.body.password, 10);
-          db.Users.create({
-            username: req.body.username,
-            password: hashedPassword,
-          }).then(() => {
-            res.send(true);
-          });
-        } catch {
-          res.status(500).end();
-        }
-      } else {
-        res.redirect("/");
+  app.post("/addUser", isAuthenticatedMiddleware(), async (req, res) => {
+    if (req.user === "admin") {
+      try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        db.Users.create({
+          username: req.body.username,
+          password: hashedPassword,
+        }).then(() => {
+          res.send(true);
+        });
+      } catch {
+        res.status(500).end();
       }
     } else {
-      res.redirect("/login");
+      res.redirect("/");
     }
   });
 

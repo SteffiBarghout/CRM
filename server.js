@@ -35,9 +35,42 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-require("./routes/api-routes")(app, passport);
+require("./routes/api-routes")(
+  app,
+  passport,
+  isAuthenticatedMiddleware,
+  isNotAuthenticatedMiddleware
+);
 
-require("./routes/html-routes")(app);
+require("./routes/html-routes")(
+  app,
+  isAuthenticatedMiddleware,
+  isNotAuthenticatedMiddleware
+);
+
+// Add User Restriction
+function isAuthenticatedMiddleware() {
+  return (req, res, next) => {
+    console.log(
+      `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
+    );
+
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login");
+  };
+}
+
+function isNotAuthenticatedMiddleware() {
+  return (req, res, next) => {
+    console.log(
+      `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
+    );
+
+    if (!req.isAuthenticated()) return next();
+    res.redirect("/");
+  };
+}
+
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync().then(() => {
   app.listen(PORT, function () {
