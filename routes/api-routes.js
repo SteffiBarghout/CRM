@@ -37,6 +37,28 @@ module.exports = function (app, passport) {
     });
   });
 
+  app.post("/addUser", async (req, res) => {
+    if (req.isAuthenticated()) {
+      if (req.user === "admin") {
+        try {
+          const hashedPassword = await bcrypt.hash(req.body.password, 10);
+          db.Users.create({
+            username: req.body.username,
+            password: hashedPassword,
+          }).then(() => {
+            res.send(true);
+          });
+        } catch {
+          res.status(500).end();
+        }
+      } else {
+        res.redirect("/");
+      }
+    } else {
+      res.redirect("/login");
+    }
+  });
+
   app.get("/logout", function (req, res) {
     req.logout();
     req.session.destroy();
