@@ -5,11 +5,11 @@ module.exports = function (
 ) {
   app.get("/", isAuthenticatedMiddleware(), (req, res) => {
     console.log("///////CurrentUser: ", req.user);
-    if (req.user === "admin") {
+    if (req.user.username === "admin") {
       console.log("returning admin......");
       res.render("admin");
     } else {
-      res.render("dashboard", { currentUser: req.user });
+      res.render("dashboard", { currentUser: req.user.username });
     }
   });
 
@@ -20,26 +20,10 @@ module.exports = function (
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
     res.render("settings");
   });
+
+  app.get("/logout", function (req, res) {
+    req.logout();
+    req.session.destroy();
+    res.render("login");
+  });
 };
-
-// function isAuthenticatedMiddleware() {
-//   return (req, res, next) => {
-//     console.log(
-//       `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
-//     );
-
-//     if (req.isAuthenticated()) return next();
-//     res.redirect("/login");
-//   };
-// }
-
-// function isNotAuthenticatedMiddleware() {
-//   return (req, res, next) => {
-//     console.log(
-//       `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
-//     );
-
-//     if (!req.isAuthenticated()) return next();
-//     res.redirect("/");
-//   };
-// }

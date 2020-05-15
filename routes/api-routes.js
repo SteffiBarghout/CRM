@@ -2,7 +2,47 @@
 // =============================================================
 var db = require("../models");
 const bcrypt = require("bcrypt");
-// var passport = require("passport");
+const path = require("path");
+const multer = require("multer");
+var aws = require("aws-sdk");
+var multerS3 = require("multer-s3");
+aws.config.update({
+  // to get the secret key and access id :
+  // 1. from aws console go to 'my security credentials' by clicking on you account name
+  // 2. then create new access key from there
+  secretAccessKey: "bTs9L7H+eAsyIgMiF7CAoiVlN9yr6f10AhNDUDA5",
+  accessKeyId: "AKIAJC4JO4OYKALLXDUA",
+  region: "us-east-2",
+});
+var s3 = new aws.S3();
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "images-test-hss",
+    acl: "public-read", // make sure the permissions on S3 buckets not blocking public access
+    metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname + "-" + req.user.id });
+    },
+    key: function (req, file, cb) {
+      cb(null, "ProfileImgs/" + file.fieldname + "-" + req.user.id);
+    },
+  }),
+  limits: { fileSize: 1000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
+}).single("profile");
+
+function checkFileType(file, cb) {
+  const filetypes = /jpeg|jpg|png|gif/;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+  if (extname && mimetype) {
+    return cb(null, true);
+  } else {
+    cb("Error: Images Only");
+  }
+}
 module.exports = function (
   app,
   passport,
@@ -21,11 +61,14 @@ module.exports = function (
         if (
           await bcrypt.compare(req.body.password, result.dataValues.password)
         ) {
-          req.login(result.dataValues.username, function (err) {
-            if (err) throw err;
+          req.login(
+            { username: result.dataValues.username, id: result.dataValues.id },
+            function (err) {
+              if (err) throw err;
 
-            res.send(true);
-          });
+              res.send(true);
+            }
+          );
         } else {
           res.send(false);
         }
@@ -43,7 +86,7 @@ module.exports = function (
   });
 
   app.post("/addUser", isAuthenticatedMiddleware(), async (req, res) => {
-    if (req.user === "admin") {
+    if (req.user.username === "admin") {
       try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         db.Users.create({
@@ -60,9 +103,21 @@ module.exports = function (
     }
   });
 
-  app.get("/logout", function (req, res) {
-    req.logout();
-    req.session.destroy();
-    res.render("login");
+  app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
+    upload(req, res, function (err) {
+      if (err) {
+        res.render("index", { msg: err });
+        //   String(err).split("MulterError: ")[1]
+      } else {
+        if (req.file == undefined) {
+          res.render("settings", { msg: "No file selected!" });
+        } else {
+          res.render("settings", {
+            msg: "file uploaded",
+            file: req.file.location,
+          });
+        }
+      }
+    });
   });
 };

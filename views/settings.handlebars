@@ -4,7 +4,7 @@
     <form action="/upload" , method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleFormControlFile1">File input</label>
-            <input type="file" name="myImage" class="form-control-file" id="exampleFormControlFile1">
+            <input type="file" name="profile" class="form-control-file" id="exampleFormControlFile1">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -12,7 +12,7 @@
     <img src={{file}} class="img-fluid">
     {{/if}}
     {{#unless file}}
-    <img src="/assets/default.jpg" class="img-fluid">
+    <img src="https://images-test-hss.s3.us-east-2.amazonaws.com/ProfileImgs/default.jpg" class="img-fluid">
     {{/unless}}
     <a href="/"><button type="button">Dashboard</button></a>
 
