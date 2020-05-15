@@ -41,7 +41,7 @@ span {
 #sidebar {
   min-width: 275px;
   max-width: 275px;
-  background: #7386d5;
+  background: #7a6eb8;
   color: #fff;
   transition: all 0.3s;
 }
@@ -90,7 +90,7 @@ span {
 
 #sidebar .sidebar-header {
   padding: 10%;
-  background: #6d7fcc;
+  background: #5b528a;
   margin-bottom: 3%;
 }
 
@@ -111,7 +111,7 @@ span {
 }
 
 #sidebar ul li a:hover {
-  color: #7386d5;
+  color: #7a6eb8;
   background: #fff;
 }
 
