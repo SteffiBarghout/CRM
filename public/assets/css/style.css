@@ -53,7 +53,8 @@ span {
 
 #sidebar.active .sidebar-header h3,
 #sidebar.active #profileImage,
-#sidebar.active #jobTitle {
+#sidebar.active #jobTitle,
+#sidebar.active #brandName {
   display: none;
 }
 
@@ -93,6 +94,11 @@ span {
   margin-bottom: 3%;
 }
 
+#sidebar .logo {
+  padding: 10%;
+  background: #534366;
+}
+
 #sidebar .sidebar-header strong {
   display: none;
   font-size: 1.8em;
@@ -120,4 +126,8 @@ span {
   padding: 20px;
   min-height: 100vh;
   transition: all 0.3s;
+}
+
+#brandName {
+  font-size: xx-large;
 }
