@@ -50,7 +50,6 @@ require("./routes/html-routes")(
   isAuthenticatedMiddleware,
   isNotAuthenticatedMiddleware
 );
-
 // Add User Restriction
 function isAuthenticatedMiddleware() {
   return (req, res, next) => {
@@ -68,6 +67,7 @@ function isNotAuthenticatedMiddleware() {
     console.log(
       `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
     );
+
 
     if (!req.isAuthenticated()) return next();
     res.redirect("/");
