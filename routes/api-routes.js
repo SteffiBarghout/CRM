@@ -31,7 +31,7 @@ const upload = multer({
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
-}).single("profile");
+}).single("myImage");
 
 function checkFileType(file, cb) {
   const filetypes = /jpeg|jpg|png|gif/;
@@ -104,20 +104,39 @@ module.exports = function (
   });
 
   app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
-    upload(req, res, function (err) {
-      if (err) {
-        res.render("index", { msg: err });
-        //   String(err).split("MulterError: ")[1]
-      } else {
-        if (req.file == undefined) {
-          res.render("settings", { msg: "No file selected!" });
-        } else {
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      upload(req, res, function (err) {
+        if (err) {
           res.render("settings", {
-            msg: "file uploaded",
-            file: req.file.location,
+            msg: err,
+            img: result.dataValues.profImg,
           });
+          //   String(err).split("MulterError: ")[1]
+        } else {
+          if (req.file == undefined) {
+            res.render("settings", {
+              msg: "No file selected!",
+              img: result.dataValues.profImg,
+            });
+          } else {
+            db.Users.update(
+              {
+                profImg: req.file.location,
+              },
+              {
+                where: { id: req.user.id },
+              }
+            ).then(() => {
+              res.render("settings", {
+                msg: "file uploaded",
+                img: req.file.location,
+              });
+            });
+          }
         }
-      }
+      });
     });
   });
 };

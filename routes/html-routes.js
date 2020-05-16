@@ -1,3 +1,4 @@
+var db = require("../models");
 module.exports = function (
   app,
   isAuthenticatedMiddleware,
@@ -18,7 +19,12 @@ module.exports = function (
   });
 
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
-    res.render("settings");
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      console.log("//////uploads", result.dataValues.profImg);
+      res.render("settings", { img: result.dataValues.profImg });
+    });
   });
 
   app.get("/logout", function (req, res) {
