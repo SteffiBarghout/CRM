@@ -12,6 +12,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 // include session middleware
 app.use(
   session({
@@ -28,6 +29,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
@@ -35,6 +37,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
+
 require("./routes/api-routes")(
   app,
   passport,
@@ -78,3 +81,4 @@ db.sequelize.sync().then(() => {
     console.log("Server listening on: http://localhost:" + PORT);
   });
 });
+
