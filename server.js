@@ -2,7 +2,7 @@ var express = require("express");
 var PORT = process.env.PORT || 8080;
 var session = require("express-session");
 var passport = require("passport");
-// var SequelizeStore = require("connect-session-sequelize")(session.Store);
+var SequelizeStore = require("connect-session-sequelize")(session.Store);
 var app = express();
 var db = require("./models");
 // Serve static content for the app from the "public" directory in the application directory.
@@ -13,19 +13,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // include session middleware
-// app.use(
-//   session({
-//     secret: "keboard cat",
-//     store: new SequelizeStore({
-//       db: db.sequelize,
-//     }),
-//     resave: false,
-//     saveUninitialized: false,
-//     // set the idel time for 5 min before logging out the user
-//     cookie: { maxAge: 300000 },
-//     rolling: true,
-//   })
-// );
+app.use(
+  session({
+    secret: "keboard cat",
+    store: new SequelizeStore({
+      db: db.sequelize,
+    }),
+    resave: false,
+    saveUninitialized: false,
+    // set the idel time for 5 min before logging out the user
+    cookie: { maxAge: 300000 },
+    rolling: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -34,16 +34,6 @@ var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
-// // Import routes and give the server access to them.
-
-app.get("/", function (req, res) {
-  res.render("index");
-});
-
-app.get("/settings", function (req, res) {
-  res.render("settings");
-});
 
 // Import routes and give the server access to them.
 
