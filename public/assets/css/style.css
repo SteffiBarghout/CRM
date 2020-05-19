@@ -66,7 +66,12 @@ span {
 #sidebar.active #profileImage,
 #sidebar.active #jobTitle,
 #sidebar.active #brandName {
-  display: inline-block;
+  display: block;
+}
+
+#sidebar.active #jobTitle,
+#sidebar.active h3 {
+  text-transform: uppercase;
 }
 
 #sidebar.active .sidebar-header strong {
@@ -120,6 +125,7 @@ span {
 #sidebar .sidebar-header strong {
   /* display: none; */
   font-size: 1.8em;
+  text-transform: uppercase;
 }
 
 #sidebar ul li a {
@@ -137,6 +143,7 @@ span {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  margin-left: 30%;
 }
 
 .content {
@@ -157,6 +164,10 @@ span {
 #sidebar.active .btnName {
   display: inline-block;
 }
+
+/* ---------------------------------------------------
+    LOGIN & ADMIN STYLE
+----------------------------------------------------- */
 
 #login,
 #admin {
