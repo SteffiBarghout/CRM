@@ -38,4 +38,13 @@ $(document).ready(function () {
   $(function () {
     $("#myTab li:first-child a").tab("show");
   });
+
+  $("#updateForm").on("click", function () {
+    $("#disabledForm").hide();
+    $("#newInfo").show();
+  });
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 });
