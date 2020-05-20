@@ -4,9 +4,9 @@ var db = require("../models");
 const bcrypt = require("bcrypt");
 
 const path = require("path");
-// const multer = require("multer");
+const multer = require("multer");
 var aws = require("aws-sdk");
-// var multerS3 = require("multer-s3");
+var multerS3 = require("multer-s3");
 aws.config.update({
   // to get the secret key and access id :
   // 1. from aws console go to 'my security credentials' by clicking on you account name
@@ -16,23 +16,23 @@ aws.config.update({
   region: "us-east-2",
 });
 var s3 = new aws.S3();
-// const upload = multer({
-//   storage: multerS3({
-//     s3: s3,
-//     bucket: "images-test-hss",
-//     acl: "public-read", // make sure the permissions on S3 buckets not blocking public access
-//     metadata: function (req, file, cb) {
-//       cb(null, { fieldName: file.fieldname + "-" + req.user.id });
-//     },
-//     key: function (req, file, cb) {
-//       cb(null, "ProfileImgs/" + file.fieldname + "-" + req.user.id);
-//     },
-//   }),
-//   limits: { fileSize: 1000000 },
-//   fileFilter: function (req, file, cb) {
-//     checkFileType(file, cb);
-//   },
-// }).single("myImage");
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "images-test-hss",
+    acl: "public-read", // make sure the permissions on S3 buckets not blocking public access
+    metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname + "-" + req.user.id });
+    },
+    key: function (req, file, cb) {
+      cb(null, "ProfileImgs/" + file.fieldname + "-" + req.user.id);
+    },
+  }),
+  limits: { fileSize: 1000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
+}).single("myImage");
 
 function checkFileType(file, cb) {
   const filetypes = /jpeg|jpg|png|gif/;
@@ -115,7 +115,7 @@ module.exports = function (
             msg: err,
             img: result.dataValues.profImg,
           });
-          //   String(err).split("MulterError: ")[1]
+          String(err).split("MulterError: ")[1];
         } else {
           if (req.file == undefined) {
             res.render("settings", {

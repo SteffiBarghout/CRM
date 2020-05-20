@@ -1,4 +1,4 @@
-{{!-- <div class="wrapper">
+<div class="wrapper">
 
     {{> navbar/nav-block}}
 
@@ -17,11 +17,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                        aria-controls="profile" aria-selected="false">Profile</a>
+                        aria-controls="profile" aria-selected="true">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="team-tab" data-toggle="tab" href="#team" role="tab" aria-controls="team"
-                        aria-selected="false">Manage Team</a>
+                        aria-selected="true">Manage Team</a>
                 </li>
 
             </ul>
@@ -105,20 +105,61 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
             </div>
+
+
+
+
             <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <h2>Profile</h2>
 
-                <form>
+                {{!-- Hisham's code  --}}
+
+
+                {{!-- {{#if file}}
+    <img src={{file}} class="img-fluid">
+    {{/if}} --}}
+                {{!-- {{#unless file}} --}}
+                <img src={{img}} width="200" height="200" class="img-fluid" id="updatePhoto">
+                {{!-- {{/unless}} --}}
+
+
+                {{msg}}
+                <form action="/upload" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Example file input</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        {{!-- <label for="ProfileImage">File input</label> --}}
+                        <div class="row">
+                            <div class="col-2">
+                                <input type="file" class="form-control-file" name="myImage">
+                            </div>
+                            <div class="col">
+                                <button type="submit"
+                                    class="btn btn-primary btn-sm justify-content-start">Submit</button>
+                            </div>
+                        </div>
+
                     </div>
+
+
                 </form>
+
+                {{!-- END OF HISHAM CODE --}}
+
                 <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                            placeholder="name@example.com">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label for="validationServerUsername">Username</label>
+                            <div class="input-group">
+                                {{!-- <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend3">Enter New</span>
+                                </div> --}}
+                                <input type="text" class="form-control" id="validationServerUsername"
+                                    placeholder="Type New Username" aria-describedby="inputGroupPrepend3">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Example select</label>
@@ -146,6 +187,7 @@
                     </div>
                 </form>
             </div>
+
             <div class="tab-pane" id="team" role="tabpanel" aria-labelledby="team-tab">
                 <h2>Team</h2>
                 <p>
@@ -177,27 +219,5 @@
 
     </div>
 
-
-</div> --}}
-
-
-{{!-- Hisham's code  --}}
-<div class="container">
-    <h1>File Upload</h1>
-    {{msg}}
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="ProfileImage">File input</label>
-            <input type="file" class="form-control-file" name="myImage">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    {{!-- {{#if file}}
-    <img src={{file}} class="img-fluid">
-    {{/if}} --}}
-    {{!-- {{#unless file}} --}}
-    <img src={{img}} class="img-fluid">
-    {{!-- {{/unless}} --}}
-    <a href="/"><button type="button">Dashboard</button></a>
 
 </div>
