@@ -1,10 +1,118 @@
 
-  /* Customer List Page*/ 
-  
-  .list-group {
+.clientlist {
+  width: 1366px;
+  margin: 0 auto;
+}
 
-     width: 500px;
-     height: 300px;
-     margin-left: 500px;
+.container-tableclient {
+  width: 100%;
+  min-height: 100px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 33px 30px;
+}
 
-   }
+.wrap-tableclient {
+  width: 1170px;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+.tableclient {
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  font-weight: unset;
+  padding-right: 10px;
+}
+
+
+.column1 {
+  width: 30%;
+  padding-left: 40px;
+}
+
+.column2 {
+  width: 18%;
+}
+
+.column3 {
+  width: 17%;
+}
+
+.column4 {
+  width: 19%;
+}
+
+.column5 {
+  width: 13%;
+}
+
+.tableclient-head th {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.tableclient-body td {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*==================================================================
+[ Fix header ]*/
+.tableclient {
+  position: relative;
+  padding-top: 60px;
+}
+
+.tableclient-head {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.tableclient-body {
+  max-height: 585px;
+  overflow: auto;
+}
+
+
+/*==================================================================
+[ Ver1 ]*/
+
+.tableclient th {
+  font-family: Lato-Bold;
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.4;
+
+  background-color: #6c7ae0;
+}
+
+.tableclient td {
+  font-family: Lato-Regular;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.4;
+}
+
+.tableclient .tableclient-body tr:nth-child(even) {
+  background-color: #f8f6ff;
+}
+
+
+
+
+.active-purple-4 {
+  border: 1px solid #6c7ae0;
+  box-shadow: 0 0 0 1px #6c7ae0;
+}
