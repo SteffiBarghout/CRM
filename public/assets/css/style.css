@@ -204,6 +204,7 @@ span {
 #login .container #login-row #login-column #login-box #login-form #admin-form {
   padding: 20px;
 }
+
 #login
   .container
   #login-row
@@ -219,6 +220,34 @@ span {
 }
 
 #updatePhoto {
-  border-radius: 50%;
-  margin-bottom: 2%;
+  border-radius: 40%;
+  /* margin-bottom: 2%; */
+}
+
+#uploadImg {
+  margin-top: 7%;
+}
+
+input::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+input::placeholder {
+  opacity: 1;
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+label:focus input::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+label:focus input::placeholder {
+  opacity: 0;
 }

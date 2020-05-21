@@ -4,10 +4,12 @@
 
     <div class="content" id="settings">
 
-        {{> toggle/toggle-block}}
+
 
         <h2 class="display-4">SETTINGS</h2>
 
+
+        {{!-- ====== SETTINGS TABS ======== --}}
 
         <div id="settingNav" class="mb-3">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,6 +30,7 @@
 
 
         </div>
+        {{!-- ====== SETTINGS TABS END ======== --}}
 
 
         <div class="tab-content">
@@ -37,33 +40,34 @@
                         <h2>Personal Info</h2>
                     </div>
                     <div class="col-1">
-                        <button type="submit" id="updateForm" class="btn btn-primary" data-toggle="tooltip"
+                        <button type="submit" id="updatePersonal" class="btn btn-primary" data-toggle="tooltip"
                             data-placement="top" title="Update Personal Info">Update</button>
                     </div>
                 </div>
 
                 {{!-- ======== DISABLED FORM ============= --}}
-                <form id="disabledForm">
-                    <fieldset disabled>
+                <form>
+                    <fieldset disabled id="disabledPersonal">
                         <div class="form-row">
+
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                <label for="inputFirstName">First Name</label>
+                                <input type="text" class="form-control" placeholder="First name">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                <label for="inputLastName">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last name">
                             </div>
+                        </div>
+                        <div class="form-group col-md-6 p-0">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label for="inputAddress">Address</label>
                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                         </div>
-                        <div class="form-group">
-                            <label for="inputAddress2">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2"
-                                placeholder="Apartment, studio, or floor">
-                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity">City</label>
@@ -89,58 +93,15 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary" id="saveBtn" style="display: none;">Save
+                            Info</button>
+                        <button type="submit" class="btn btn-warning" id="cancelBtn"
+                            style="display: none;">Cancel</button>
                     </fieldset>
                 </form>
-                <form id="newInfo" style="display: none;">
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress2">Address 2</label>
-                        <input type="text" class="form-control" id="inputAddress2"
-                            placeholder="Apartment, studio, or floor">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Check me out
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                {{!-- ======== DISABLED FORM END ============= --}}
 
-                </form>
             </div>
 
 
@@ -148,81 +109,76 @@
 
 
             <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h2>Profile</h2>
 
-                {{!-- Hisham's code  --}}
-
-
-                {{!-- {{#if file}}
-    <img src={{file}} class="img-fluid">
-    {{/if}} --}}
-                {{!-- {{#unless file}} --}}
-                <img src={{img}} width="200" height="200" class="img-fluid" id="updatePhoto">
-                {{!-- {{/unless}} --}}
-
-
-                {{msg}}
-                <form action="/upload" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        {{!-- <label for="ProfileImage">File input</label> --}}
-                        <div class="row">
-                            <div class="col-2">
-                                <input type="file" class="form-control-file" name="myImage">
-                            </div>
-                            <div class="col">
-                                <button type="submit"
-                                    class="btn btn-primary btn-sm justify-content-start">Submit</button>
-                            </div>
-                        </div>
-
+                <div class="row">
+                    <div class="col-11">
+                        <h2>Update Profile</h2>
                     </div>
-
-
-                </form>
-
-                {{!-- END OF HISHAM CODE --}}
-
+                    <div class="col-1">
+                        <button type="submit" id="updateProfile" class="btn btn-primary" data-toggle="tooltip"
+                            data-placement="top" title="Update Personal Info">Update</button>
+                    </div>
+                </div>
+                <br>
                 <form>
-                    <div class="form-row">
-                        <div class="col-md-4">
-                            <label for="validationServerUsername">Username</label>
-                            <div class="input-group">
-                                {{!-- <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrepend3">Enter New</span>
-                                </div> --}}
-                                <input type="text" class="form-control" id="validationServerUsername"
-                                    placeholder="Type New Username" aria-describedby="inputGroupPrepend3">
+                    <fieldset id="disabledProfile" disabled>
+
+                        <div class="row">
+                            <div class="col-2"> <img src={{img}} width="200" height="200" class="img-fluid"
+                                    id="updatePhoto">
+                            </div>
+                            <div class="col-10" id="uploadImg" style="display: none;">
+                                {{msg}}
+
+
+
+                                <form action="/upload" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+
+
+                                        <input type="file" name="myImage">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+
+
+
+
+
+                        <div class="line"></div>
+
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="validationServerUsername">Username</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="validationServerUsername"
+                                        placeholder="{{currentUser}}" aria-describedby="inputGroupPrepend3">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect2">Example multiple select</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputJobTitle">Job Titile</label>
+                                <input type="text" class="form-control" id="inputJobTitle" placeholder="Job Title">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="saveProfile" style="display: none;">Save
+                            Info</button>
+                        <button type="submit" class="btn btn-warning" id="cancelProfile"
+                            style="display: none;">Cancel</button>
+                    </fieldset>
+
                 </form>
             </div>
 

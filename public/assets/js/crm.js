@@ -39,12 +39,36 @@ $(document).ready(function () {
     $("#myTab li:first-child a").tab("show");
   });
 
-  $("#updateForm").on("click", function () {
-    $("#disabledForm").hide();
-    $("#newInfo").show();
+  // settings tabs buttons and forms
+
+  $("#updatePersonal").click(function () {
+    $("#disabledPersonal").prop("disabled", false);
+    $("#cancelBtn").show();
+    $("#saveBtn").show();
+  });
+
+  $("#updateProfile").click(function () {
+    $("#disabledProfile").prop("disabled", false);
+    $("#cancelProfile").show();
+    $("#saveProfile").show();
+    $("#uploadImg").show();
+  });
+
+  $("#cancelBtn", "#saveBtn").click(function () {
+    $("#disabledPersonal").prop("disabled", true);
+    $("#cancelBtn").hide();
+    $("#saveBtn").hide();
+  });
+
+  $("#cancelProfile", "#saveProfile").click(function () {
+    $("#disabledProfile").prop("disabled", true);
+    $("#cancelProfile").hide();
+    $("#saveProfile").hide();
+    $("#uploadImg").hide();
   });
 
   $(function () {
     $('[data-toggle="tooltip"]').tooltip();
   });
+  // end settings tabs buttons and forms
 });
