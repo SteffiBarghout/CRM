@@ -2,7 +2,7 @@
 // =============================================================
 var db = require("../models");
 const bcrypt = require("bcrypt");
-
+require("dotenv").config();
 const path = require("path");
 const multer = require("multer");
 var aws = require("aws-sdk");
@@ -11,8 +11,8 @@ aws.config.update({
   // to get the secret key and access id :
   // 1. from aws console go to 'my security credentials' by clicking on you account name
   // 2. then create new access key from there
-  secretAccessKey: "bTs9L7H+eAsyIgMiF7CAoiVlN9yr6f10AhNDUDA5",
-  accessKeyId: "AKIAJC4JO4OYKALLXDUA",
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  accessKeyId: process.env.ACCESS_KEY_ID,
   region: "us-east-2",
 });
 var s3 = new aws.S3();
@@ -63,7 +63,6 @@ module.exports = function (
         if (
           await bcrypt.compare(req.body.password, result.dataValues.password)
         ) {
-
           req.login(
             { username: result.dataValues.username, id: result.dataValues.id },
             function (err) {
@@ -72,7 +71,6 @@ module.exports = function (
               res.send(true);
             }
           );
-
         } else {
           res.send(false);
         }
@@ -90,9 +88,7 @@ module.exports = function (
   });
 
   app.post("/addUser", isAuthenticatedMiddleware(), async (req, res) => {
-
     if (req.user.username === "admin") {
-
       try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         db.Users.create({
@@ -108,7 +104,6 @@ module.exports = function (
       res.redirect("/");
     }
   });
-
 
   app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
     db.Users.findOne({
@@ -145,6 +140,5 @@ module.exports = function (
         }
       });
     });
-
   });
 };
