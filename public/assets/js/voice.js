@@ -40,4 +40,9 @@ $(document).ready(() => {
     // Twilio.Device.connect(params);
     Twilio.Device.connect({ To: 5045154776 });
   });
+
+  $("#hangup").on("click", () => {
+    console.log("hangup!!!");
+    Twilio.Device.disconnectAll();
+  });
 });
