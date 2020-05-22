@@ -20,7 +20,7 @@ module.exports = function (
     res.render("login");
   });
 
-  app.get("/tickets", isNotAuthenticatedMiddleware(), (req, res) => {
+  app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
     res.render("tickets");
   });
 

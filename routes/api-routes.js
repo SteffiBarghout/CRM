@@ -194,7 +194,6 @@ module.exports = function (
     );
     token.addGrant(voiceGrant);
     token.identity = identity;
-    console.log(token.toJwt());
     // Serialize the token to a JWT string
     res.send(token.toJwt());
   });
