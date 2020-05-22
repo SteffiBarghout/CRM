@@ -25,7 +25,10 @@ const upload = multer({
       cb(null, { fieldName: file.fieldname + "-" + req.user.id });
     },
     key: function (req, file, cb) {
-      cb(null, "ProfileImgs/" + file.fieldname + "-" + req.user.id);
+      cb(
+        null,
+        "ProfileImgs/" + file.fieldname + "-" + req.user.id + "-" + Date.now()
+      );
     },
   }),
   limits: { fileSize: 1000000 },
