@@ -9,10 +9,10 @@
         <h2 class="display-4"> <i class="fas fa-cog"></i> Settings</h2>
 
 
-        <div class="line"></div>
+        {{!-- <div class="line"></div> --}}
 
         {{!-- ======== COLLAPSIBLE CONTENT ============ --}}
-
+        {{!-- 
         <div id="accordion">
             <div class="card">
                 <div class="card-header" id="headingOne">
@@ -151,9 +151,139 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
         {{!-- ======== COLLAPSIBLE CONTENT END ============ --}}
+
+
+        {{!-- ======== TABS CONTENT ============ --}}
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#personal" role="tab"
+                    aria-controls="personal" aria-selected="true">Personal Info</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Profile Info</a>
+            </li>
+
+
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+                <div class="row mt-3">
+                    <div class="col-11">
+                        <h1> Update Personal Info</h1>
+                    </div>
+                    <div class="col-1">
+                        <button type="submit" id="updatePersonal" class="btn btn-primary justify-content-end"
+                            data-toggle="tooltip" data-placement="top" title="Update Personal Info">Update</button>
+                    </div>
+                </div>
+
+                <form>
+                    <fieldset disabled id="disabledPersonal">
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="inputFirstName">First Name</label>
+                                <input type="text" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputLastName">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6 p-0">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary" id="saveBtn" style="display: none;">Save
+                            Info</button>
+                        <button type="submit" class="btn btn-warning" id="cancelBtn"
+                            style="display: none;">Cancel</button>
+                    </fieldset>
+                </form>
+
+
+
+            </div>
+            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row  mt-3">
+                    <div class="col-11">
+                        <h1>Update Profile Info</h1>
+                    </div>
+                    <div class="col-1">
+                        <button type="submit" id="updateProfile" class="btn btn-primary" data-toggle="tooltip"
+                            data-placement="top" title="Update Profile Info">Update</button>
+                    </div>
+                </div>
+
+
+                <form>
+                    <fieldset id="disabledProfile" disabled>
+
+                        <div class="row">
+
+                            <div class="col-2 mt-2">
+                                <label for="inputProfileImg">Profile Image</label> <img src={{img}} width="250"
+                                    height="250" class="img-fluid" id="updatePhoto">
+                            </div>
+                            <div class="col-10" id="uploadImg" style="display: none;">
+                                {{msg}}
+
+
+
+                                <form action="/upload" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+
+
+                                        <input type="file" name="myImage">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="line"></div>
+
+
+
+                        <br>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Password</label>
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputJobTitle">Job Titile</label>
+                                <input type="text" class="form-control" id="inputJobTitle" placeholder="Job Title">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="saveProfile" style="display: none;">Save
+                            Info</button>
+                        <button type="submit" class="btn btn-warning" id="cancelProfile"
+                            style="display: none;">Cancel</button>
+                    </fieldset>
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+        {{!-- ======== TABS CONTENT END ============ --}}
 
 
 
@@ -162,3 +292,9 @@
 
 
 </div>
+
+<script>
+    $(function () {
+        $('#myTab li:last-child a').tab('show')
+    })
+</script>
