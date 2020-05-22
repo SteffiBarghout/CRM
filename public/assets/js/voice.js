@@ -45,4 +45,9 @@ $(document).ready(() => {
     console.log("hangup!!!");
     Twilio.Device.disconnectAll();
   });
+
+  $(".close").on("click", () => {
+    Twilio.Device.destroy();
+    $(".modal").hide();
+  });
 });
