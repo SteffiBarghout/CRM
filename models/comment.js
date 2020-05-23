@@ -9,10 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     Comment.associate = function(models) {
-        models.Comment.belongsto(models.Ticket, { onDelete: 'cascade' });
-    }
-    Comment.associate = function(models) {
-        models.Comment.belongsto(models.Customer);
+        models.Comment.belongsto(models.Ticket);
     }
     Comment.associate = function(models) {
         models.Comment.belongsto(models.Users);

@@ -28,12 +28,6 @@ module.exports = function(sequelize, DataTypes) {
                     len: [1],
                 },
             },
-            phone: {
-                type: DataTypes.INTEGER,
-                validate: {
-                    len: [10]
-                },
-            },
             email: {
                 type: DataTypes.STRING,
                 validate: {
@@ -50,5 +44,17 @@ module.exports = function(sequelize, DataTypes) {
             freezeTableName: true,
         }
     );
+    Users.associate = function(models) {
+        models.Users.hasMany(models.Customer, { onDelete: 'cascade' });
+    };
+    Users.associate = function(models) {
+        models.Users.hasMany(models.Ticket, { onDelete: 'cascade' });
+    };
+    Users.associate = function(models) {
+        models.Users.hasmany(models.Comment, { onDelete: 'cascade' });
+    };
+    Users.associate = function(models) {
+        models.Users.hasmany(models.Note, { onDelete: 'cascade' });
+    };
     return Users;
 };

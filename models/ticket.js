@@ -13,12 +13,12 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [3, 1000]
             }
-        }
+        },
         status: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: []
+                len: [1]
             }
         }
     });

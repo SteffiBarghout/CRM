@@ -34,18 +34,17 @@ module.exports = function(sequelize, DataTypes) {
                     len: [8]
                 }
             },
-            profImg: {
-                type: DataTypes.STRING,
-                defaultValue: "https://images-test-hss.s3.us-east-2.amazonaws.com/ProfileImgs/default.jpg",
-            },
 
-        }, {
-            timestamps: false,
-            freezeTableName: true,
         }
     );
     Customer.associate = function(models) {
-        models.Customer
-    }
+        models.Customer.belongsto(models.Users);
+    };
+    Customer.associate = function(models) {
+        models.Customer.hasMany(models.Ticket, { onDelete: 'cascade' });
+    };
+    Customer.associate = function(models) {
+        models.Customer.hasMany(models.Note, { onDelete: 'cascade' });
+    };
     return Customer;
 };
