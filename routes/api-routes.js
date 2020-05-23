@@ -115,7 +115,7 @@ module.exports = function (
             msg: err,
             img: result.dataValues.profImg,
           });
-          //   String(err).split("MulterError: ")[1]
+          String(err).split("MulterError: ")[1];
         } else {
           if (req.file == undefined) {
             res.render("settings", {

@@ -1,5 +1,9 @@
 $(document).ready(function () {
-  $("#sidebarCollapse").on("click", function () {
+  // $("#sidebarCollapse").on("click", function () {
+  //   $("#sidebar").toggleClass("active");
+  // });
+
+  $("#sidebar").hover(function () {
     $("#sidebar").toggleClass("active");
   });
 
@@ -30,4 +34,41 @@ $(document).ready(function () {
     $("#home").hide();
     $("#settings").show();
   });
+
+  $(function () {
+    $("#myTab li:first-child a").tab("show");
+  });
+
+  // settings tabs buttons and forms
+
+  $("#updatePersonal").click(function () {
+    $("#disabledPersonal").prop("disabled", false);
+    $("#cancelBtn").show();
+    $("#saveBtn").show();
+  });
+
+  $("#updateProfile").click(function () {
+    $("#disabledProfile").prop("disabled", false);
+    $("#cancelProfile").show();
+    $("#saveProfile").show();
+    $("#uploadImg").show();
+  });
+
+  $("#cancelBtn", "#saveBtn").click(function () {
+    $("#disabledPersonal").prop("disabled", true);
+    $("#cancelBtn").hide();
+    $("#saveBtn").hide();
+  });
+
+  $("#cancelProfile", "#saveProfile").click(function () {
+    $("#disabledProfile").prop("disabled", true);
+    $("#cancelProfile").hide();
+    $("#saveProfile").hide();
+    $("#uploadImg").hide();
+  });
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  // end settings tabs buttons and forms
 });
