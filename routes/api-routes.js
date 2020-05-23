@@ -122,6 +122,9 @@ module.exports = function (
       try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         db.Users.create({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
           username: req.body.username,
           password: hashedPassword,
         }).then(() => {
@@ -145,7 +148,7 @@ module.exports = function (
             msg: err,
             img: result.dataValues.profImg,
           });
-          String(err).split("MulterError: ")[1];
+          //   String(err).split("MulterError: ")[1]
         } else {
           if (req.file == undefined) {
             res.render("settings", {

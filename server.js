@@ -63,9 +63,6 @@ function isAuthenticatedMiddleware() {
 
 function isNotAuthenticatedMiddleware() {
   return (req, res, next) => {
-    console.log(
-      `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
-    );
     // console.log(
     //   `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
     // );
@@ -74,7 +71,7 @@ function isNotAuthenticatedMiddleware() {
     res.redirect("/");
   };
 }
-
+// { force: true }
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync().then(() => {
   app.listen(PORT, function () {
