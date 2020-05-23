@@ -28,7 +28,13 @@ module.exports = function(sequelize, DataTypes) {
                     len: [1],
                 },
             },
-
+            email: {
+                type: DataTypes.STRING,
+                validate: {
+                    isEmail: true,
+                    notEmpty: true
+                }
+            },
             profImg: {
                 type: DataTypes.STRING,
                 defaultValue: "https://images-test-hss.s3.us-east-2.amazonaws.com/ProfileImgs/default.jpg",

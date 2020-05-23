@@ -123,6 +123,7 @@ module.exports = function(
                 db.Users.create({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
+                    email: req.body.email,
                     username: req.body.username,
                     password: hashedPassword,
                 }).then(() => {

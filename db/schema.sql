@@ -1,4 +1,4 @@
-DROP DATABASE if exists authentication_db;
+-- DROP DATABASE if exists authentication_db;
 
 CREATE DATABASE  authentication_db;
 
