@@ -38,7 +38,13 @@ $(document).ready(() => {
     // };
     // console.log("Calling " + params.To + "...");
     // Twilio.Device.connect(params);
-    Twilio.Device.connect({ To: 5045154776 });
+    if (Twilio.Device.status() === "ready") {
+      Twilio.Device.connect({ To: 5045154776 });
+    } else {
+      $("#logMsg").text(
+        "Device is Inactive. Please close this screen and reopen it"
+      );
+    }
   });
 
   $("#hangup").on("click", () => {
