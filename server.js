@@ -12,7 +12,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 // include session middleware
 app.use(
   session({
@@ -53,9 +52,9 @@ require("./routes/html-routes")(
 // Add User Restriction
 function isAuthenticatedMiddleware() {
   return (req, res, next) => {
-    console.log(
-      `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
-    );
+    // console.log(
+    //   `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
+    // );
 
     if (req.isAuthenticated()) return next();
     res.redirect("/login");
@@ -64,16 +63,15 @@ function isAuthenticatedMiddleware() {
 
 function isNotAuthenticatedMiddleware() {
   return (req, res, next) => {
-    console.log(
-      `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
-    );
-
+    // console.log(
+    //   `req.session.passport.user: ${JSON.stringify(req.session.passport)}`
+    // );
 
     if (!req.isAuthenticated()) return next();
     res.redirect("/");
   };
 }
-
+// { force: true }
 // Start our server so that it can begin listening to client requests.
 db.sequelize.sync().then(() => {
   app.listen(PORT, function () {
@@ -81,4 +79,3 @@ db.sequelize.sync().then(() => {
     console.log("Server listening on: http://localhost:" + PORT);
   });
 });
-

@@ -31,12 +31,14 @@ module.exports = function(sequelize, DataTypes) {
             email: {
                 type: DataTypes.STRING,
                 validate: {
-                    len: [5]
+                    isEmail: true,
+                    notEmpty: true
                 }
             },
             profImg: {
                 type: DataTypes.STRING,
                 defaultValue: "https://images-test-hss.s3.us-east-2.amazonaws.com/ProfileImgs/default.jpg",
+                allowNull: true,
             },
 
         }, {
@@ -51,10 +53,10 @@ module.exports = function(sequelize, DataTypes) {
         models.Users.hasMany(models.Ticket, { onDelete: 'cascade' });
     };
     Users.associate = function(models) {
-        models.Users.hasmany(models.Comment, { onDelete: 'cascade' });
+        models.Users.hasMany(models.Comment, { onDelete: 'cascade' });
     };
     Users.associate = function(models) {
-        models.Users.hasmany(models.Note, { onDelete: 'cascade' });
+        models.Users.hasMany(models.Note, { onDelete: 'cascade' });
     };
     return Users;
 };

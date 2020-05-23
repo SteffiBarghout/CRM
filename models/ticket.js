@@ -26,10 +26,10 @@ module.exports = function(sequelize, DataTypes) {
         models.Ticket.hasMany(models.Comment, { onDelete: 'cascade' });
     }
     Ticket.associate = function(models) {
-        models.Ticket.belongsto(models.Customer);
+        models.Ticket.belongsTo(models.Customer);
     }
     Ticket.associate = function(models) {
-        models.Ticket.belongsto(models.Users);
+        models.Ticket.belongsTo(models.Users);
     }
     return Ticket;
 };

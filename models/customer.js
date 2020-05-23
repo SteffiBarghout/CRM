@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     );
     Customer.associate = function(models) {
-        models.Customer.belongsto(models.Users);
+        models.Customer.belongsTo(models.Users);
     };
     Customer.associate = function(models) {
         models.Customer.hasMany(models.Ticket, { onDelete: 'cascade' });

@@ -1,4 +1,3 @@
-
 var db = require("../models");
 
 module.exports = function (
@@ -9,26 +8,51 @@ module.exports = function (
   app.get("/", isAuthenticatedMiddleware(), (req, res) => {
     console.log("///////CurrentUser: ", req.user);
 
-    if (req.user.username === "admin") {
-      console.log("returning admin......");
-      res.render("admin");
-    } else {
-      res.render("dashboard", { currentUser: req.user.username });
-
-    }
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      console.log("//////uploads", result.dataValues.profImg);
+      if (req.user.username === "admin") {
+        console.log("returning admin......");
+        res.render("admin");
+      } else {
+        res.render("dashboard", {
+          currentUser: req.user.username,
+          img: result.dataValues.profImg,
+        });
+      }
+    });
   });
 
   app.get("/login", isNotAuthenticatedMiddleware(), (req, res) => {
     res.render("login");
   });
 
+  app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
+    res.render("tickets");
+  });
 
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
     db.Users.findOne({
       where: { id: req.user.id },
     }).then(async (result) => {
       console.log("//////uploads", result.dataValues.profImg);
-      res.render("settings", { img: result.dataValues.profImg });
+      res.render("settings", {
+        img: result.dataValues.profImg,
+        currentUser: req.user.username,
+      });
+    });
+  });
+
+  app.get("/ticket", isAuthenticatedMiddleware(), (req, res) => {
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      console.log("//////uploads", result.dataValues.profImg);
+      res.render("ticket", {
+        img: result.dataValues.profImg,
+        currentUser: req.user.username,
+      });
     });
   });
 
@@ -37,5 +61,4 @@ module.exports = function (
     req.session.destroy();
     res.render("login");
   });
-
 };

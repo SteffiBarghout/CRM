@@ -9,10 +9,10 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     Comment.associate = function(models) {
-        models.Comment.belongsto(models.Ticket);
+        models.Comment.belongsTo(models.Ticket);
     }
     Comment.associate = function(models) {
-        models.Comment.belongsto(models.Users);
+        models.Comment.belongsTo(models.Users);
     }
-    return Tickets;
+    return Comment;
 };
