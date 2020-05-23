@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>File Upload</h1>
+    {{msg}}
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="ProfileImage">File input</label>
+            <input type="file" class="form-control-file" name="myImage">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {{!-- {{#if file}} 
+    <img src={{file}} class="img-fluid">
+    {{/if}}
+    {{#unless file}} --}}
+    <img src={{img}} class="img-fluid">
+    {{!-- {{/unless}} --}}
+    <a href="/"><button type="button">Dashboard</button></a>
+
+</div>
