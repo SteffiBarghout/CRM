@@ -1,4 +1,3 @@
-
 var db = require("../models");
 
 module.exports = function (
@@ -14,7 +13,6 @@ module.exports = function (
       res.render("admin");
     } else {
       res.render("dashboard", { currentUser: req.user.username });
-
     }
   });
 
@@ -22,6 +20,9 @@ module.exports = function (
     res.render("login");
   });
 
+  app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
+    res.render("tickets");
+  });
 
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
     db.Users.findOne({
@@ -37,5 +38,4 @@ module.exports = function (
     req.session.destroy();
     res.render("login");
   });
-
 };
