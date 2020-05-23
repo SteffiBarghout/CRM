@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-    var Users = sequelize.define(
-        "Users", {
+    var Customer = sequelize.define(
+        "Customer", {
             firstName: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -15,15 +15,9 @@ module.exports = function(sequelize, DataTypes) {
                     len: [1],
                 },
             },
-            username: {
+            address: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                validate: {
-                    len: [1],
-                },
-            },
-            password: {
-                type: DataTypes.STRING,
                 validate: {
                     len: [1],
                 },
@@ -31,13 +25,13 @@ module.exports = function(sequelize, DataTypes) {
             phone: {
                 type: DataTypes.INTEGER,
                 validate: {
-                    len: [10]
+                    len: [10],
                 },
             },
             email: {
                 type: DataTypes.STRING,
                 validate: {
-                    len: [5]
+                    len: [8]
                 }
             },
             profImg: {
@@ -50,5 +44,6 @@ module.exports = function(sequelize, DataTypes) {
             freezeTableName: true,
         }
     );
-    return Users;
+
+    return Customer;
 };
