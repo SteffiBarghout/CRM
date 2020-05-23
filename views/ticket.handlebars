@@ -47,6 +47,10 @@
                         <div class="buttons">
                             {{!-- <a id="showall">All</a> --}}
                             <div class="showSingle" target="1">
+                                <div id="colorpad" style="width:300px;height:300px;background-color:#000">
+
+                                </div>
+                                <button onclick="setRandomColor()">Random Color</button>
 
                                 <div class="card" id="smallTicket">
                                     <div class="container">
@@ -497,13 +501,6 @@
 
     </div>
 
-    <!-- Button trigger modal -->
-    {{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Launch demo modal
-    </button> --}}
-
-    <!-- Modal -->
-
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -516,7 +513,7 @@
                 </div>
                 <div class="modal-body text-center">
 
-                    <h1 id="modalDot">CD</h1>
+                    <h3 id="modalDot">CD</h3>
                     <h1>Cathy Dates</h1>
 
                     <p>cathydates@gmail.com</p>
@@ -548,9 +545,22 @@
 
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
-    })
+    });
 
 
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
+
+
+    function setRandomColor() {
+        $("#colorpad").css("background-color", getRandomColor());
+    }
 
 </script>
 

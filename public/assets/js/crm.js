@@ -7,33 +7,33 @@ $(document).ready(function () {
     $("#sidebar").toggleClass("active");
   });
 
-  $("#dashBtn").click(function () {
-    $("#contact").hide();
-    $("#ticket").hide();
-    $("#settings").hide();
-    $("#home").show();
-  });
+  // $("#dashBtn").click(function () {
+  //   $("#contact").hide();
+  //   $("#ticket").hide();
+  //   $("#settings").hide();
+  //   $("#home").show();
+  // });
 
-  $("#contactBtn").click(function () {
-    $("#home").hide();
-    $("#ticket").hide();
-    $("#settings").hide();
-    $("#contact").show();
-  });
+  // $("#contactBtn").click(function () {
+  //   $("#home").hide();
+  //   $("#ticket").hide();
+  //   $("#settings").hide();
+  //   $("#contact").show();
+  // });
 
-  $("#ticketBtn").click(function () {
-    $("#contact").hide();
-    $("#home").hide();
-    $("#settings").hide();
-    $("#ticket").show();
-  });
+  // $("#ticketBtn").click(function () {
+  //   $("#contact").hide();
+  //   $("#home").hide();
+  //   $("#settings").hide();
+  //   $("#ticket").show();
+  // });
 
-  $("#settingBtn").click(function () {
-    $("#contact").hide();
-    $("#ticket").hide();
-    $("#home").hide();
-    $("#settings").show();
-  });
+  // $("#settingBtn").click(function () {
+  //   $("#contact").hide();
+  //   $("#ticket").hide();
+  //   $("#home").hide();
+  //   $("#settings").show();
+  // });
 
   $(function () {
     $("#myTab li:first-child a").tab("show");

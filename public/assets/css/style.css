@@ -291,7 +291,7 @@ label:focus input::placeholder {
 }
 
 #customerDot {
-  padding: 20%;
+  padding: 30%;
   background-color: red;
   /* background: #4ea6d267; */
   border-radius: 50%;
@@ -301,7 +301,7 @@ label:focus input::placeholder {
 }
 
 #modalDot {
-  padding: 4%;
+  padding: 6%;
   justify-content: center;
   background-color: red;
   border-radius: 50%;
@@ -309,9 +309,10 @@ label:focus input::placeholder {
   margin-left: 40%;
 }
 
-/* .modal-content {
+.modal-content {
   background-color: #4ea5d2;
-} */
+  border: none;
+}
 
 .modal-header,
 .modal-footer {
