@@ -6,9 +6,10 @@ $(document).ready(() => {
       Twilio.Device.ready(function (device) {
         console.log("Twilio.Device Ready!");
         $("#logMsg").text("");
-        $("#hangup").hide();
+
         $("#call").show();
         $(".modal").show();
+        $("#hangup").hide();
         // $("#call_controls").css("display", "block");
       });
 
@@ -53,6 +54,7 @@ $(document).ready(() => {
     Twilio.Device.disconnectAll();
     Twilio.Device.destroy();
     $(".modal").hide();
+    location.reload();
   });
 
   $(".close").on("click", () => {

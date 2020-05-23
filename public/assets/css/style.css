@@ -1,3 +1,174 @@
+body {
+  background: #fafafa;
+  position: relative;
+}
+
+p {
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.6s;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+i,
+span {
+  display: inline-block;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 90px;
+  max-width: 90px;
+  background: #7a6eb8;
+  color: #fff;
+  transition: all 0.7s;
+}
+
+#sidebar.active {
+  min-width: 250px;
+  max-width: 250px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px;
+}
+
+#sidebar .sidebar-header h3,
+#sidebar #profileImage,
+#sidebar #jobTitle,
+#sidebar #brandName {
+  display: none;
+}
+
+#sidebar.active .sidebar-header h3,
+#sidebar.active #profileImage,
+#sidebar.active #jobTitle,
+#sidebar.active #brandName {
+  display: block;
+}
+
+#sidebar.active #jobTitle,
+#sidebar.active h3 {
+  text-transform: uppercase;
+}
+
+#sidebar.active .sidebar-header strong {
+  display: none;
+}
+
+#sidebar ul li a i {
+  text-align: center;
+}
+
+#sidebar.active ul li a {
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 0.85em;
+}
+
+#sidebar ul li a i {
+  margin-right: 0;
+  display: block;
+  font-size: 1.8em;
+  margin-bottom: 5px;
+}
+
+#sidebar.active ul li a {
+  margin-right: 0;
+  display: block;
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+#sidebar .dropdown-toggle::after {
+  top: auto;
+  bottom: 10px;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+#sidebar .sidebar-header {
+  padding: 10%;
+  background: #5b528a;
+  margin-bottom: 3%;
+}
+
+#sidebar .logo {
+  padding: 10%;
+  background: #534366;
+}
+
+#sidebar .sidebar-header strong {
+  /* display: none; */
+  font-size: 1.8em;
+  text-transform: uppercase;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  color: #7a6eb8;
+  background: #fff;
+}
+
+#profileImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: 30%;
+}
+
+.content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+#brandName {
+  font-size: xx-large;
+}
+
+.btnName {
+  display: none;
+}
+
+#sidebar.active .btnName {
+  display: inline-block;
+}
+
+/* ---------------------------------------------------
+    LOGIN & ADMIN STYLE
+----------------------------------------------------- */
+
 #login,
 #admin {
   margin: 0;
@@ -33,6 +204,7 @@
 #login .container #login-row #login-column #login-box #login-form #admin-form {
   padding: 20px;
 }
+
 #login
   .container
   #login-row
@@ -45,4 +217,103 @@
 }
 .container {
   opacity: 0.8;
+}
+
+/* ---------------------------------------------------
+   SETTINGS STYLE
+----------------------------------------------------- */
+
+#updatePhoto {
+  border-radius: 50%;
+  /* margin-bottom: 2%; */
+}
+
+#uploadImg {
+  margin-top: 7%;
+}
+
+input::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+input::placeholder {
+  opacity: 1;
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+}
+
+label:focus input::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+label:focus input::placeholder {
+  opacity: 0;
+}
+
+/* ---------------------------------------------------
+    TICKET STYLE
+----------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.fleft {
+  float: left;
+  width: 45%;
+}
+
+.fright {
+  float: right;
+  width: 55%;
+  height: 100%;
+}
+
+.targetDiv {
+  display: none;
+}
+
+.targetDiv.first {
+  display: block;
+}
+
+#checkBox {
+  top: 5rem;
+  left: 2rem;
+  position: relative;
+}
+
+#customerDot {
+  padding: 20%;
+  background-color: red;
+  /* background: #4ea6d267; */
+  border-radius: 50%;
+  width: fit-content;
+  text-transform: uppercase;
+  /* font-size: 1.8em; */
+}
+
+#modalDot {
+  padding: 4%;
+  justify-content: center;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+/* .modal-content {
+  background-color: #4ea5d2;
+} */
+
+.modal-header,
+.modal-footer {
+  border: none;
 }
