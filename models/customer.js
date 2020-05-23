@@ -44,6 +44,8 @@ module.exports = function(sequelize, DataTypes) {
             freezeTableName: true,
         }
     );
-
+    Customer.associate = function(models) {
+        models.Customer
+    }
     return Customer;
 };

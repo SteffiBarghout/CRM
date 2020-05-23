@@ -14,6 +14,13 @@ module.exports = function(sequelize, DataTypes) {
                 len: [3, 1000]
             }
         }
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: []
+            }
+        }
     });
     Ticket.associate = function(models) {
         models.Ticket.hasMany(models.Comment, { onDelete: 'cascade' });
