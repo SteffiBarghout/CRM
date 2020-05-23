@@ -26,8 +26,9 @@ $(document).ready(() => {
 
       Twilio.Device.disconnect(function (conn) {
         $("#logMsg").text("Call Ended");
-        $("#call").show();
-        $("#hangup").hide();
+        // $("#call").show();
+        // $("#hangup").hide();
+        $(".modal").hide();
       });
     });
   });
@@ -42,7 +43,7 @@ $(document).ready(() => {
       Twilio.Device.connect({ To: 5045154776 });
     } else {
       $("#logMsg").text(
-        "Device is Inactive. Please close this screen and reopen it"
+        "Device is Inactive. Please close this window and reopen it"
       );
     }
   });
@@ -50,6 +51,8 @@ $(document).ready(() => {
   $("#hangup").on("click", () => {
     console.log("hangup!!!");
     Twilio.Device.disconnectAll();
+    Twilio.Device.destroy();
+    $(".modal").hide();
   });
 
   $(".close").on("click", () => {
