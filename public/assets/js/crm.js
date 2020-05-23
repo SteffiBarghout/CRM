@@ -71,4 +71,22 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
   });
   // end settings tabs buttons and forms
+
+  // TICKET JS
+
+  $(function () {
+    $("#showall").click(function () {
+      $(".targetDiv").show();
+    });
+
+    $(".showSingle").click(function () {
+      $(".targetDiv").hide();
+      $("#div" + $(this).attr("target")).show();
+    });
+
+    // === THE OPPOSITE OF WHAT I WANT
+    $("#openTic").click(function () {
+      $(".openTickets").hide();
+    });
+  });
 });

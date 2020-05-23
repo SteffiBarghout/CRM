@@ -3,6 +3,9 @@
 var db = require("../models");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
+///////////////Twilio Library///////////////////
+var twilio = require("twilio");
+var VoiceResponse = twilio.twiml.VoiceResponse;
 const path = require("path");
 const multer = require("multer");
 var aws = require("aws-sdk");
@@ -25,7 +28,10 @@ const upload = multer({
       cb(null, { fieldName: file.fieldname + "-" + req.user.id });
     },
     key: function (req, file, cb) {
-      cb(null, "ProfileImgs/" + file.fieldname + "-" + req.user.id);
+      cb(
+        null,
+        "ProfileImgs/" + file.fieldname + "-" + req.user.id + "-" + Date.now()
+      );
     },
   }),
   limits: { fileSize: 1000000 },
@@ -43,6 +49,30 @@ function checkFileType(file, cb) {
   } else {
     cb("Error: Images Only");
   }
+}
+
+function voiceResponse(toNumber) {
+  // Create a TwiML voice response
+  const twiml = new VoiceResponse();
+
+  if (toNumber) {
+    // Wrap the phone number or client name in the appropriate TwiML verb
+    // if is a valid phone number
+    const attr = isAValidPhoneNumber(toNumber) ? "number" : "client";
+
+    const dial = twiml.dial({
+      callerId: "+19169995403",
+    });
+    dial[attr]({}, toNumber);
+  } else {
+    twiml.say("Thanks for calling!");
+  }
+
+  return twiml.toString();
+}
+
+function isAValidPhoneNumber(number) {
+  return /^[\d\+\-\(\) ]+$/.test(number);
 }
 
 module.exports = function (
@@ -140,5 +170,39 @@ module.exports = function (
         }
       });
     });
+  });
+
+  // Twilio Token Route
+  app.get("/token", isAuthenticatedMiddleware(), async (req, res) => {
+    const AccessToken = require("twilio").jwt.AccessToken;
+    const VoiceGrant = AccessToken.VoiceGrant;
+    // Used when generating any kind of tokens
+    const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
+    const twilioApiKey = process.env.API_KEY_SID;
+    const twilioApiSecret = process.env.API_KEY_SECRET;
+    // Used specifically for creating Voice tokens
+    const outgoingApplicationSid = process.env.TWILIO_APP_SID;
+    const identity = "user";
+    const voiceGrant = new VoiceGrant({
+      outgoingApplicationSid: outgoingApplicationSid,
+      incomingAllow: true, // Optional: add to allow incoming calls
+    });
+
+    // Create an access token which we will sign and return to the client,
+    // containing the grant we just created
+    const token = new AccessToken(
+      twilioAccountSid,
+      twilioApiKey,
+      twilioApiSecret
+    );
+    token.addGrant(voiceGrant);
+    token.identity = identity;
+    // Serialize the token to a JWT string
+    res.send(token.toJwt());
+  });
+  //  Twilio App will send request to this route once the client/broswer initiate call request
+  app.post("/voice", (req, res) => {
+    res.set("Content-Type", "text/xml");
+    res.send(voiceResponse(req.body.To));
   });
 };

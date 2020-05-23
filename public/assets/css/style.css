@@ -219,6 +219,10 @@ span {
   opacity: 0.8;
 }
 
+/* ---------------------------------------------------
+   SETTINGS STYLE
+----------------------------------------------------- */
+
 #updatePhoto {
   border-radius: 50%;
   /* margin-bottom: 2%; */
@@ -250,4 +254,66 @@ label:focus input::-webkit-input-placeholder {
 
 label:focus input::placeholder {
   opacity: 0;
+}
+
+/* ---------------------------------------------------
+    TICKET STYLE
+----------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.fleft {
+  float: left;
+  width: 45%;
+}
+
+.fright {
+  float: right;
+  width: 55%;
+  height: 100%;
+}
+
+.targetDiv {
+  display: none;
+}
+
+.targetDiv.first {
+  display: block;
+}
+
+#checkBox {
+  top: 5rem;
+  left: 2rem;
+  position: relative;
+}
+
+#customerDot {
+  padding: 20%;
+  background-color: red;
+  /* background: #4ea6d267; */
+  border-radius: 50%;
+  width: fit-content;
+  text-transform: uppercase;
+  /* font-size: 1.8em; */
+}
+
+#modalDot {
+  padding: 4%;
+  justify-content: center;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+/* .modal-content {
+  background-color: #4ea5d2;
+} */
+
+.modal-header,
+.modal-footer {
+  border: none;
 }
