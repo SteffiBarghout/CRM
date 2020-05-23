@@ -170,7 +170,7 @@ module.exports = function (
   });
 
   // Twilio Token Route
-  app.get("/token", (req, res) => {
+  app.get("/token", isAuthenticatedMiddleware(), async (req, res) => {
     const AccessToken = require("twilio").jwt.AccessToken;
     const VoiceGrant = AccessToken.VoiceGrant;
     // Used when generating any kind of tokens
