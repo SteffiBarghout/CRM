@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Ticket = sequelize.define("Ticket", {
+    var Tickets = sequelize.define("Tickets", {
         ticketTitle: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -22,14 +22,14 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
-    Ticket.associate = function(models) {
-        models.Ticket.hasMany(models.Comment, { onDelete: 'cascade' });
+    Tickets.associate = function(models) {
+        models.Tickets.hasMany(models.Comments, { onDelete: 'cascade' });
     }
-    Ticket.associate = function(models) {
-        models.Ticket.belongsTo(models.Customer);
+    Tickets.associate = function(models) {
+        models.Tickets.belongsTo(models.Customers);
     }
-    Ticket.associate = function(models) {
-        models.Ticket.belongsTo(models.Users);
+    Tickets.associate = function(models) {
+        models.Tickets.belongsTo(models.Users);
     }
-    return Ticket;
+    return Tickets;
 };

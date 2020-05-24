@@ -47,16 +47,16 @@ module.exports = function(sequelize, DataTypes) {
         }
     );
     Users.associate = function(models) {
-        models.Users.hasMany(models.Customer, { onDelete: 'cascade' });
+        models.Users.hasMany(models.Customers, { onDelete: 'cascade' });
     };
     Users.associate = function(models) {
-        models.Users.hasMany(models.Ticket, { onDelete: 'cascade' });
+        models.Users.hasMany(models.Tickets, { onDelete: 'cascade' });
     };
     Users.associate = function(models) {
-        models.Users.hasMany(models.Comment, { onDelete: 'cascade' });
+        models.Users.hasMany(models.Comments, { onDelete: 'cascade' });
     };
     Users.associate = function(models) {
-        models.Users.hasMany(models.Note, { onDelete: 'cascade' });
+        models.Users.hasMany(models.Notes, { onDelete: 'cascade' });
     };
     return Users;
 };

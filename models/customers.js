@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-    var Customer = sequelize.define(
-        "Customer", {
+    var Customers = sequelize.define(
+        "Customers", {
             firstName: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -37,14 +37,14 @@ module.exports = function(sequelize, DataTypes) {
 
         }
     );
-    Customer.associate = function(models) {
-        models.Customer.belongsTo(models.Users);
+    Customers.associate = function(models) {
+        models.Customers.belongsTo(models.Users);
     };
-    Customer.associate = function(models) {
-        models.Customer.hasMany(models.Ticket, { onDelete: 'cascade' });
+    Customers.associate = function(models) {
+        models.Customers.hasMany(models.Tickets, { onDelete: 'cascade' });
     };
-    Customer.associate = function(models) {
-        models.Customer.hasMany(models.Note, { onDelete: 'cascade' });
+    Customers.associate = function(models) {
+        models.Customers.hasMany(models.Notes, { onDelete: 'cascade' });
     };
-    return Customer;
+    return Customers;
 };

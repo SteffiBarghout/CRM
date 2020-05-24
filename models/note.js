@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Note = sequelize.define("Note", {
+    var Notes = sequelize.define("Notes", {
         noteText: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -8,11 +8,11 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
-    Note.associate = function(models) {
-        models.Note.belongsTo(models.Customer);
+    Notes.associate = function(models) {
+        models.Notes.belongsTo(models.Customers);
     }
-    Note.associate = function(models) {
-        models.Note.belongsTo(models.Users);
+    Notes.associate = function(models) {
+        models.Notes.belongsTo(models.Users);
     }
-    return Note;
+    return Notes;
 };
