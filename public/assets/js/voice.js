@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $("#ready").on("click", () => {
+  $(".ready").on("click", () => {
     $.get("/token", (data) => {
       console.log(data);
       Twilio.Device.setup(data);
