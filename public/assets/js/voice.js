@@ -1,15 +1,14 @@
 $(document).ready(() => {
-  $("#ready").on("click", () => {
+  $(".activate").on("click", () => {
+    $("#logMsg").text("");
+    $("#hangup").hide();
+    $("#call").show();
     $.get("/token", (data) => {
-      console.log(data);
       Twilio.Device.setup(data);
       Twilio.Device.ready(function (device) {
         console.log("Twilio.Device Ready!");
-        $("#logMsg").text("");
-
-        $("#call").show();
         $(".modal").show();
-        $("#hangup").hide();
+
         // $("#call_controls").css("display", "block");
       });
 
@@ -26,10 +25,10 @@ $(document).ready(() => {
       });
 
       Twilio.Device.disconnect(function (conn) {
-        $("#logMsg").text("Call Ended");
-        // $("#call").show();
-        // $("#hangup").hide();
-        $(".modal").hide();
+        $(".modal").modal("hide");
+        console.log("Call Ended");
+        Twilio.Device.disconnectAll();
+        Twilio.Device.destroy();
       });
     });
   });
@@ -53,8 +52,8 @@ $(document).ready(() => {
     console.log("hangup!!!");
     Twilio.Device.disconnectAll();
     Twilio.Device.destroy();
-    $(".modal").hide();
-    location.reload();
+    // $(".modal").hide();
+    $(".modal").modal("hide");
   });
 
   $(".close").on("click", () => {

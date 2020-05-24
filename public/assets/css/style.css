@@ -290,7 +290,7 @@ label:focus input::placeholder {
   position: relative;
 }
 
-#customerDot {
+#ready {
   padding: 20%;
   background-color: red;
   /* background: #4ea6d267; */
