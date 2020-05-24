@@ -290,15 +290,14 @@ label:focus input::placeholder {
   position: relative;
 } */
 
-#customerDot {
+/* #customerDot {
   padding: 30%;
   background-color: red;
-  background: #4ea6d267;
   border-radius: 50%;
   width: fit-content;
   text-transform: uppercase;
   font-size: 1.8em;
-}
+} */
 
 /* #modalDot {
   padding: 6%;
@@ -313,6 +312,11 @@ label:focus input::placeholder {
   background-color: #7a6eb8;
   border: none;
 }
+/* 
+.create-modal {
+  border: none;
+  background-color: #d1d1d1;
+} */
 
 .modal-header,
 .modal-footer {

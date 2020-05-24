@@ -38,6 +38,16 @@
 
         </ul>
 
+        <div class="my-1">
+            {{!-- <a href="">
+                <h3><i class="fas fa-plus-circle"></i></h3>
+            </a> --}}
+            <button class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg"
+                data-whatever="{{currentUser}}" href="">
+                <i class="far fa-plus-square"></i> Create Ticket
+            </button>
+        </div>
+
         <div class="tab-content">
             <div class="tab-pane active" id="allTickets" role="tabpanel" aria-labelledby="allTickets-tab">
 
@@ -521,7 +531,7 @@
     <div class="modal fade bd-example-modal-sm" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-            <div class="modal-content">
+            <div class="modal-content call-modal">
                 <div class="modal-header">
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -529,8 +539,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    {{!-- 
-                    <h3 id="modalDot">CD</h3> --}}
+
                     <h3 class="modalAv avatar">CD</h3>
                     <h3>Cathy Dates</h3>
 
@@ -553,8 +562,9 @@
     </div>
 
 </div>
-</div>
 
+
+{{!-- {{> call/call-block}} --}} {{!-- {{> createTicket/create-block}} --}}
 <script>
     $(function () {
         $("#reply").click(function () {
@@ -572,7 +582,7 @@
 
     function numberFromText(text) { // numberFromText("AA");
         const charCodes = text
-            .split('') // => ["A", "A"] 
+            .split('') // => ["A", "A"]
             .map(char => char.charCodeAt(0)) // => [65, 65]
             .join(''); // => "6565"
         return parseInt(charCodes, 10);
@@ -584,6 +594,7 @@
         const text = avatar.innerText; // => "AA"
         avatar.style.backgroundColor = colors[numberFromText(text) % colors.length]; // => "#DC2A2A"
     });
+
 
 
 
