@@ -9,7 +9,6 @@ $(document).ready(() => {
         $("#hangup").hide();
         $("#call").show();
         $(".modal").show();
-        // $("#call_controls").css("display", "block");
       });
 
       Twilio.Device.error(function (error) {
@@ -26,19 +25,12 @@ $(document).ready(() => {
 
       Twilio.Device.disconnect(function (conn) {
         $("#logMsg").text("Call Ended");
-        // $("#call").show();
-        // $("#hangup").hide();
         $(".modal").hide();
       });
     });
   });
 
   $("#call").on("click", () => {
-    // var params = {
-    //   To: $("#phoneNumber").val().trim(),
-    // };
-    // console.log("Calling " + params.To + "...");
-    // Twilio.Device.connect(params);
     if (Twilio.Device.status() === "ready") {
       Twilio.Device.connect({ To: 5045154776 });
     } else {
