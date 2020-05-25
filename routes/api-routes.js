@@ -139,38 +139,38 @@ module.exports = function (
   });
 
   app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
+    console.log("///////////upload:");
     db.Users.findOne({
       where: { id: req.user.id },
     }).then(async (result) => {
       upload(req, res, function (err) {
         if (err) {
-          res.render("settings", {
-            msg: err,
-            img: result.dataValues.profImg,
-          });
+          err === "Error: Images Only"
+            ? res.json({ msg: err })
+            : res.json({ msg: String(err).split("MulterError: ")[1] });
+
           //   String(err).split("MulterError: ")[1]
         } else {
-          if (req.file == undefined) {
-            res.render("settings", {
-              msg: "No file selected!",
-              img: result.dataValues.profImg,
-            });
-          } else {
-            db.Users.update(
-              {
-                profImg: req.file.location,
-              },
-              {
-                where: { id: req.user.id },
-              }
-            ).then(() => {
-              res.render("settings", {
-                msg: "file uploaded",
-                img: req.file.location,
-              });
-            });
-          }
-        }
+          // if (req.file == undefined) {
+          //   res.json({ msg: "No file selected!" });
+          // } else {
+          db.Users.update(
+            {
+              profImg: req.file.location,
+            },
+            {
+              where: { id: req.user.id },
+            }
+          ).then(() => {
+            // res.render("settings", {
+            //   msg: "file uploaded",
+            //   img: req.file.location,
+            // });
+            console.log("//////////sending response pack", req.file.location);
+            res.json({ msg: "Updated", img: req.file.location });
+          });
+          // }
+        } /////////////
       });
     });
   });
