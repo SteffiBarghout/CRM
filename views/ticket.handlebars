@@ -61,18 +61,22 @@
                                                 <div class="card-body">
                                                     <div class="row mb-2">
                                                         <div class="col-2">
-                                                            <a href="" class="customerBtn" data-toggle="modal"
+                                                            {{!-- <a href="" class="customerBtn" data-toggle="modal"
                                                                 data-target="#exampleModalCenter">
                                                                 <h5 class="text-center" id="customerDot">CD
                                                                 </h5>
+                                                            </a> --}}
+                                                            <a href="#" class="activate" data-toggle="modal"
+                                                                data-target="#exampleModalCenter">
+                                                                <h5 class="text-center" id="ready">CD
+                                                                </h5>
                                                             </a>
-
                                                         </div>
                                                         <div class="col-6 mt-3">
-                                                            <a href="" class="customerBtn" data-toggle="modal"
-                                                                data-target="#exampleModalCenter" id="ready">
-                                                                <h3 id="customerName">Cathy Dates</h3>
-                                                            </a>
+                                                            {{!-- <a href="" class="customerBtn" data-toggle="modal"
+                                                                data-target="#exampleModalCenter" id="ready"> --}}
+                                                            <h3>Cathy Dates</h3>
+                                                            {{!-- </a> --}}
 
                                                         </div>
                                                         <div class="col-4" id="ticketDate">May 23rd 2020</div>
@@ -217,18 +221,23 @@
                                             <div class="card-body">
                                                 <div class="row mb-2">
                                                     <div class="col-2">
-                                                        <a href="#" id="ready" data-toggle="modal"
+                                                        {{!-- <a href="#" id="ready" data-toggle="modal"
+                                                            data-target="#exampleModalCenter"> --}}
+                                                        {{!-- <h5 class="card-title text-center" id="customerDot">CD
+                                                            </h5> --}}
+                                                        <a href="#" class="activate" data-toggle="modal"
                                                             data-target="#exampleModalCenter">
-                                                            <h5 class="card-title text-center" id="customerDot">CD
+                                                            <h5 class="card-title text-center" id="ready">CD
                                                             </h5>
                                                         </a>
+                                                        {{!-- </a> --}}
 
                                                     </div>
                                                     <div class="col-7 mt-3">
-                                                        <a class="customerBtn" href="#" data-toggle="modal"
-                                                            data-target="#exampleModalCenter" id="ready">
-                                                            <h3 id="customerName">Cathy Dates</h3>
-                                                        </a>
+                                                        {{!-- <a class="customerBtn" href="#" data-toggle="modal"
+                                                            data-target="#exampleModalCenter" id="ready"> --}}
+                                                        <h3>Cathy Dates</h3>
+                                                        {{!-- </a> --}}
 
                                                     </div>
                                                     <div class="col-3" id="ticketDate">May 23rd 2020</div>
@@ -504,8 +513,7 @@
 
     <!-- Modal -->
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal" id="exampleModalCenter" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -546,9 +554,9 @@
         });
     });
 
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
+    //$('#myModal').on('shown.bs.modal', function () {
+        //$('#myInput').trigger('focus')
+    //})
 
 
 

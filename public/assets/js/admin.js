@@ -8,7 +8,19 @@ $("#admin-form").on("submit", (event) => {
         password: $("#password").val().trim(),
     };
     $.post("/addUser", user).then((result) => {
-        if (!result) {
+        if (this.username != "") {
+            return sequelize.models.Users.findAndCountAll({
+                where: {
+                    username: this.username
+                }
+
+            }).then((result) => {
+                if (result.rows != "") {
+                    return $("#err_msg").text("Username already exists!");
+                }
+                $("#admin_msg").text("Username already exists");
+            })
+        } else if (!result) {
             return $("#err_msg").text("Error: Try Again!!");
         }
         $("#admin_msg").text("User has been added");

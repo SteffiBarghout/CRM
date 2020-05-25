@@ -11,14 +11,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1],
+                len: [1]
             },
         },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
+            // unique: true,
             validate: {
-                len: [1],
+                len: [1]
             },
         },
         password: {
@@ -39,6 +40,11 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: "https://images-test-hss.s3.us-east-2.amazonaws.com/ProfileImgs/default.jpg",
             allowNull: true,
         },
+        // }, {
+        //     indexes: [{
+        //         unique: true,
+        //         fields: ['username']
+        //     }]
     }, {
         timestamps: false
     });

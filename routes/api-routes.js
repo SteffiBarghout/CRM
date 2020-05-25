@@ -205,7 +205,7 @@ module.exports = function(
         res.send(voiceResponse(req.body.To));
     });
     //Create new ticket
-    app.post("/new/ticket", function(req, res) {
+    app.post("/newticket", function(req, res) {
         db.Tickets.create({
             ticketTitle: req.body.ticketTitle,
             ticketText: req.body.ticketText,
@@ -217,4 +217,50 @@ module.exports = function(
             res.json(result);
         });
     });
+    //get user who created the ticket
+    app.get("/Tickets", function(req, res) {
+
+        })
+        //Will there be a display to show all users tickets? Maybe something for the admin user down the line?
+        // app.get("/tickets", function(req, res) {
+
+    // })
+    app.get("/openTickets", function(req, res) {
+
+    })
+    app.get("/closedTickets", function(req, res) {
+
+    })
+    app.post("/newComment", isAuthenticatedMiddleware(), async(req, res) => {
+        db.Comments.findOne({
+            where: { id: req.comment.id },
+        }).then(async(result) => {
+            upload(req, res, function(err) {
+                if (err) {
+                    res.render("tickets", {
+                        msg: err,
+                    });
+                } else {
+                    if (req.file == undefined) {
+                        res.render("settings", {
+                            msg: "No file selected!",
+                            img: result.dataValues.profImg,
+                        });
+                    } else {
+                        db.Users.update({
+                            profImg: req.file.location,
+                        }, {
+                            where: { id: req.user.id },
+                        }).then(() => {
+                            res.render("settings", {
+                                msg: "file uploaded",
+                                img: req.file.location,
+                            });
+                        });
+                    }
+                }
+            });
+        });
+    });
+    app.get("/ticketComments", )
 };
