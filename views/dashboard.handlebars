@@ -1,14 +1,3 @@
-{{!-- <h1>You Just logged in. Welcome to Dashboard</h1>
-<hr>
-<h2>Current User: {{currentUser}}</h2>
-
-<a href="/settings"><button type="button">Settings</button></a>
-<a href="/tickets"><button type="button">Tickets</button></a>
-
-
-<a href="/logout"><button type="button">Logout</button></a> --}}
-
-
 <div class="wrapper">
     <!-- Sidebar  -->
     {{> navbar/nav-block}}
@@ -16,20 +5,115 @@
     <!-- Page Content  -->
     <div class="content" id="home">
 
+
         <h1 class="display-3"> Welcome to Dashboard</h1>
 
         <div class="line"></div>
 
         <h2>Analytics</h2>
+        {{!-- <div class="row">
+            <div class="col"> <img src="https://apexcharts.com/wp-content/uploads/2018/05/simple-donut-chart.svg"
+                    alt=""></div>
+            <div class="col"> <img src="https://apexcharts.com/wp-content/uploads/2018/05/simple-donut-chart.svg"
+                    alt=""></div>
+
+
+        </div> --}}
+
+
+        {{!-- <div class="row">
+            <div class="col">
+                <div class="text-center p-0" id="grad1">
+                    <h1><i class="fas fa-envelope-open-text"></i></h1>
+                </div>
+            </div>
+         
+
+
+        </div> --}}
+
+
+
         <div class="row">
-            <div class="col"> <img src="https://apexcharts.com/wp-content/uploads/2018/05/simple-donut-chart.svg"
-                    alt=""></div>
-            <div class="col"> <img src="https://apexcharts.com/wp-content/uploads/2018/05/simple-donut-chart.svg"
-                    alt=""></div>
+            <div class="col">
+                <div class="card text-white bg-info mb-3 analytics" id="grad1">
+
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2>2345</h2>
+                                <h5 class="mt-0 mb-1">Total Revenue</h5>
+
+                            </div>
+                            <h2 class="align-self-center">
+                                <i class="fas fa-chart-pie"></i>
+                            </h2>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-info mb-3 analytics" id="grad2">
+
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2>2345</h2>
+                                <h5 class="mt-0 mb-1">Total Revenue</h5>
+
+                            </div>
+                            <h2 class="align-self-center">
+                                <i class="fas fa-chart-pie"></i>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-info mb-3 analytics" id="grad3">
+
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2>2345</h2>
+                                <h5 class="mt-0 mb-1">Total Revenue</h5>
+
+                            </div>
+                            <h2 class="align-self-center">
+                                <i class="fas fa-chart-pie"></i>
+                            </h2>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-info mb-3 analytics" id="grad4">
+
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2>2345</h2>
+                                <h5 class="mt-0 mb-1">Total Revenue</h5>
+
+                            </div>
+                            <h2 class="align-self-center">
+                                <i class="fas fa-chart-pie"></i>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
 
         </div>
 
+
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -58,162 +142,6 @@
     </div>
 
 
-    <div class="container content" id="contact" style="display: none;">
 
-
-        {{> toggle/toggle-block}}
-
-
-
-
-
-        <h2>CONTACT</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-        <div class="line"></div>
-
-        <h2>Lorem Ipsum Dolor</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-        {{!-- <div class="line"></div>
-
-        <h2>Lorem Ipsum Dolor</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p> --}}
-
-
-    </div>
-
-    <div class="container content" id="ticket" style="display: none;">
-
-
-        {{> toggle/toggle-block}}
-
-
-
-        <h2>TICKET</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-        <div class="line"></div>
-
-        <h2>Lorem Ipsum Dolor</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-        {{!-- <div class="line"></div>
-
-        <h2>Lorem Ipsum Dolor</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p> --}}
-
-
-    </div>
-
-
-    <div class="container content" id="settings" style="display: none;">
-
-        {{> toggle/toggle-block}}
-
-
-
-
-        <h2>SETTINGS</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-        <div class="line"></div>
-
-        <h2>Lorem Ipsum Dolor</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-
-    </div>
 
 </div>
