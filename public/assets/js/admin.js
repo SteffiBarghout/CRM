@@ -16,9 +16,9 @@ $("#admin-form").on("submit", (event) => {
 
             }).then((result) => {
                 if (result.rows != "") {
-                    return $("#err_msg").text("Username already exists!");
+                    return $("#err_msg").text("User already exists!");
                 }
-                $("#admin_msg").text("Username already exists");
+                $("#admin_msg").text("User already exists");
             })
         } else if (!result) {
             return $("#err_msg").text("Error: Try Again!!");
