@@ -148,12 +148,7 @@ module.exports = function (
           err === "Error: Images Only"
             ? res.json({ msg: err })
             : res.json({ msg: String(err).split("MulterError: ")[1] });
-
-          //   String(err).split("MulterError: ")[1]
         } else {
-          // if (req.file == undefined) {
-          //   res.json({ msg: "No file selected!" });
-          // } else {
           db.Users.update(
             {
               profImg: req.file.location,
@@ -162,10 +157,6 @@ module.exports = function (
               where: { id: req.user.id },
             }
           ).then(() => {
-            // res.render("settings", {
-            //   msg: "file uploaded",
-            //   img: req.file.location,
-            // });
             console.log("//////////sending response pack", req.file.location);
             res.json({ msg: "Updated", img: req.file.location });
           });
