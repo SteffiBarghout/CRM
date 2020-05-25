@@ -289,15 +289,15 @@ label:focus input::placeholder {
   left: 2rem;
   position: relative;
 } */
-
-/* #customerDot {
-  padding: 30%;
+/* 
+#ready {
+  padding: 20%;
   background-color: red;
   border-radius: 50%;
   width: fit-content;
   text-transform: uppercase;
   font-size: 1.8em;
-} */
+}  */
 
 /* #modalDot {
   padding: 6%;
