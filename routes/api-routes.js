@@ -208,27 +208,31 @@ module.exports = function (
   });
 
   // post personal Info in settings page
-  app.post("/update-personal", (req, res) => {
-    // console.log("Personal :", req.body);
-    db.Users.update(
-      {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.Email,
-      },
-      {
-        where: { id: req.user.id },
-      }
-    )
-      .then(() => {
-        res.send(true);
-      })
-      .catch(() => {
-        res.send(false);
-      });
-  });
+  app.post(
+    "/update-personal",
+    isAuthenticatedMiddleware(),
+    async (req, res) => {
+      // console.log("Personal :", req.body);
+      db.Users.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.Email,
+        },
+        {
+          where: { id: req.user.id },
+        }
+      )
+        .then(() => {
+          res.send(true);
+        })
+        .catch(() => {
+          res.send(false);
+        });
+    }
+  );
 
-  app.post("/update-profile", (req, res) => {
+  app.post("/update-profile", isAuthenticatedMiddleware(), async (req, res) => {
     db.Users.findOne({
       where: { id: req.user.id },
     }).then(async (result) => {

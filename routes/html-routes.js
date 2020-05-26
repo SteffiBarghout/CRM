@@ -32,6 +32,10 @@ module.exports = function (
     res.render("tickets");
   });
 
+  app.get("/contacts", isAuthenticatedMiddleware(), (req, res) => {
+    res.render("contacts");
+  });
+
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
     db.Users.findOne({
       where: { id: req.user.id },
