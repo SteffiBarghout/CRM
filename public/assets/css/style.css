@@ -427,3 +427,11 @@ label:focus input::placeholder {
   margin-top: 4%;
   margin-bottom: 2%;
 }
+
+.canvasjs-chart-credit {
+  display: none;
+}
+
+#chartContainer1 {
+  padding-bottom: 10px;
+}
