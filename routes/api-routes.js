@@ -209,7 +209,7 @@ module.exports = function (
 
   // post personal Info in settings page
   app.post("/update-personal", (req, res) => {
-    console.log("Personal :", req.body);
+    // console.log("Personal :", req.body);
     db.Users.update(
       {
         firstName: req.body.firstName,
