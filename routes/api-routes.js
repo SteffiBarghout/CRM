@@ -133,7 +133,7 @@ module.exports = function (
           })
           .catch((err) => {
             console.log(err);
-            err.errors[0].message === "username must be unique"
+            err.errors[0].message.includes("username must be unique")
               ? res.send("User Already Exists!!")
               : res.send(false);
           });
