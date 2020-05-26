@@ -206,4 +206,25 @@ module.exports = function (
     res.set("Content-Type", "text/xml");
     res.send(voiceResponse(req.body.To));
   });
+
+  // post personal Info in settings page
+  app.post("/update-personal", (req, res) => {
+    console.log("Personal :", req.body);
+    db.Users.update(
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.Email,
+      },
+      {
+        where: { id: req.user.id },
+      }
+    )
+      .then(() => {
+        res.send(true);
+      })
+      .catch(() => {
+        res.send(false);
+      });
+  });
 };
