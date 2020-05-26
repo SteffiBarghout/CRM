@@ -227,4 +227,49 @@ module.exports = function (
         res.send(false);
       });
   });
+
+  app.post("/update-profile", (req, res) => {
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      if (!result) {
+        return res.send(false);
+      }
+
+      try {
+        if (
+          await bcrypt.compare(
+            req.body.currentPassword,
+            result.dataValues.password
+          )
+        ) {
+          /////////////////////
+          try {
+            var NewPassword = await bcrypt.hash(req.body.newPassword, 10);
+            db.Users.update(
+              {
+                password: NewPassword,
+              },
+              {
+                where: { id: req.user.id },
+              }
+            )
+              .then(() => {
+                res.send(true);
+              })
+              .catch((err) => {
+                res.status(500).end();
+              });
+          } catch {
+            res.status(500).end();
+          }
+          /////////////////////////
+        } else {
+          res.send(false);
+        }
+      } catch {
+        res.status(500).end();
+      }
+    });
+  });
 };

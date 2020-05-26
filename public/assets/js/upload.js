@@ -33,6 +33,7 @@ $(document).ready(() => {
   });
 
   $("#saveProfile").on("click", () => {
+    $("#profile_msg").text("");
     var profileInfo = {
       currentPassword: $("#inputCurrentPassword4").val().trim(),
       newPassword: $("#inputPassword4").val().trim(),
@@ -40,7 +41,7 @@ $(document).ready(() => {
     $.post("/update-profile", profileInfo, (response) => {
       response
         ? $("#profile_msg").text("Password Updated!")
-        : $("#profile_msg").text("Error: Try again!");
+        : $("#profile_msg").text("Current password is wrong!!");
     });
   });
 });
