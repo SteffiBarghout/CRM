@@ -16,4 +16,16 @@ $(document).ready(() => {
       });
     });
   });
+
+  $("#personal_form").on("submit", (event) => {
+    event.preventDefault();
+    var personalInfo = {
+      firstName: $("#inputFirstName").val().trim(),
+      lastName: $("#inputLastName").val().trim(),
+      Email: $("#inputEmail4").val().trim(),
+    };
+    $.post("/update-personal", personalInfo, (response) => {
+      console.log("personal ", response);
+    });
+  });
 });
