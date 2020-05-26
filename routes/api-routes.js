@@ -76,193 +76,243 @@ function isAValidPhoneNumber(number) {
 }
 
 module.exports = function(
-    app,
-    passport,
-    isAuthenticatedMiddleware,
-    isNotAuthenticatedMiddleware
-) {
-    app.post("/login", (req, res) => {
-        db.Users.findOne({
-            where: { username: req.body.username },
-        }).then(async(result) => {
-            if (!result) {
-                return res.send(false);
-            }
-
-            try {
-                if (
-                    await bcrypt.compare(req.body.password, result.dataValues.password)
-                ) {
-                    req.login({ username: result.dataValues.username, id: result.dataValues.id },
-                        function(err) {
-                            if (err) throw err;
-
-                            res.send(true);
-                        }
-                    );
-                } else {
-                    res.send(false);
+        app,
+        passport,
+        isAuthenticatedMiddleware,
+        isNotAuthenticatedMiddleware
+    ) {
+        app.post("/login", (req, res) => {
+            db.Users.findOne({
+                where: { username: req.body.username },
+            }).then(async(result) => {
+                if (!result) {
+                    return res.send(false);
                 }
-            } catch {
-                res.status(500).end();
-            }
-        });
-        passport.serializeUser(function(user_Name, done) {
-            done(null, user_Name);
-        });
 
-        passport.deserializeUser(function(user_Name, done) {
-            done(null, user_Name);
-        });
-    });
+                try {
+                    if (
+                        await bcrypt.compare(req.body.password, result.dataValues.password)
+                    ) {
+                        req.login({ username: result.dataValues.username, id: result.dataValues.id },
+                            function(err) {
+                                if (err) throw err;
 
-    app.post("/addUser", isAuthenticatedMiddleware(), async(req, res) => {
-        if (req.user.username === "admin") {
-            try {
-                const hashedPassword = await bcrypt.hash(req.body.password, 10);
-                db.Users.create({
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
-                    email: req.body.email,
-                    username: req.body.username,
-                    password: hashedPassword,
-                }).then(() => {
-                    res.send(true);
-                });
-            } catch {
-                res.status(500).end();
-            }
-        } else {
-            res.redirect("/");
-        }
-    });
-
-    app.post("/upload", isAuthenticatedMiddleware(), async(req, res) => {
-        db.Users.findOne({
-            where: { id: req.user.id },
-        }).then(async(result) => {
-            upload(req, res, function(err) {
-                if (err) {
-                    res.render("settings", {
-                        msg: err,
-                        img: result.dataValues.profImg,
-                    });
-                    //   String(err).split("MulterError: ")[1]
-                } else {
-                    if (req.file == undefined) {
-                        res.render("settings", {
-                            msg: "No file selected!",
-                            img: result.dataValues.profImg,
-                        });
+                                res.send(true);
+                            }
+                        );
                     } else {
-                        db.Users.update({
-                            profImg: req.file.location,
-                        }, {
-                            where: { id: req.user.id },
-                        }).then(() => {
-                            res.render("settings", {
-                                msg: "file uploaded",
-                                img: req.file.location,
-                            });
-                        });
+                        res.send(false);
                     }
+                } catch {
+                    res.status(500).end();
                 }
             });
-        });
-    });
+            passport.serializeUser(function(user_Name, done) {
+                done(null, user_Name);
+            });
 
-    // Twilio Token Route
-    app.get("/token", isAuthenticatedMiddleware(), async(req, res) => {
-        const AccessToken = require("twilio").jwt.AccessToken;
-        const VoiceGrant = AccessToken.VoiceGrant;
-        // Used when generating any kind of tokens
-        const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
-        const twilioApiKey = process.env.API_KEY_SID;
-        const twilioApiSecret = process.env.API_KEY_SECRET;
-        // Used specifically for creating Voice tokens
-        const outgoingApplicationSid = process.env.TWILIO_APP_SID;
-        const identity = "user";
-        const voiceGrant = new VoiceGrant({
-            outgoingApplicationSid: outgoingApplicationSid,
-            incomingAllow: true, // Optional: add to allow incoming calls
+            passport.deserializeUser(function(user_Name, done) {
+                done(null, user_Name);
+            });
         });
 
-        // Create an access token which we will sign and return to the client,
-        // containing the grant we just created
-        const token = new AccessToken(
-            twilioAccountSid,
-            twilioApiKey,
-            twilioApiSecret
-        );
-        token.addGrant(voiceGrant);
-        token.identity = identity;
-        // Serialize the token to a JWT string
-        res.send(token.toJwt());
-    });
-    //  Twilio App will send request to this route once the client/broswer initiate call request
-    app.post("/voice", (req, res) => {
-        res.set("Content-Type", "text/xml");
-        res.send(voiceResponse(req.body.To));
-    });
-    //Return all tickets belonging to the User
-    app.get("/mytickets", (req, res) => {
-            db.Tickets.findAll({
-                where: {
-                    UserID: req.params.id
+        app.post("/addUser", isAuthenticatedMiddleware(), async(req, res) => {
+            if (req.user.username === "admin") {
+                try {
+                    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+                    db.Users.create({
+                        firstName: req.body.firstName,
+                        lastName: req.body.lastName,
+                        email: req.body.email,
+                        username: req.body.username,
+                        password: hashedPassword,
+                    }).then(() => {
+                        res.send(true);
+                    });
+                } catch {
+                    res.status(500).end();
                 }
-            }).then(function(myTickets) {
-                res.json(myTickets);
-            })
-        })
-        //Return all comments belonging to a ticket
-    app.get("/comments", (req, res) => {
-            db.Comments.findAll({
-                where: {
-                    TicketID: req.params.id
-                }
-            }).then(function(Comments) {
-                res.json(Comments);
-            })
-        })
-        //Settings page User information display and updates
-    app.get("/settings", (req, res) => {
+            } else {
+                res.redirect("/");
+            }
+        });
+
+        app.post("/upload", isAuthenticatedMiddleware(), async(req, res) => {
             db.Users.findOne({
-                where: {
-                    UserID: req.params.id
-                }
-            }).then(function(Users) {
-                res.json(Users);
-            })
-        })
-        //Analytics Dashboard information
-    app.get("/dashboard", (req, res) => {
-            db.Tickets.findAll({
-                where: {
-                    CustomerID: req.params.id
-                }
-            }).then(function(Tickets) {
-                res.json(Tickets);
-            })
-        })
-        //Search feature on Ticket tab--find one via search of characters or find all and render on dropdown?
-    app.get("/searchTickets", (req, res) => {
-            db.Customers.findsOne({
-                where: {
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName
-                }
-            }).then(function(Customers) {
-                res.json(Customers);
-            })
-        })
-        //Create new ticket
-    app.post("/newTicket", (req, res) => {
-        db.Tickets.create({
-            ticketTitle: req.body.ticketTitle,
-            ticketText: req.body.ticketText,
-            created_at: req.body.created_at
+                where: { id: req.user.id },
+            }).then(async(result) => {
+                upload(req, res, function(err) {
+                    if (err) {
+                        res.render("settings", {
+                            msg: err,
+                            img: result.dataValues.profImg,
+                        });
+                        //   String(err).split("MulterError: ")[1]
+                    } else {
+                        if (req.file == undefined) {
+                            res.render("settings", {
+                                msg: "No file selected!",
+                                img: result.dataValues.profImg,
+                            });
+                        } else {
+                            db.Users.update({
+                                profImg: req.file.location,
+                            }, {
+                                where: { id: req.user.id },
+                            }).then(() => {
+                                res.render("settings", {
+                                    msg: "file uploaded",
+                                    img: req.file.location,
+                                });
+                            });
+                        }
+                    }
+                });
+            });
+        });
 
-        })
-    })
-    app.post("/all")
-};
+        // Twilio Token Route
+        app.get("/token", isAuthenticatedMiddleware(), async(req, res) => {
+                    const AccessToken = require("twilio").jwt.AccessToken;
+                    const VoiceGrant = AccessToken.VoiceGrant;
+                    // Used when generating any kind of tokens
+                    const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
+                    const twilioApiKey = process.env.API_KEY_SID;
+                    const twilioApiSecret = process.env.API_KEY_SECRET;
+                    // Used specifically for creating Voice tokens
+                    const outgoingApplicationSid = process.env.TWILIO_APP_SID;
+                    const identity = "user";
+                    const voiceGrant = new VoiceGrant({
+                        outgoingApplicationSid: outgoingApplicationSid,
+                        incomingAllow: true, // Optional: add to allow incoming calls
+                    });
+
+                    // Create an access token which we will sign and return to the client,
+                    // containing the grant we just created
+                    const token = new AccessToken(
+                        twilioAccountSid,
+                        twilioApiKey,
+                        twilioApiSecret
+                    );
+                    token.addGrant(voiceGrant);
+                    token.identity = identity;
+                    // Serialize the token to a JWT string
+                    res.send(token.toJwt());
+                    app.post("/addUser", isAuthenticatedMiddleware(), async(req, res) => {
+                        if (req.user.username === "admin") {
+                            try {
+                                const hashedPassword = await bcrypt.hash(req.body.password, 10);
+                                db.Users.create({
+                                        firstName: req.body.firstName,
+                                        lastName: req.body.lastName,
+                                        email: req.body.email,
+                                        username: req.body.username,
+                                        password: hashedPassword,
+                                    })
+                                    .then(() => {
+                                        res.send(true);
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                        err.errors[0].message.includes("username must be unique") ?
+                                            res.send("User Already Exists!!") :
+                                            res.send(false);
+                                    });
+                            } catch {
+                                res.status(500).end();
+                            }
+                        } else {
+                            res.redirect("/");
+                        }
+                    });
+
+                    app.post("/upload", isAuthenticatedMiddleware(), async(req, res) => {
+                                console.log("///////////upload:");
+                                db.Users.findOne({
+                                    where: { id: req.user.id },
+                                }).then(async(result) => {
+                                    upload(req, res, function(err) {
+                                        if (err) {
+                                            err === "Error: Images Only" ?
+                                                res.json({ msg: err }) :
+                                                res.json({ msg: String(err).split("MulterError: ")[1] });
+                                        } else {
+                                            db.Users.update({
+                                                profImg: req.file.location,
+                                            }, {
+                                                where: { id: req.user.id },
+                                            }).then(() => {
+                                                console.log("//////////sending response pack", req.file.location);
+                                                res.json({ msg: "Updated", img: req.file.location });
+                                            });
+                                            // }
+                                        } /////////////
+                                    });
+                                });
+                                //  Twilio App will send request to this route once the client/broswer initiate call request
+                                app.post("/voice", (req, res) => {
+                                    res.set("Content-Type", "text/xml");
+                                    res.send(voiceResponse(req.body.To));
+                                });
+                                //Return all tickets belonging to the User
+                                app.get("/mytickets", (req, res) => {
+                                        db.Tickets.findAll({
+                                            where: {
+                                                UserID: req.params.id
+                                            }
+                                        }).then(function(myTickets) {
+                                            res.json(myTickets);
+                                        })
+                                    })
+                                    //Return all comments belonging to a ticket
+                                app.get("/comments", (req, res) => {
+                                        db.Comments.findAll({
+                                            where: {
+                                                TicketID: req.params.id
+                                            }
+                                        }).then(function(Comments) {
+                                            res.json(Comments);
+                                        })
+                                    })
+                                    //Settings page User information display and updates
+                                app.get("/settings", (req, res) => {
+                                        db.Users.findOne({
+                                            where: {
+                                                UserID: req.params.id
+                                            }
+                                        }).then(function(Users) {
+                                            res.json(Users);
+                                        })
+                                    })
+                                    //Analytics Dashboard information
+                                app.get("/dashboard", (req, res) => {
+                                        db.Tickets.findAll({
+                                            where: {
+                                                CustomerID: req.params.id
+                                            }
+                                        }).then(function(Tickets) {
+                                            res.json(Tickets);
+                                        })
+                                    })
+                                    //Search feature on Ticket tab--find one via search of characters or find all and render on dropdown?
+                                app.get("/searchTickets", (req, res) => {
+                                        db.Customers.findsOne({
+                                            where: {
+                                                firstName: req.body.firstName,
+                                                lastName: req.body.lastName
+                                            }
+                                        }).then(function(Customers) {
+                                            res.json(Customers);
+                                        })
+                                    })
+                                    //Create new ticket
+                                app.post("/newTicket", (req, res) => {
+                                    db.Tickets.create({
+                                        ticketTitle: req.body.ticketTitle,
+                                        ticketText: req.body.ticketText,
+                                        created_at: req.body.created_at
+
+                                    })
+                                })
+                                app.post("/all")
+                            };

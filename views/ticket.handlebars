@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{!-- <div class="showSingle" target="2">
+                            <div class="showSingle" target="2">
                                 <div class="card" id="smallTicket">
                                     <div class="row">
                                         <div class="col-1" id="checkBox">
@@ -228,7 +228,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div class="fright">
@@ -358,7 +358,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{!-- <div id="div2" class="targetDiv">
+                        <div id="div2" class="targetDiv">
                             <div class="card" id="ticketBody">
                                 <div class="card-body">
                                     <h5 class="card-title">Card TWO</h5>
@@ -436,7 +436,7 @@
                                     <a href="#" class="card-link">Another link</a>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
 
@@ -565,11 +565,11 @@
 
 
 </div>
-
+{{> createTicket/create-block}}
 
 {{> call/call-block}}
 
-{{!-- {{> createTicket/create-block}} --}}
+
 <script>
     $(function () {
         $("#reply").click(function () {
@@ -578,9 +578,6 @@
         });
     });
 
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    });
 
 
     const colors = ["#00AA55", "#009FD4", "#B381B3", "#939393", "#E3BC00", "#D47500", "#DC2A2A"];
@@ -600,9 +597,6 @@
         avatar.style.backgroundColor = colors[numberFromText(text) % colors.length]; // => "#DC2A2A"
     });
 
-    //$('#myModal').on('shown.bs.modal', function () {
-        //$('#myInput').trigger('focus')
-    //})
 
 
 

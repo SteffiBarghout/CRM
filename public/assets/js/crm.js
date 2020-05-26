@@ -1,39 +1,53 @@
 $(document).ready(function () {
   // $("#sidebarCollapse").on("click", function () {
   //   $("#sidebar").toggleClass("active");
+  //   var width = $("#sidebar").css("width");
+
+  //   console.log(width);
+  // });
+
+  // $("#sidebar").hover(function () {
+  //   $("#sidebar").toggleClass("active");
+  //   var width = $("#sidebar").css("width");
+
+  //   console.log(width);
+
+  //   if (width === "90px") {
+  //     setTimeout(() => {
+  //       $("#brandName").show();
+  //       $("#profileImage").show();
+  //       $("#jobTitle").show();
+  //       $(".sidebar-header h3").fadeIn(100);
+  //     });
+  //   } else {
+  //     $("#brandName").hide();
+  //     $("#profileImage").hide();
+  //     $("#jobTitle").hide();
+  //     $(".sidebar-header h3").hide();
+  //   }
   // });
 
   $("#sidebar").hover(function () {
-    $("#sidebar").toggleClass("active");
+    var vpWidth = parseInt($(window).width());
+    if (vpWidth > 700) {
+      $("#sidebar").toggleClass("active");
+      var width = $("#sidebar").css("width");
+      console.log(width);
+      if (width === "90px") {
+        setTimeout(() => {
+          $("#brandName").show();
+          $("#profileImage").show();
+          $("#jobTitle").show();
+          $(".sidebar-header h3").fadeIn(100);
+        });
+      } else {
+        $("#brandName").hide();
+        $("#profileImage").hide();
+        $("#jobTitle").hide();
+        $(".sidebar-header h3").hide();
+      }
+    } //End of if(vpWidth )
   });
-
-  // $("#dashBtn").click(function () {
-  //   $("#contact").hide();
-  //   $("#ticket").hide();
-  //   $("#settings").hide();
-  //   $("#home").show();
-  // });
-
-  // $("#contactBtn").click(function () {
-  //   $("#home").hide();
-  //   $("#ticket").hide();
-  //   $("#settings").hide();
-  //   $("#contact").show();
-  // });
-
-  // $("#ticketBtn").click(function () {
-  //   $("#contact").hide();
-  //   $("#home").hide();
-  //   $("#settings").hide();
-  //   $("#ticket").show();
-  // });
-
-  // $("#settingBtn").click(function () {
-  //   $("#contact").hide();
-  //   $("#ticket").hide();
-  //   $("#home").hide();
-  //   $("#settings").show();
-  // });
 
   $(function () {
     $("#myTab li:first-child a").tab("show");
