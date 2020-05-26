@@ -129,9 +129,6 @@ span {
   background: #534366;
 }
 
-#sidebar.active .logo {
-}
-
 #sidebar .sidebar-header strong {
   /* display: none; */
   font-size: 1.8em;
@@ -175,6 +172,16 @@ span {
 #sidebar.active .btnName {
   display: inline-block;
   font-size: large;
+}
+
+#sidebar .media {
+  margin-top: 30%;
+  margin-bottom: 20%;
+}
+
+#sidebar.active .media {
+  margin-top: 4%;
+  margin-bottom: 2%;
 }
 
 /* ---------------------------------------------------
@@ -335,9 +342,9 @@ label:focus input::placeholder {
   border: none;
 }
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 .avatar {
   width: 65px;
@@ -363,9 +370,9 @@ label:focus input::placeholder {
   margin-left: 37%;
 }
 
-.box {
+/* .box {
   float: left;
-}
+} */
 
 .clearfix::after {
   content: "";
@@ -418,12 +425,55 @@ label:focus input::placeholder {
   /* height: 125px; */
 }
 
-#sidebar .media {
-  margin-top: 30%;
-  margin-bottom: 20%;
+/* ---------------------------------------------------
+    NEWTICKET PAGE STYLE
+----------------------------------------------------- */
+
+.demo-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: medium;
 }
 
-#sidebar.active .media {
-  margin-top: 4%;
-  margin-bottom: 2%;
+.demo-2 {
+  overflow: initial;
+}
+
+#reply {
+  display: none;
+}
+
+@media (max-width: 768.98px) {
+  #smallTicket {
+    display: none;
+  }
+
+  .targetDiv {
+    display: inline;
+  }
+
+  .demo-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: medium;
+  }
+  #replyTextArea {
+    display: none;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 769px) {
+  #reply {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .demo-2 {
+    overflow: initial;
+  }
 }

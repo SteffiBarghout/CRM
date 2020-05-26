@@ -1,0 +1,437 @@
+<div class="wrapper">
+    {{> navbar/nav-block}}
+
+    <div class="content" id="ticket">
+        <h2 class="display-4">TICKETS</h2>
+
+
+
+
+
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="allTickets-tab" data-toggle="tab" href="#allTickets" role="tab"
+                    aria-controls="allTickets" aria-selected="true">All Tickets</a>
+            </li>
+            <li class="nav-item" id="openTic">
+                <a class="nav-link" id="openTickets-tab " data-toggle="tab" href="#openTickets" role="tab"
+                    aria-controls="openTickets" aria-selected="false">Open Tickets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="closedTickets-tab" data-toggle="tab" href="#closedTickets" role="tab"
+                    aria-controls="closedTickets" aria-selected="false">Closed Tickets</a>
+            </li>
+            <li class="nav-item ">
+                {{!-- <div class="navbar navbar-light bg-light">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div> --}}
+                <form class="form-inline ml-3">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+
+        </ul>
+        <div class="my-1">
+            {{!-- <a href="">
+                <h3><i class="fas fa-plus-circle"></i></h3>
+            </a> --}}
+            <button class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg"
+                data-whatever="{{currentUser}}" href="">
+                <i class="far fa-plus-square"></i> Create Ticket
+            </button>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="allTickets" role="tabpanel" aria-labelledby="allTickets-tab">
+
+                <div class="row">
+
+
+                    {{!-- ===== SMALL TICKETS ========= --}}
+                    <div class="col-12 col-sm-6 col-md-5 col-lg-4" id="smallTicket">
+                        <div class="row">
+                            <div class="col-12 showSingle" target="1">
+                                <div class="card">
+                                    <div class="ml-auto mb-0 pt-3 pr-3">
+                                        <h6 style="font-size: small;">May 23rd 2020</h6>
+                                    </div>
+
+                                    <div class="card-body pt-0">
+
+
+                                        <div class="media">
+
+                                            <a href="" class="customerBtn activate mr-3" data-toggle="modal"
+                                                data-target="#exampleModalCenter" id="ready">
+                                                <div class="avatar">CD</div>
+                                            </a>
+                                            <div class="media-body">
+
+                                                <div class="row" id="ticketDate">
+                                                    <div class="col mb-3">
+                                                        <h5 id="customerName"> Cathy Dates</h5>
+                                                    </div>
+
+
+                                                </div>
+                                                <h6 class="card-subtitle ticketTitle mb-1">Question For
+                                                    You!
+                                                </h6>
+                                                <p class="demo-1 card-text" style="font-size: medium;">Cras sit amet
+                                                    nibh
+                                                    libero, in gravida
+                                                    nulla.
+                                                    Nulla vel
+                                                    metus
+                                                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                                                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                                                    nisi
+                                                    vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-12 showSingle" target="2">
+                                <div class="card">
+                                    <div class="ml-auto mb-0 pt-3 pr-3">
+                                        <h6 style="font-size: small;">May 23rd 2020</h6>
+                                    </div>
+
+                                    <div class="card-body pt-0">
+
+
+                                        <div class="media">
+
+                                            <a href="" class="customerBtn activate mr-3" data-toggle="modal"
+                                                data-target="#exampleModalCenter" id="ready">
+                                                <div class="avatar">BB</div>
+                                            </a>
+                                            <div class="media-body">
+
+                                                <div class="row" id="ticketDate">
+                                                    <div class="col">
+                                                        <h5 id="customerName"> Bobby Bates</h5>
+                                                    </div>
+
+
+                                                </div>
+                                                <h6 class="card-subtitle ticketTitle" class="mt-0">Question For You!
+                                                </h6>
+                                                <p class="demo-1 card-text">Cras sit amet nibh libero, in gravida
+                                                    nulla.
+                                                    Nulla vel
+                                                    metus
+                                                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                                                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                                                    nisi
+                                                    vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 showSingle" target="3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    {{!-- ===== SMALL TICKETS END ========= --}}
+                    {{!-- ===== BIG TICKETS ========= --}}
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-8" id="bigTickets">
+                        <div class="row">
+                            <div class="col-12 targetDiv" id="div1" style="display: block;">
+
+                                <div class="card">
+                                    <div class="ml-auto mb-0 pt-3 pr-3">
+                                        <h6 style="font-size: small;">May 23rd 2020</h6>
+                                    </div>
+
+                                    <div class="card-body pt-0">
+
+
+                                        <div class="media">
+
+                                            <a href="" class="customerBtn activate mr-3" data-toggle="modal"
+                                                data-target="#exampleModalCenter" id="ready">
+                                                <div class="avatar">CD</div>
+                                            </a>
+                                            <div class="media-body">
+
+                                                <div class="row" id="ticketDate">
+                                                    <div class="col my-3 align-self-center">
+                                                        <h4 id="customerName"> Cathy Dates</h4>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-subtitle ticketTitle my-3">Question For You!
+                                        </h6>
+                                        <p class="card-text mt-3 demo-2" style="font-size: medium;">Cras sit amet nibh
+                                            libero, in gravida
+                                            nulla.
+                                            Nulla vel
+                                            metus
+                                            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                                            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                                            nisi
+                                            vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+                                            adipisci omnis, nobis nostrum temporibus necessitatibus voluptate
+                                            vel, et laborum quisquam praesentium facilis earum ab in molestias
+                                            repudiandae? Est quidem aliquam iure aliquid facilis magnam ducimus
+                                            non, corrupti itaque ipsa quasi sint nam ad optio explicabo.</p>
+
+                                        <div id="replyBtn replyOrDeleteBtns" class="mb-2" style="float: right;">
+                                            <button class="btn btn-outline-info" id="reply">reply</button>
+                                        </div>
+
+
+                                        <div id="replyTextArea">
+
+                                            <form action="" class="mt-4">
+                                                <div class="form-group">
+
+                                                    {{!-- <label for="exampleFormControlTextarea1">Example textarea</label> --}}
+                                                    <textarea class="form-control" id="ticketText" rows="7"></textarea>
+                                                </div>
+
+                                                <div style="float: right;">
+
+                                                    <form>
+                                                        <label class="radio-inline mr-2">
+                                                            <input type="radio" name="optradio" class="mr-2"> Mark
+                                                            Closed
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="optradio" class="mr-2"> Marked
+                                                            Opened
+                                                        </label>
+
+                                                    </form>
+                                                    <br>
+
+                                                </div>
+
+                                            </form>
+                                            <br>
+                                            <br>
+
+                                            <div style="float: right;">
+
+                                                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete
+                                                    Ticket</button>
+                                                <button class="btn btn-info" id="comment-btn" data-id="1"><i
+                                                        class="fas fa-paper-plane"></i> Comment</button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="col-12 targetDiv" id="div2">
+                                <div class="card">
+                                    <div class="ml-auto mb-0 pt-3 pr-3">
+                                        <h6 style="font-size: small;">May 23rd 2020</h6>
+                                    </div>
+
+                                    <div class="card-body pt-0">
+
+
+                                        <div class="media">
+
+                                            <a href="" class="customerBtn activate mr-3" data-toggle="modal"
+                                                data-target="#exampleModalCenter" id="ready">
+                                                <div class="avatar">BB</div>
+                                            </a>
+                                            <div class="media-body">
+
+                                                <div class="row" id="ticketDate">
+                                                    <div class="col my-3 align-self-center">
+                                                        <h4 id="customerName"> Bobby Bates</h4>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-subtitle ticketTitle my-3">Question For You!
+                                        </h6>
+                                        <p class="card-text mt-3 demo-2" style="font-size: medium;">Cras sit amet nibh
+                                            libero, in gravida
+                                            nulla.
+                                            Nulla vel
+                                            metus
+                                            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                                            vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                                            nisi
+                                            vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+                                            adipisci omnis, nobis nostrum temporibus necessitatibus voluptate
+                                            vel, et laborum quisquam praesentium facilis earum ab in molestias
+                                            repudiandae? Est quidem aliquam iure aliquid facilis magnam ducimus
+                                            non, corrupti itaque ipsa quasi sint nam ad optio explicabo.</p>
+
+
+
+
+
+
+                                        <div id="replyTextArea">
+
+                                            <form action="" class="mt-4">
+                                                <div class="form-group">
+
+                                                    {{!-- <label for="exampleFormControlTextarea1">Example textarea</label> --}}
+                                                    <textarea class="form-control" id="ticketText" rows="7"></textarea>
+                                                </div>
+
+                                                <div style="float: right;">
+
+                                                    <form>
+                                                        <label class="radio-inline mr-2">
+                                                            <input type="radio" name="optradio" class="mr-2"> Mark
+                                                            Closed
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="optradio" class="mr-2"> Marked
+                                                            Opened
+                                                        </label>
+
+                                                    </form>
+                                                    <br>
+
+                                                </div>
+
+                                            </form>
+                                            <br>
+                                            <br>
+
+                                            <div style="float: right;">
+
+                                                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete
+                                                    Ticket</button>
+                                                <button class="btn btn-info" id="comment-btn" data-id="1"><i
+                                                        class="fas fa-paper-plane"></i> Comment</button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 targetDiv" id="div3">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card THREE</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 targetDiv" id="div4">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card FOUR</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of the card's content.</p>
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {{!-- ===== BIG TICKETS END ========= --}}
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="openTickets" role="tabpanel" aria-labelledby="openTickets-tab">
+                <h1>OPEN</h1>
+            </div>
+
+            <div class="tab-pane" id="closedTickets" role="tabpanel" aria-labelledby="closedTickets-tab">
+                <h1>CLOSED</h1>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{{> createTicket/create-block}}
+
+{{> call/call-block}}
+
+
+
+<script>
+    $(function () {
+        $("#reply").click(function () {
+            $("p").removeClass("demo-2");
+            $("#replyTextArea").show();
+            $("#reply").hide();
+
+        });
+    });
+
+
+
+
+    const colors = ["#00AA55", "#009FD4", "#B381B3", "#939393", "#E3BC00", "#D47500", "#DC2A2A"];
+
+    function numberFromText(text) { // numberFromText("AA");
+        const charCodes = text
+            .split('') // => ["A", "A"]
+            .map(char => char.charCodeAt(0)) // => [65, 65]
+            .join(''); // => "6565"
+        return parseInt(charCodes, 10);
+    };
+
+    const avatars = document.querySelectorAll('.avatar');
+
+    avatars.forEach(avatar => {
+        const text = avatar.innerText; // => "AA"
+        avatar.style.backgroundColor = colors[numberFromText(text) % colors.length]; // => "#DC2A2A"
+    });
+
+
+</script>
+
+<script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.7/twilio.min.js"></script>
+<script src="/assets/js/voice.js"></script>

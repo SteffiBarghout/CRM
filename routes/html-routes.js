@@ -28,8 +28,16 @@ module.exports = function (
     res.render("login");
   });
 
-  app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
-    res.render("tickets");
+  app.get("/newTickets", isAuthenticatedMiddleware(), (req, res) => {
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      console.log("//////uploads", result.dataValues.profImg);
+      res.render("newTickets", {
+        img: result.dataValues.profImg,
+        currentUser: req.user.username,
+      });
+    });
   });
 
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
