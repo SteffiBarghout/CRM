@@ -36,7 +36,6 @@ module.exports = function (
     db.Users.findOne({
       where: { id: req.user.id },
     }).then(async (result) => {
-      console.log("//////uploads", result.dataValues.profImg);
       res.render("settings", {
         img: result.dataValues.profImg,
         currentUser: req.user.username,
