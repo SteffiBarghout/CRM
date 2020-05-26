@@ -31,4 +31,16 @@ $(document).ready(() => {
         : $("#personal_msg").text("Error: Try again!");
     });
   });
+
+  $("#saveProfile").on("click", () => {
+    var profileInfo = {
+      currentPassword: $("#inputCurrentPassword4").val().trim(),
+      newPassword: $("#inputPassword4").val().trim(),
+    };
+    $.post("/update-profile", profileInfo, (response) => {
+      response
+        ? $("#profile_msg").text("Password Updated!")
+        : $("#profile_msg").text("Error: Try again!");
+    });
+  });
 });
