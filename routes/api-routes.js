@@ -264,4 +264,5 @@ module.exports = function(
 
         })
     })
+    app.post("/all")
 };
