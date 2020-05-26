@@ -62,7 +62,6 @@
                                     <div class="container">
 
 
-
                                         <div class="card-body">
 
                                             <div class="row">
@@ -77,7 +76,7 @@
                                                         <div class="row">
                                                             <div class="col-12 mb-4">
                                                                 <div class="box">
-                                                                    <a href="" class="customerBtn ready"
+                                                                    <a href="" class="customerBtn activate"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalCenter" id="ready">
                                                                         <div class="avatar">CD</div>
@@ -91,7 +90,7 @@
 
                                                                 </div>
                                                                 <div class="box" id="ticketDate"
-                                                                    style="margin-left:32%;">
+                                                                    style="margin-left:25%;">
                                                                     <p>May 23rd 2020</p>
                                                                 </div>
                                                             </div>
@@ -243,8 +242,8 @@
                                                 <div class="row">
                                                     <div class="col-12 mb-4">
                                                         <div class="box">
-                                                            <a href="" class="customerBtn ready" data-toggle="modal"
-                                                                data-target="#exampleModalCenter" id="ready">
+                                                            <a href="" class="customerBtn activate" data-toggle="modal"
+                                                                data-target="#exampleModalCenter">
                                                                 <div class="avatar">CD</div>
                                                             </a>
                                                         </div>
@@ -528,10 +527,16 @@
 
     </div>
 
-    <div class="modal fade bd-example-modal-sm" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-            <div class="modal-content call-modal">
+    <!-- Button trigger modal -->
+    {{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Launch demo modal
+    </button> --}}
+
+    <!-- Modal -->
+
+    {{!-- <div class="modal" id="exampleModalCenter" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -540,31 +545,31 @@
                 </div>
                 <div class="modal-body text-center">
 
-                    <h3 class="modalAv avatar">CD</h3>
-                    <h3>Cathy Dates</h3>
+                    <h1 id="modalDot">CD</h1>
+                    <h1>Cathy Dates</h1>
 
-                    <p class="text-lighjt">cathydates@gmail.com</p>
+                    <p>cathydates@gmail.com</p>
                     <p id="logMsg"></p>
-                    <div class="mb-2">
-                        <button type="button" id="call" class="btn btn-outline-light mb-3">
-                            Call 5045154776
-                        </button>
-                        <button type="button" id="hangup" class="btn btn-danger" data-dismiss="modal" aria-label="Close"
-                            style="display: none;">
-                            End Call
-                        </button>
-                    </div>
-
+                    <button type="button" id="call" class="btn btn-success">
+                        Call 5045154776
+                    </button>
+                    <button type="button" id="hangup" class="btn btn-danger" data-dismiss="modal" aria-label="Close"
+                        style="display: none;">
+                        End Call
+                    </button>
                 </div>
 
             </div>
         </div>
-    </div>
+    </div> --}}
+
 
 </div>
 
 
-{{!-- {{> call/call-block}} --}} {{!-- {{> createTicket/create-block}} --}}
+{{> call/call-block}}
+
+{{!-- {{> createTicket/create-block}} --}}
 <script>
     $(function () {
         $("#reply").click(function () {
@@ -595,6 +600,9 @@
         avatar.style.backgroundColor = colors[numberFromText(text) % colors.length]; // => "#DC2A2A"
     });
 
+    //$('#myModal').on('shown.bs.modal', function () {
+        //$('#myInput').trigger('focus')
+    //})
 
 
 

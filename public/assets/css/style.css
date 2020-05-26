@@ -157,12 +157,13 @@ span {
   font-size: xx-large;
 }
 
-.btnName {
-  display: none;
+#sidebar .btnName {
+  font-size: 14px;
 }
 
 #sidebar.active .btnName {
   display: inline-block;
+  font-size: large;
 }
 
 /* ---------------------------------------------------
@@ -262,7 +263,7 @@ label:focus input::placeholder {
 
 .wrap {
   width: 100%;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 .fleft {
@@ -289,15 +290,15 @@ label:focus input::placeholder {
   left: 2rem;
   position: relative;
 } */
-
-/* #customerDot {
-  padding: 30%;
+/* 
+#ready {
+  padding: 20%;
   background-color: red;
   border-radius: 50%;
   width: fit-content;
   text-transform: uppercase;
   font-size: 1.8em;
-} */
+}  */
 
 /* #modalDot {
   padding: 6%;
