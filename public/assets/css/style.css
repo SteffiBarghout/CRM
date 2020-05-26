@@ -404,23 +404,5 @@ label:focus input::placeholder {
 
 .analytics {
   border: none;
-  border-radius: 2%;
-  max-width: 22rem;
-  height: 150px;
+  /* height: 125px; */
 }
-
-/* @media (max-width: 767.98px) {
-  #sidebar.active {
-    min-width: 90px;
-    max-width: 90px;
-    background: #7a6eb8;
-    color: #fff;
-  }
-
-  #sidebar .sidebar-header h3,
-  #sidebar #profileImage,
-  #sidebar #jobTitle,
-  #sidebar #brandName {
-    display: none;
-  }
-} */
