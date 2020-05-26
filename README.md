@@ -29,8 +29,8 @@ This CRM system has an Impactful eXperience for support technicians as it is int
     * Amazon S3 Database
     
    #### Michael:
-    * Logo Creation
-    * Project Title
+    * Logo/Title Creation
+    * Login/Admin Pages
     * Contacts Page
     
    #### Niasha:
@@ -44,10 +44,13 @@ This CRM system has an Impactful eXperience for support technicians as it is int
     * API Routes
 
 *Click the image below and log into Impact x with the following credentials.
-Username: guest 
-password: 0123
+   *Username: guest 
+   *Password: 0123
 <a href="https://impactx-crm.herokuapp.com/" target="_blank">
-<img src="public/assets/images/final-image.png">
+<img src="public/assets/images/Dashboard_photo.png">
 </a>
+
+
+
 
 
