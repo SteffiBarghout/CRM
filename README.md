@@ -30,8 +30,8 @@ This CRM system has an Impactful eXperience for support technicians as it is int
     
    #### Michael:
     * Logo/Title Creation
-    * Login/Admin Pages
-    * Contacts Page
+    * Admin page
+    * Login Page
     
    #### Niasha:
     * Navbar/Settings
