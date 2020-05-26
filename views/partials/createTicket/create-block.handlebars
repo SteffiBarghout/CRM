@@ -1,0 +1,34 @@
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content create-modal">
+            <div class="modal-header text-dark">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <hr>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label text-dark">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Title:</label>
+                        <input type="text" class="form-control" id="recipient-title">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label text-dark">Message:</label>
+                        <textarea class="form-control" rows="7"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-dark">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -44,7 +44,7 @@ span {
   max-width: 90px;
   background: #7a6eb8;
   color: #fff;
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 
 #sidebar.active {
@@ -62,12 +62,12 @@ span {
   display: none;
 }
 
-#sidebar.active .sidebar-header h3,
+/* #sidebar.active .sidebar-header h3,
 #sidebar.active #profileImage,
 #sidebar.active #jobTitle,
 #sidebar.active #brandName {
   display: block;
-}
+} */
 
 #sidebar.active #jobTitle,
 #sidebar.active h3 {
@@ -81,12 +81,12 @@ span {
 #sidebar ul li a i {
   text-align: center;
 }
-
+/* 
 #sidebar.active ul li a {
   padding: 20px 10px;
   text-align: center;
   font-size: 0.85em;
-}
+} */
 
 #sidebar ul li a i {
   margin-right: 0;
@@ -102,24 +102,34 @@ span {
   margin-bottom: 5px;
 }
 
-#sidebar .dropdown-toggle::after {
+/* #sidebar .dropdown-toggle::after {
   top: auto;
   bottom: 10px;
   right: 50%;
   -webkit-transform: translateX(50%);
   -ms-transform: translateX(50%);
   transform: translateX(50%);
-}
+} */
 
 #sidebar .sidebar-header {
-  padding: 10%;
+  padding: 40%;
+  background: #5b528a;
+  margin-bottom: 3%;
+}
+
+#sidebar.active .sidebar-header {
+  padding: 2%;
   background: #5b528a;
   margin-bottom: 3%;
 }
 
 #sidebar .logo {
-  padding: 10%;
+  /* padding: 20%; */
+  /* margin-top: 20%; */
   background: #534366;
+}
+
+#sidebar.active .logo {
 }
 
 #sidebar .sidebar-header strong {
@@ -141,28 +151,30 @@ span {
 
 #profileImage {
   width: 80px;
-  height: 100px;
+  height: 90px;
   border-radius: 50%;
-  margin-left: 30%;
+  /* margin-left: 20%; */
+  margin-top: 2%;
 }
 
 .content {
   width: 100%;
   padding: 20px;
   min-height: 100vh;
-  transition: all 0.3s;
+  transition: all 0.4s;
 }
 
 #brandName {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
-.btnName {
-  display: none;
+#sidebar .btnName {
+  font-size: 14px;
 }
 
 #sidebar.active .btnName {
   display: inline-block;
+  font-size: large;
 }
 
 /* ---------------------------------------------------
@@ -262,7 +274,7 @@ label:focus input::placeholder {
 
 .wrap {
   width: 100%;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 .fleft {
@@ -284,36 +296,134 @@ label:focus input::placeholder {
   display: block;
 }
 
-#checkBox {
+/* #checkBox {
   top: 5rem;
   left: 2rem;
   position: relative;
-}
-
+} */
+/* 
 #ready {
   padding: 20%;
   background-color: red;
-  /* background: #4ea6d267; */
   border-radius: 50%;
   width: fit-content;
   text-transform: uppercase;
-  /* font-size: 1.8em; */
-}
+  font-size: 1.8em;
+}  */
 
-#modalDot {
-  padding: 4%;
+/* #modalDot {
+  padding: 6%;
   justify-content: center;
   background-color: red;
   border-radius: 50%;
   margin-right: 40%;
   margin-left: 40%;
-}
+} */
 
-/* .modal-content {
-  background-color: #4ea5d2;
+.modal-content {
+  background-color: #7a6eb8;
+  border: none;
+}
+/* 
+.create-modal {
+  border: none;
+  background-color: #d1d1d1;
 } */
 
 .modal-header,
 .modal-footer {
   border: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 4%;
+}
+
+.ticketAv {
+  width: 70px;
+  height: 70px;
+}
+
+.modalAv {
+  margin-right: 40%;
+  margin-left: 37%;
+}
+
+.box {
+  float: left;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* ---------------------------------------------------
+    DASHBOARD STYLE
+----------------------------------------------------- */
+
+#grad1 {
+  background-color: rgb(73, 101, 225);
+  background-image: linear-gradient(
+    to left bottom,
+    rgb(73, 101, 225),
+    rgb(36, 224, 206)
+  );
+}
+
+#grad2 {
+  background-color: rgb(52, 167, 166);
+  background-image: linear-gradient(
+    to left bottom,
+    rgb(52, 167, 166),
+    rgb(58, 225, 133)
+  );
+}
+
+#grad3 {
+  background-color: rgb(252, 90, 101);
+  background-image: linear-gradient(
+    to left bottom,
+    rgb(252, 90, 101),
+    rgb(239, 50, 142)
+  );
+}
+
+#grad4 {
+  background-color: rgb(248, 113, 69);
+  background-image: linear-gradient(
+    to left bottom,
+    rgb(248, 113, 69),
+    rgb(255, 210, 51)
+  );
+}
+
+.analytics {
+  border: none;
+  /* height: 125px; */
+}
+
+#sidebar .media {
+  margin-top: 30%;
+  margin-bottom: 20%;
+}
+
+#sidebar.active .media {
+  margin-top: 4%;
+  margin-bottom: 2%;
 }

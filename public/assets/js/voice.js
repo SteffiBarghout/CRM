@@ -7,7 +7,7 @@ $(document).ready(() => {
       Twilio.Device.setup(data);
       Twilio.Device.ready(function (device) {
         console.log("Twilio.Device Ready!");
-        $(".modal").show();
+        $(".call_modal").show();
 
         // $("#call_controls").css("display", "block");
       });
@@ -26,6 +26,7 @@ $(document).ready(() => {
 
       Twilio.Device.disconnect(function (conn) {
         $(".modal").modal("hide");
+        // $(".modal").hide();
         console.log("Call Ended");
         Twilio.Device.disconnectAll();
         Twilio.Device.destroy();
@@ -54,10 +55,12 @@ $(document).ready(() => {
     Twilio.Device.destroy();
     // $(".modal").hide();
     $(".modal").modal("hide");
+    // $(".modal").hide();
   });
 
   $(".close").on("click", () => {
     Twilio.Device.destroy();
-    $(".modal").hide();
+    // $(".modal").hide();
+    $(".modal").modal("hide");
   });
 });
