@@ -112,14 +112,24 @@ span {
 } */
 
 #sidebar .sidebar-header {
-  padding: 20%;
+  padding: 40%;
+  background: #5b528a;
+  margin-bottom: 3%;
+}
+
+#sidebar.active .sidebar-header {
+  padding: 2%;
   background: #5b528a;
   margin-bottom: 3%;
 }
 
 #sidebar .logo {
   /* padding: 20%; */
+  /* margin-top: 20%; */
   background: #534366;
+}
+
+#sidebar.active .logo {
 }
 
 #sidebar .sidebar-header strong {
@@ -141,7 +151,7 @@ span {
 
 #profileImage {
   width: 80px;
-  height: 100px;
+  height: 90px;
   border-radius: 50%;
   /* margin-left: 20%; */
 }
@@ -405,4 +415,14 @@ label:focus input::placeholder {
 .analytics {
   border: none;
   /* height: 125px; */
+}
+
+#sidebar .media {
+  margin-top: 30%;
+  margin-bottom: 20%;
+}
+
+#sidebar.active .media {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
