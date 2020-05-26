@@ -8,11 +8,6 @@
 
         <h2 class="display-4"> <i class="fas fa-cog"></i> Settings</h2>
 
-
-        {{!-- <div class="line"></div> --}}
-
-        {{!-- ======== COLLAPSIBLE CONTENT ============ --}}
-
         <div id="accordion">
             <div class="card">
                 <div class="card-header" id="headingOne">
@@ -66,7 +61,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
 
                 <div class="card-header" id="headingTwo">
@@ -91,78 +85,84 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
-                        <form>
-                            <fieldset id="disabledProfile" disabled>
+                        {{!-- <form> --}}
+                        <fieldset id="disabledProfile" disabled>
 
-                                <div class="row">
+                            <div class="row">
 
-                                    <div class="col-2">
-                                        <label for="inputProfileImg">Profile Image</label> <img src={{img}} width="250"
-                                            height="250" class="img-fluid" id="updatePhoto">
-                                    </div>
-                                    <div class="col-10" id="uploadImg" style="display: none;">
-                                        {{msg}}
-
-
-
-                                        <form action="/upload" method="POST" enctype="multipart/form-data">
-                                            <div class="form-group">
-
-
-                                                <input type="file" name="myImage">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </form>
-                                    </div>
+                                <div class="col-2">
+                                    <label for="inputProfileImg">Profile Image</label>
+                                    <img src={{img}} width="200" height="250" id="updatePhoto">
                                 </div>
+                                <div class="col-10" id="uploadImg" style="display: none;">
 
 
 
 
+                                    {{!-- <form action="/upload" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group"> --}}
 
-                                <div class="line"></div>
 
-
-
-                                <br>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword4"
-                                            placeholder="Password">
-                                    </div>
+                                    <input type="file" id="myImage">
+                                    <br>
+                                    <p id="up_msg" style="color:red"></p>
+                                    {{!-- </div> --}}
+                                    {{!-- <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form> --}}
                                 </div>
+                            </div>
 
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputJobTitle">Job Titile</label>
-                                        <input type="text" class="form-control" id="inputJobTitle"
-                                            placeholder="Job Title">
-                                    </div>
+
+
+
+
+
+
+                            <div class="line"></div>
+
+
+
+                            <br>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword4"
+                                        placeholder="Password">
                                 </div>
-                                <button type="submit" class="btn btn-primary" id="saveProfile"
-                                    style="display: none;">Save
-                                    Info</button>
-                                <button type="submit" class="btn btn-warning" id="cancelProfile"
-                                    style="display: none;">Cancel</button>
-                            </fieldset>
+                            </div>
 
-                        </form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputJobTitle">Job Titile</label>
+                                    <input type="text" class="form-control" id="inputJobTitle" placeholder="Job Title">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="saveProfile" style="display: none;">Save
+                                Info</button>
+                            <button type="submit" class="btn btn-warning" id="cancelProfile"
+                                style="display: none;">Cancel</button>
+                        </fieldset>
+
+
                     </div>
                 </div>
             </div>
 
         </div>
-
-
-
     </div>
-
-
 </div>
+<script src="/assets/js/upload.js"></script>
+{{!-- ////////////////////////////////////////////////////////// --}}
+{{!-- {{msg}}
 
-<script>
-    $(function () {
-        $('#myTab li:last-child a').tab('show')
-    })
-</script>
+
+<label for="inputProfileImg">Profile Image</label> <img src={{img}} width="250" height="250" class="img-fluid"
+    id="updatePhoto">
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+
+
+        <input type="file" name="myImage">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> --}}
