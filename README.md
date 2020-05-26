@@ -2,7 +2,7 @@
 created by: Hisham Saymeh, Michael Stoddard, Niasha Abaglo-Grant, Steffi Wellington
 
 ### Overview
-This CRM system has an Impactful eXperience for users of the system as it is intuitive with dashboard analytics, easy to use settings, ticketing system with unique  customers calling system accomplished within the CRM, and contact management page to manage internal as well as external contacts specific to the individual user. 
+This CRM system has an Impactful eXperience for support technicians as it is intuitive with dashboard analytics, easy to use settings, ticketing system with unique  customers calling system accomplished within the CRM, and contact management page to manage internal as well as external contacts specific to the individual user. 
 
 ### Link to Live Impact X CRM -- https://impactx-crm.herokuapp.com/
 
@@ -43,7 +43,9 @@ This CRM system has an Impactful eXperience for users of the system as it is int
     * Deployment
     * API Routes
 
-
+*Click the image below and log into Impact x with the following credentials.
+Username: guest 
+password: 0123
 <a href="https://impactx-crm.herokuapp.com/" target="_blank">
 <img src="public/assets/images/final-image.png">
 </a>
