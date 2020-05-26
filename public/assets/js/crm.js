@@ -6,25 +6,47 @@ $(document).ready(function () {
   //   console.log(width);
   // });
 
+  // $("#sidebar").hover(function () {
+  //   $("#sidebar").toggleClass("active");
+  //   var width = $("#sidebar").css("width");
+
+  //   console.log(width);
+
+  //   if (width === "90px") {
+  //     setTimeout(() => {
+  //       $("#brandName").show();
+  //       $("#profileImage").show();
+  //       $("#jobTitle").show();
+  //       $(".sidebar-header h3").fadeIn(100);
+  //     });
+  //   } else {
+  //     $("#brandName").hide();
+  //     $("#profileImage").hide();
+  //     $("#jobTitle").hide();
+  //     $(".sidebar-header h3").hide();
+  //   }
+  // });
+
   $("#sidebar").hover(function () {
-    $("#sidebar").toggleClass("active");
-    var width = $("#sidebar").css("width");
-
-    console.log(width);
-
-    if (width === "90px") {
-      setTimeout(() => {
-        $("#brandName").show();
-        $("#profileImage").show();
-        $("#jobTitle").show();
-        $(".sidebar-header h3").fadeIn(100);
-      });
-    } else {
-      $("#brandName").hide();
-      $("#profileImage").hide();
-      $("#jobTitle").hide();
-      $(".sidebar-header h3").hide();
-    }
+    var vpWidth = parseInt($(window).width());
+    if (vpWidth > 700) {
+      $("#sidebar").toggleClass("active");
+      var width = $("#sidebar").css("width");
+      console.log(width);
+      if (width === "90px") {
+        setTimeout(() => {
+          $("#brandName").show();
+          $("#profileImage").show();
+          $("#jobTitle").show();
+          $(".sidebar-header h3").fadeIn(100);
+        });
+      } else {
+        $("#brandName").hide();
+        $("#profileImage").hide();
+        $("#jobTitle").hide();
+        $(".sidebar-header h3").hide();
+      }
+    } //End of if(vpWidth )
   });
 
   $(function () {
