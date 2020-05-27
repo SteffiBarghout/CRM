@@ -63,9 +63,12 @@ $(function () {
       email: $("#CusEmail").val().trim(),
     };
     $.post("/newCustomer", NewCustomer, (result) => {
-      result
-        ? $("#newCusMsg").text("Customer Added!")
-        : $("#newCusMsg").text("Error Or Missing fields");
+      !result
+        ? $("#newCusMsg").text("Customer Already Exists!!")
+        : result === "Missing Info!"
+        ? $("#newCusMsg").text(result)
+        : $("#newCusMsg").text("Customer Added!!");
+      // we made it so that the email is the unique thing for each customer.
     });
   });
 

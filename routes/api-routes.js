@@ -337,8 +337,29 @@ module.exports = function (
       .then(() => {
         res.send(true);
       })
-      .catch(() => {
-        res.send(false);
+      .catch((err) => {
+        console.log(err);
+        err.errors[0].message.includes("username must be unique")
+          ? res.send("User Already Exists!!")
+          : res.send(false);
       });
+
+    //       .catch((err) => {
+    //         console.log(err);
+    //         err.errors[0].message.includes("username must be unique")
+    //           ? res.send("User Already Exists!!")
+    //           : res.send(false);
+    //       });
+    //   } catch {
+    //     res.status(500).end();
+    //   }
+    // } else {
+    //   res.redirect("/");
+    // }
+    // });
+
+    // .catch(() => {
+    //   res.send(false);
+    // });
   });
 };
