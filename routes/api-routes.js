@@ -321,4 +321,24 @@ module.exports = function (
         res.status(500).end();
       });
   });
+
+  app.post("/newCustomer", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Customers.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,
+      phone: req.body.phone,
+      email: req.body.email,
+      UserId: req.user.id,
+    })
+      .then(() => {
+        res.send(true);
+      })
+      .catch(() => {
+        res.send(false);
+      });
+  });
 };

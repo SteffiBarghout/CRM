@@ -50,4 +50,26 @@ $(function () {
       rowCount++;
     }
   });
+
+  $("#NewCus_btn").on("click", () => {
+    var NewCustomer = {
+      firstName: $("#CusFirstName").val().trim(),
+      lastName: $("#CusLastName").val().trim(),
+      address: $("#CusAddress").val().trim(),
+      city: $("#CusCity").val().trim(),
+      state: $("#CusState").val().trim(),
+      zipCode: $("#CusZip").val().trim(),
+      phone: $("#CusPhone").val().trim(),
+      email: $("#CusEmail").val().trim(),
+    };
+    $.post("/newCustomer", NewCustomer, (result) => {
+      result
+        ? $("#newCusMsg").text("Customer Added!")
+        : $("#newCusMsg").text("Error Or Missing fields");
+    });
+  });
+
+  $(".close_NewCus").on("click", () => {
+    location.reload();
+  });
 });

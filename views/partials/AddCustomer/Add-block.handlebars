@@ -4,7 +4,7 @@
         <div class="modal-content create-modal">
             <div class="modal-header text-dark">
                 <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close close_NewCus" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -12,22 +12,44 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label text-dark">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name" disabled>
+                        <label for="recipient-name" class="col-form-label text-dark">First Name:</label>
+                        <input type="text" class="form-control" id="CusFirstName" required>
                     </div>
                     <div class="form-group">
-                        <label for="recipient-title" class="col-form-label text-dark">Title:</label>
-                        <input type="text" class="form-control" id="recipient-title">
+                        <label for="recipient-name" class="col-form-label text-dark">Last Name:</label>
+                        <input type="text" class="form-control" id="CusLastName" required>
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label text-dark">Message:</label>
-                        <textarea class="form-control" rows="7"></textarea>
+                        <label for="recipient-title" class="col-form-label text-dark">Address:</label>
+                        <input type="text" class="form-control" id="CusAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">City:</label>
+                        <input type="text" class="form-control" id="CusCity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">State:</label>
+                        <input type="text" class="form-control" id="CusState" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Zip Code:</label>
+                        <input type="text" class="form-control" id="CusZip" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Phone:</label>
+                        <input type="text" class="form-control" id="CusPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Email:</label>
+                        <input type="email" class="form-control" id="CusEmail" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline-dark">Send message</button>
+                <button type="button" class="btn btn-outline-warning close_NewCus" data-dismiss="modal">Close</button>
+                <button type="button" id="NewCus_btn" class="btn btn-outline-dark">Submit</button>
+                <br>
+                <p id="newCusMsg" style="color:red"></p>
             </div>
         </div>
     </div>
