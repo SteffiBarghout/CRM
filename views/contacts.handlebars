@@ -34,6 +34,10 @@
                 </table>
             </div>
             <div class="tab-pane" id="Customers" role="tabpanel" aria-labelledby="Customers-tab"><br>
+                <button class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg1">
+                    <i class="far fa-plus-square"></i> New Customer
+                </button>
+                <br>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -59,4 +63,6 @@
         </div>
     </div>
 </div>
+
+{{> AddCustomer/Add-block}}
 <script src="/assets/js/contacts.js"></script>
