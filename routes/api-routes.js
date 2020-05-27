@@ -1,6 +1,7 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
+const { Op } = require("sequelize");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 ///////////////Twilio Library///////////////////
@@ -280,6 +281,8 @@ module.exports = function (
   app.get("/allSpecialists", isAuthenticatedMiddleware(), async (req, res) => {
     db.Users.findAll({
       attributes: ["firstName", "lastName", "email"],
+      // Execlude the admin from the search
+      where: { username: { [Op.ne]: "admin" } },
     })
       .then((result) => {
         var resArray = [];
