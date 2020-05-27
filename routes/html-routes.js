@@ -42,13 +42,31 @@ module.exports = function (
 
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
     db.Users.findOne({
-      where: { id: req.user.id },
+      where: {
+        id: req.user.id,
+      },
     }).then(async (result) => {
+      console.log(req.user);
       res.render("settings", {
+        User: result.dataValues,
         img: result.dataValues.profImg,
         currentUser: req.user.username,
       });
     });
+  });
+  app.put("/updateSettings", isAuthenticatedMiddleware(), (req, res) => {
+    console.log(req.body);
+    db.Users.update(req.body, {
+      where: {
+        id: req.user.id,
+      },
+    })
+      .then(function (result) {
+        res.sendStatus(200);
+      })
+      .catch(function (result) {
+        res.sendStatus(403);
+      });
   });
 
   app.get("/ticket", isAuthenticatedMiddleware(), (req, res) => {

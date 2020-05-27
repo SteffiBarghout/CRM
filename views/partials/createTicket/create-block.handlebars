@@ -3,31 +3,33 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content create-modal">
             <div class="modal-header text-dark">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <h1 class="modal-title display-4" id="exampleModalLabel" style="color: #7a6eb8;">
+                    <u style="font-weight:900">New
+                        Ticket</u> </h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <hr>
+
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label text-dark">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name" disabled>
+                        <label for="recipient-name" class="col-form-label text-dark">Customer Email:</label>
+                        <input type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-title" class="col-form-label text-dark">Title:</label>
-                        <input type="text" class="form-control" id="recipient-title">
+                        <label for="ticket-title" class="col-form-label text-dark">Ticket Title:</label>
+                        <input type="text" class="form-control" id="ticket-title">
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label text-dark">Message:</label>
+                        <label for="ticket-text" class="col-form-label text-dark">Ticket Body:</label>
                         <textarea class="form-control" rows="7"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline-dark">Send message</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-dark">Send Ticket</button>
             </div>
         </div>
     </div>

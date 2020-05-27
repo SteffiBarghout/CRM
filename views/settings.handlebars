@@ -40,16 +40,16 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="inputFirstName">First Name</label>
-                                        <input type="text" class="form-control" placeholder="First name">
+                                        <input type="text" class="form-control" id="settingfirstName" placeholder="First name" value={{User.firstName}}>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputLastName">Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last name">
+                                        <input type="text" class="form-control" id="settinglastName" placeholder="Last name" value={{User.lastName}}>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6 p-0">
                                     <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email" value={{User.email}}>
                                 </div>
 
 
@@ -59,6 +59,7 @@
                                     style="display: none;">Cancel</button>
                             </fieldset>
                         </form>
+                        <p id="setting_msg"></p>
                     </div>
                 </div>
             </div>
