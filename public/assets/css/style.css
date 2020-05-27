@@ -467,7 +467,7 @@ label:focus input::placeholder {
 }
 
 @media (min-width: 300px) and (max-width: 769px) {
-  #reply {
+  .reply {
     display: flex;
   }
 }

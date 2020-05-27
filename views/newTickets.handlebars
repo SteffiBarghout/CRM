@@ -204,11 +204,11 @@
                                             non, corrupti itaque ipsa quasi sint nam ad optio explicabo.</p>
 
                                         <div id="replyBtn replyOrDeleteBtns" class="mb-2" style="float: right;">
-                                            <button class="btn btn-outline-info" id="reply">reply</button>
+                                            <button class="btn btn-outline-info reply" data-cardID="div1">reply</button>
                                         </div>
 
 
-                                        <div id="replyTextArea">
+                                        <div class="replyTextArea" style="display: none;">
 
                                             <form action="" class="mt-4">
                                                 <div class="form-group">
@@ -299,10 +299,13 @@
 
 
 
+                                        <div id="replyBtn replyOrDeleteBtns" class="mb-2" style="float: right;">
+                                            <button class="btn btn-outline-info reply" data-cardID="div1">reply</button>
+                                        </div>
 
 
 
-                                        <div id="replyTextArea">
+                                        <div class="replyTextArea" style="display: none;">
 
                                             <form action="" class="mt-4">
                                                 <div class="form-group">
@@ -373,6 +376,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
 
 
@@ -401,11 +406,14 @@
 
 
 <script>
+
     $(function () {
-        $("#reply").click(function () {
+        $(".reply").click(function () {
+            var cardId = $(this).data("cardID");
+            $("#" + cardId + " .card-body").children("p");
             $("p").removeClass("demo-2");
-            $("#replyTextArea").show();
-            $("#reply").hide();
+            $(".replyTextArea").show();
+            $(this).hide();
 
         });
     });
@@ -413,7 +421,9 @@
 
 
 
-    const colors = ["#00AA55", "#009FD4", "#B381B3", "#939393", "#E3BC00", "#D47500", "#DC2A2A"];
+    //const colors = ["#00AA55", "#009FD4", "#B381B3", "#939393", "#E3BC00", "#D47500", "#DC2A2A"];
+
+    const colors = '#' + ('000000' + Math.floor(Math.random() * 16777215).toString(16)).slice(-6);
 
     function numberFromText(text) { // numberFromText("AA");
         const charCodes = text
@@ -427,7 +437,7 @@
 
     avatars.forEach(avatar => {
         const text = avatar.innerText; // => "AA"
-        avatar.style.backgroundColor = colors[numberFromText(text) % colors.length]; // => "#DC2A2A"
+        avatar.style.backgroundColor = colors; // => "#DC2A2A"
     });
 
 
