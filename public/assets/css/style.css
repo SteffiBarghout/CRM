@@ -320,7 +320,7 @@ label:focus input::placeholder {
   margin-left: 40%;
 } */
 
-.modal-content {
+.call-modal {
   background-color: #7a6eb8;
   border: none;
 }

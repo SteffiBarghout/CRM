@@ -34,17 +34,19 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"
                     active>
                     <div class="card-body">
-                        <form>
+                        <form id="personal_form">
                             <fieldset disabled id="disabledPersonal">
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
                                         <label for="inputFirstName">First Name</label>
-                                        <input type="text" class="form-control" placeholder="First name">
+                                        <input type="text" class="form-control" id="inputFirstName"
+                                            placeholder="First name">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputLastName">Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last name">
+                                        <input type="text" class="form-control" id="inputLastName"
+                                            placeholder="Last name">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6 p-0">
@@ -55,8 +57,9 @@
 
                                 <button type="submit" class="btn btn-primary" id="saveBtn" style="display: none;">Save
                                     Info</button>
-                                <button type="submit" class="btn btn-secondary" id="cancelBtn"
-                                    style="display: none;">Cancel</button>
+                                {{!-- <button type="submit" class="btn btn-secondary" id="cancelBtn"
+                                    style="display: none;">Cancel</button> --}}
+                                <p id="personal_msg"></p>
                             </fieldset>
                         </form>
                     </div>
@@ -144,6 +147,14 @@
 
 
                             <br>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputCurrentPassword4">Current Password</label>
+                                    <input type="password" class="form-control" id="inputCurrentPassword4"
+                                        placeholder="Current Password">
+                                </div>
+                            </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Password</label>
@@ -161,8 +172,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary" id="saveProfile" style="display: none;">Save
                                 Info</button>
-                            <button type="submit" class="btn btn-secondary" id="cancelProfile"
-                                style="display: none;">Cancel</button>
+                            <p id="profile_msg"></p>
+                            {{!-- <button type="submit" class="btn btn-secondary" id="cancelProfile"
+                                style="display: none;">Cancel</button> --}}
                         </fieldset>
 
 

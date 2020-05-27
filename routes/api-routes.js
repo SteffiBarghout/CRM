@@ -1,6 +1,7 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
+const { Op } = require("sequelize");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 ///////////////Twilio Library///////////////////
@@ -205,5 +206,160 @@ module.exports = function (
   app.post("/voice", (req, res) => {
     res.set("Content-Type", "text/xml");
     res.send(voiceResponse(req.body.To));
+  });
+
+  // post personal Info in settings page
+  app.post(
+    "/update-personal",
+    isAuthenticatedMiddleware(),
+    async (req, res) => {
+      // console.log("Personal :", req.body);
+      db.Users.update(
+        {
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.Email,
+        },
+        {
+          where: { id: req.user.id },
+        }
+      )
+        .then(() => {
+          res.send(true);
+        })
+        .catch(() => {
+          res.send(false);
+        });
+    }
+  );
+
+  app.post("/update-profile", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      if (!result) {
+        return res.send(false);
+      }
+
+      try {
+        if (
+          await bcrypt.compare(
+            req.body.currentPassword,
+            result.dataValues.password
+          )
+        ) {
+          /////////////////////
+          try {
+            var NewPassword = await bcrypt.hash(req.body.newPassword, 10);
+            db.Users.update(
+              {
+                password: NewPassword,
+              },
+              {
+                where: { id: req.user.id },
+              }
+            )
+              .then(() => {
+                res.send(true);
+              })
+              .catch((err) => {
+                res.status(500).end();
+              });
+          } catch {
+            res.status(500).end();
+          }
+          /////////////////////////
+        } else {
+          res.send(false);
+        }
+      } catch {
+        res.status(500).end();
+      }
+    });
+  });
+
+  app.get("/allSpecialists", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Users.findAll({
+      attributes: ["firstName", "lastName", "email"],
+      // Execlude the admin from the search
+      where: { username: { [Op.ne]: "admin" } },
+    })
+      .then((result) => {
+        var resArray = [];
+        for (row of result) {
+          resArray.push(row.dataValues);
+        }
+        res.send(resArray);
+      })
+      .catch(() => {
+        res.status(500).end();
+      });
+  });
+
+  app.get("/allCustomers", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Customers.findAll({
+      where: { UserId: req.user.id },
+      attributes: [
+        "firstName",
+        "lastName",
+        "address",
+        "city",
+        "state",
+        "zipCode",
+        "phone",
+        "email",
+      ],
+    })
+      .then((result) => {
+        var resArray = [];
+        for (row of result) {
+          resArray.push(row.dataValues);
+        }
+        res.send(resArray);
+      })
+      .catch(() => {
+        res.status(500).end();
+      });
+  });
+
+  app.post("/newCustomer", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Customers.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zipCode: req.body.zipCode,
+      phone: req.body.phone,
+      email: req.body.email,
+      UserId: req.user.id,
+    })
+      .then(() => {
+        res.send(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        err.errors[0].message.includes("username must be unique")
+          ? res.send("User Already Exists!!")
+          : res.send(false);
+      });
+
+    //       .catch((err) => {
+    //         console.log(err);
+    //         err.errors[0].message.includes("username must be unique")
+    //           ? res.send("User Already Exists!!")
+    //           : res.send(false);
+    //       });
+    //   } catch {
+    //     res.status(500).end();
+    //   }
+    // } else {
+    //   res.redirect("/");
+    // }
+    // });
+
+    // .catch(() => {
+    //   res.send(false);
+    // });
   });
 };
