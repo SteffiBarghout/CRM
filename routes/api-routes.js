@@ -276,4 +276,34 @@ module.exports = function (
       }
     });
   });
+
+  app.get("/allSpecialists", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Users.findAll({})
+      .then((result) => {
+        var resArray = [];
+        for (row of result) {
+          resArray.push(row.dataValues);
+        }
+        res.send(resArray);
+      })
+      .catch(() => {
+        res.status(500).end();
+      });
+  });
+
+  app.get("/allCustomers", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Customers.findAll({
+      where: { UserId: req.user.id },
+    })
+      .then((result) => {
+        var resArray = [];
+        for (row of result) {
+          resArray.push(row.dataValues);
+        }
+        res.send(resArray);
+      })
+      .catch(() => {
+        res.status(500).end();
+      });
+  });
 };
