@@ -278,7 +278,9 @@ module.exports = function (
   });
 
   app.get("/allSpecialists", isAuthenticatedMiddleware(), async (req, res) => {
-    db.Users.findAll({})
+    db.Users.findAll({
+      attributes: ["firstName", "lastName", "email"],
+    })
       .then((result) => {
         var resArray = [];
         for (row of result) {
@@ -294,6 +296,16 @@ module.exports = function (
   app.get("/allCustomers", isAuthenticatedMiddleware(), async (req, res) => {
     db.Customers.findAll({
       where: { UserId: req.user.id },
+      attributes: [
+        "firstName",
+        "lastName",
+        "address",
+        "city",
+        "state",
+        "zipCode",
+        "phone",
+        "email",
+      ],
     })
       .then((result) => {
         var resArray = [];
