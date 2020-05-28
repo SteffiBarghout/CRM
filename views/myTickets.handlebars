@@ -46,7 +46,9 @@
                     {{!-- bigTickets --}}
                     <div class="col-md-8">
                         <div class="card big_ticket">
-                            <h3>5/27/2020</h3>
+                            <h3 style="padding:1.25rem">
+                                <div class="float-right"></div>
+                            </h3>
                             <div class="card-body">
                                 {{!-- Customer first name & last name --}}
                                 <h5></h5>
@@ -54,6 +56,19 @@
                                 <h3></h3>
                                 {{!-- ticket text --}}
                                 <p></p>
+                                <button class="btn btn-outline-info" id="reply" style="float:right"
+                                    data-status="off">reply</button>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group" id="ticketTextArea" style="display:none">
+                                    <textarea class="form-control" style="min-height: 113px;"></textarea>
+                                    <br>
+                                    <button class="btn btn-info" style="float:right"><i
+                                            class="far fa-plus-square"></i>Post</button>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

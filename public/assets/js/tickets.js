@@ -41,7 +41,7 @@ $(document).ready(() => {
       $(".smallT_cont").append(
         '<div class="col"><div class="card small_ticket" id ="' +
           cardCounter +
-          '" ><h3>Date opened</h3><div class="card-body"><h5>' +
+          '" ><h3><div class="float-right">Date opened</div></h3><div class="card-body"><h5>' +
           customerFirst +
           " " +
           customerLast +
@@ -62,7 +62,7 @@ $(document).ready(() => {
 
   console.log("big card content: ", $(".big_ticket").html());
   $(document).on("click", ".small_ticket", function () {
-    var ticketDate = $(this).children("h3")[0].innerHTML;
+    var ticketDate = $(this).children("h3").children("div").innerHTML;
     var CustomerName = $(this).children(".card-body").children("h5")[0]
       .innerHTML;
     var ticketTitle = $(this).children(".card-body").children("h3")[0]
@@ -70,10 +70,19 @@ $(document).ready(() => {
     var ticketText = $(this)
       .children(".card-body")
       .children(".bigTicketText")[0].innerHTML;
-    $(".big_ticket").children("h3").text(ticketDate);
+    $(".big_ticket").children("h3").children("div").text("test");
     $(".big_ticket").children(".card-body").children("h5").text(CustomerName);
     $(".big_ticket").children(".card-body").children("h3").text(ticketTitle);
     $(".big_ticket").children(".card-body").children("p").text(ticketText);
     $(".big_ticket").show();
+  });
+  $("#reply").on("click", () => {
+    if ($("#reply").data("status") === "off") {
+      $("#ticketTextArea").show();
+      $("#reply").data("status", "on");
+    } else {
+      $("#ticketTextArea").hide();
+      $("#reply").data("status", "off");
+    }
   });
 });

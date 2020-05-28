@@ -441,10 +441,6 @@ label:focus input::placeholder {
   overflow: initial;
 }
 
-#reply {
-  display: none;
-}
-
 @media (max-width: 768.98px) {
   #smallTicket {
     display: none;
