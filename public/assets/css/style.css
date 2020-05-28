@@ -93,6 +93,11 @@ span {
   font-weight: bold;
 }
 
+/* .big_ticket_sec {
+  position: fixed !important;
+  right: 0;
+  /* transition: width 0.3s; */
+
 #sidebar ul li a i {
   text-align: center;
 }

@@ -1,7 +1,9 @@
 $(document).ready(() => {
   $("#myTab li:last-child a").tab("show");
   $(".big_ticket").hide();
-
+  //   var onLoadWidth = (2 / 3) * $(".clculate").width();
+  //   $(".big_ticket_sec").width(onLoadWidth);
+  //   var NewWidth = 0.108 * onLoadWidth;
   $("#ticket-form").on("submit", (event) => {
     event.preventDefault();
     var ticket = {
@@ -65,6 +67,7 @@ $(document).ready(() => {
 
   console.log("big card content: ", $(".big_ticket").html());
   $(document).on("click", ".small_ticket", function () {
+    console.log("disFromTop: ", $(this).parent().offset().top);
     var Initial = $(this)
       .children(".card-body")
       .children("a")
@@ -87,15 +90,58 @@ $(document).ready(() => {
     $(".big_ticket").children(".card-body").children("h2").text(CustomerName);
     $(".big_ticket").children(".card-body").children("h4").text(ticketTitle);
     $(".big_ticket").children(".card-body").children("p").text(ticketText);
+    console.log("SmalldisFromTop: ", $(this).parent().offset().top);
+    $(".big_ticket")
+      .parent()
+      .offset({ top: $(this).parent().offset().top });
+    console.log("BigdisFromTop: ", $(".big_ticket").parent().offset().top);
     $(".big_ticket").show();
   });
+  //   $("#reply").on("click", () => {
+  //     if ($("#reply").data("status") === "off") {
+  //       $("#ticketTextArea").show();
+  //       $("#reply").data("status", "on");
+  //     } else {
+  //       $("#ticketTextArea").hide();
+  //       $("#reply").data("status", "off");
+  //     }
+  //   });
+  //   $("#sidebar").hover(
+  //     // () => {
+  //     //   setTimeout(() => {
+  //     //     console.log("hover: ", $(".clculate").width());
+  //     //   }, 500);
+
+  //     //   //   newWidth = (1 / 2) * $(".clculate").width();
+  //     //   //   $(".big_ticket_sec").animate({ width: "-=" + newWidth }, 300);
+  //     // },
+  //     // () => {
+  //     //   setTimeout(() => {
+  //     //     console.log("Unhover: ", $(".clculate").width());
+  //     //   }, 500);
+
+  //     //   //   newWidth = (2 / 3) * $(".clculate").width();
+  //     //   //   $(".big_ticket_sec").animate({ width: "+=" + newWidth }, 300);
+  //     // }
+  //     ///////////////////////
+  //     function () {
+  //       setTimeout(() => {
+  //         console.log("hover: ", $(".clculate").width());
+  //       }, 500);
+  //       onLoadWidth = (2 / 3) * $(".clculate").width();
+  //       NewWidth = onLoadWidth - 160;
+
+  //       $(".big_ticket_sec").animate({ width: "-=" + NewWidth }, 300);
+  //     },
+  //     function () {
+  //       setTimeout(() => {
+  //         console.log("Unhover: ", $(".clculate").width());
+  //       }, 500);
+  //       $(".big_ticket_sec").animate({ width: "+=" + NewWidth }, 300);
+  //     }
+  //   );
+
   $("#reply").on("click", () => {
-    if ($("#reply").data("status") === "off") {
-      $("#ticketTextArea").show();
-      $("#reply").data("status", "on");
-    } else {
-      $("#ticketTextArea").hide();
-      $("#reply").data("status", "off");
-    }
+    $(".reply-form").modal("show");
   });
 });

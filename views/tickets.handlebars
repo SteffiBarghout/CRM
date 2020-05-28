@@ -35,7 +35,7 @@
                 class="far fa-plus-square"></i> Create Ticket</button>
         <div class="tab-content">
             <div class="tab-pane active" id="allTickets" role="tabpanel" aria-labelledby="allTickets-tab">
-                <div class="row">
+                <div class="row clculate">
                     {{!-- smallTickets --}}
                     <div class="col-md-4">
                         <div class="row smallT_cont">
@@ -44,8 +44,8 @@
 
                     </div>
                     {{!-- bigTickets --}}
-                    <div class="col-md-8">
-                        <div class="card big_ticket">
+                    <div class="col-md-8 big_ticket_sec" style="position: relative;">
+                        <div class="card big_ticket" style="position: absolute;">
 
                             <h5 style="padding:1.25rem">
                                 <div class="float-right ticketDate"></div>
@@ -88,6 +88,7 @@
 {{> createTicket/create-block}}
 
 {{> call/call-block}}
+{{> AddComment/add-comment}}
 
 <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.7/twilio.min.js"></script>
 <script src="/assets/js/voice.js"></script>
