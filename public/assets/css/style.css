@@ -78,6 +78,21 @@ span {
   display: none;
 }
 
+.activate {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.ticketDate {
+  color: #7a6eb8;
+  opacity: 0.5;
+}
+
+.smallTicketText {
+  color: #534366;
+  font-weight: bold;
+}
+
 #sidebar ul li a i {
   text-align: center;
 }

@@ -22,7 +22,10 @@ $(document).ready(() => {
     var cardCounter = 0;
     for (row of result) {
       var customerFirst = row.Customer.firstName;
+      customerFirst = customerFirst[0].toUpperCase() + customerFirst.slice(1);
       var customerLast = row.Customer.lastName;
+      customerLast = customerLast[0].toUpperCase() + customerLast.slice(1);
+      var Initial = customerFirst[0] + customerLast[0];
       var ticketTitle = row.ticketTitle;
       //   var ticketText = row.ticketText;
       var BigticketText =
@@ -39,18 +42,18 @@ $(document).ready(() => {
       var ticketStatus = row.status;
 
       $(".smallT_cont").append(
-        '<div class="col"><div class="card small_ticket" id ="' +
-          cardCounter +
-          '" ><h3><div class="float-right">Date opened</div></h3><div class="card-body"><h5>' +
+        '<div class="col"><div class="card small_ticket"><h5 style="padding:1.25rem"><div class="float-right ticketDate">Date opened</div></h5><div class="card-body"><a href="#" class="activate"><div class="avatar" style="background-color: rgb(220, 42, 42);">' +
+          Initial +
+          "</div></a><h2 style='display:inline-block'>" +
           customerFirst +
           " " +
           customerLast +
-          "</h5><h3>" +
+          '</h2 style="display:inline-block"><h4>' +
           ticketTitle +
           "(" +
           ticketStatus +
           ")" +
-          "</h3><p>" +
+          '</h4><p class="smallTicketText">' +
           SmallticketText +
           '</p><p class="bigTicketText" style="display:none">' +
           BigticketText +
@@ -62,17 +65,27 @@ $(document).ready(() => {
 
   console.log("big card content: ", $(".big_ticket").html());
   $(document).on("click", ".small_ticket", function () {
-    var ticketDate = $(this).children("h3").children("div").innerHTML;
-    var CustomerName = $(this).children(".card-body").children("h5")[0]
+    var Initial = $(this)
+      .children(".card-body")
+      .children("a")
+      .children("div")[0].innerHTML;
+    var ticketDate = $(this).children("h5").children("div")[0].innerHTML;
+    console.log("ticketDate", ticketDate);
+    var CustomerName = $(this).children(".card-body").children("h2")[0]
       .innerHTML;
-    var ticketTitle = $(this).children(".card-body").children("h3")[0]
+    var ticketTitle = $(this).children(".card-body").children("h4")[0]
       .innerHTML;
     var ticketText = $(this)
       .children(".card-body")
       .children(".bigTicketText")[0].innerHTML;
-    $(".big_ticket").children("h3").children("div").text("test");
-    $(".big_ticket").children(".card-body").children("h5").text(CustomerName);
-    $(".big_ticket").children(".card-body").children("h3").text(ticketTitle);
+    $(".big_ticket").children("h5").children("div").text(ticketDate);
+    $(".big_ticket")
+      .children(".card-body")
+      .children("a")
+      .children("div")
+      .text(Initial);
+    $(".big_ticket").children(".card-body").children("h2").text(CustomerName);
+    $(".big_ticket").children(".card-body").children("h4").text(ticketTitle);
     $(".big_ticket").children(".card-body").children("p").text(ticketText);
     $(".big_ticket").show();
   });

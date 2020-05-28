@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $(".activate").on("click", () => {
+  $(document).on("click", ".activate", function () {
     $("#logMsg").text("");
     $("#hangup").hide();
     $("#call").show();
@@ -7,7 +7,7 @@ $(document).ready(() => {
       Twilio.Device.setup(data);
       Twilio.Device.ready(function (device) {
         console.log("Twilio.Device Ready!");
-        $(".call_modal").show();
+        $(".call_modal").modal("show");
 
         // $("#call_controls").css("display", "block");
       });
@@ -15,7 +15,7 @@ $(document).ready(() => {
       Twilio.Device.error(function (error) {
         console.log("Twilio.Device Error: " + error.message);
         Twilio.Device.destroy();
-        $(".modal").hide();
+        $(".call_modal").modal("hide");
       });
       Twilio.Device.connect(function (conn) {
         console.log("Successfully established call!");
