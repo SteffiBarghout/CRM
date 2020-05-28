@@ -13,209 +13,127 @@
 
         <div class="container">
             <div class="row">
-                <div class="col mb-3">
-                    <main>
-                        <h2></h2>
-                        <hr>
 
-                        <h4 id="month" class="align-self-center"></h4>
+                <div class="col-8 align-self-center">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card text-white bg-info mb-3 analytics" id="grad1">
+
+                                <div class="card-body">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h3>2345</h3>
+                                            <h6 class="mt-0 mb-1">Total Tickets</h6>
+
+                                        </div>
+                                        <h2 class="align-self-center">
+                                            <i class="fas fa-inbox"></i>
+                                        </h2>
+                                    </div>
 
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-white bg-info mb-3 analytics" id="grad2">
+
+                                <div class="card-body">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h3>2345</h3>
+                                            <h6 class="mt-0 mb-1">Total Customers</h6>
+
+                                        </div>
+                                        <h2 class="align-self-center ml-2">
+                                            <i class="fas fa-address-card"></i>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card text-white bg-info mb-3 analytics" id="grad3">
+
+                                <div class="card-body">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h3>2345</h3>
+                                            <h6 class="mt-0 mb-1">Total Open Tickets</h6>
+
+                                        </div>
+                                        <h2 class="align-self-center">
+                                            <i class="fas fa-envelope-open-text"></i>
+                                        </h2>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-white bg-info mb-3 analytics" id="grad4">
+
+                                <div class="card-body">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h3>2345</h3>
+                                            <h6 class="mt-0 mb-1">Total Closed Tickets</h6>
+
+                                        </div>
+                                        <h2 class="align-self-center">
+                                            <i class="fas fa-envelope"></i>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col align-self-center">
+                    <div class="jumbotron jumbotron-fluid clock">
+                        <div class="container">
+                            <h3 class="display-4" id="month"></h3>
+                            <h3 class="display-4" id="date"></h3>
+                            <p class="lead">
+                            <h3 id="time"></h3>
+                            </p>
+                        </div>
+                    </div>
+                    {{!-- <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div> --}}
+                    {{!-- <div id="clock" class="clock">
+
+
+                        <span>
+                            <h1 id="month"></h1>
+                        </span>
                         <br>
-                        <table id="table" class="table table-bordered">
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                        <span id="day"></span>
+
+                        <span id="year"></span>
 
 
-                            </tr>
-                        </table>
+                        <div>
+                            <span id="time"></span>
+                        </div>
 
-                    </main>
+                    </div> --}}
                 </div>
-                {{!-- <div class="col mb-3">
-                    <div class="month">
-                        <ul>
-                            <li class="prev">&#10094;</li>
-                            <li class="next">&#10095;</li>
-                            <li>
-                                August<br>
-                                <span style="font-size:18px">2017</span>
-                            </li>
-                        </ul>
-                    </div>
 
-                    <ul class="weekdays">
-                        <li>Mo</li>
-                        <li>Tu</li>
-                        <li>We</li>
-                        <li>Th</li>
-                        <li>Fr</li>
-                        <li>Sa</li>
-                        <li>Su</li>
-                    </ul>
-
-                    <ul class="days">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li><span class="active">10</span></li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                        <li>31</li>
-                    </ul>
-                </div> --}}
-            </div>
-            <div class="col align-self-center">
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="card text-white bg-info mb-3 analytics" id="grad1">
-
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h3>2345</h3>
-                                        <h6 class="mt-0 mb-1">Total Tickets</h6>
-
-                                    </div>
-                                    <h2 class="align-self-center">
-                                        <i class="fas fa-inbox"></i>
-                                    </h2>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card text-white bg-info mb-3 analytics" id="grad2">
-
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h3>2345</h3>
-                                        <h6 class="mt-0 mb-1">Total Customers</h6>
-
-                                    </div>
-                                    <h2 class="align-self-center ml-2">
-                                        <i class="fas fa-address-card"></i>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card text-white bg-info mb-3 analytics" id="grad3">
-
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h3>2345</h3>
-                                        <h6 class="mt-0 mb-1">Total Open Tickets</h6>
-
-                                    </div>
-                                    <h2 class="align-self-center">
-                                        <i class="fas fa-envelope-open-text"></i>
-                                    </h2>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card text-white bg-info mb-3 analytics" id="grad4">
-
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <h3>2345</h3>
-                                        <h6 class="mt-0 mb-1">Total Closed Tickets</h6>
-
-                                    </div>
-                                    <h2 class="align-self-center">
-                                        <i class="fas fa-envelope"></i>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
-
         </div>
 
 
@@ -258,194 +176,51 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="/assets/js/charts.js"></script>
 
+
+<style>
+    .clock {
+
+        background: #43CCC9;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        border-radius: 2%;
+        font-size: xx-large;
+
+
+    }
+
+    #month {
+
+        font-weight: 700;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 <script>
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-    ];
 
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    var d = new Date();
-    var day = d.getDay();
-    var date = d.getDate();
-    var month = d.getMonth();
-    var year = d.getFullYear();
 
-    // write to DOM
-    document.querySelectorAll("th").forEach((el, i) => el.textContent = dayNames[i].substring(0, 3));
-    today = `${dayNames[day]}, ${monthNames[month]} ${date}, ${year}`;
-    month1 = `${monthNames[month]}  ${year}`;
+    var month = moment().format("MMMM");
+    $("#month").append(`${month}`)
 
-    document.querySelector('h2').textContent = today;
-    document.querySelector('#month').textContent = month1;
 
-    // get all table data elements
-    document.querySelectorAll("td").forEach((el, i) => {
-        el.textContent = d.getDate(d.setDate(i + 1))
-    });
+    var day = moment().format("Do");
+    $("#day").append(`${day}`)
 
-    // style 'today'
-    const gridNum = date - 1;
-    document.querySelectorAll("td")[gridNum].classList.add("today");
+
+    var year = moment().format("YYYY");
+    $("#year").append(`${year}`)
+
+    var time = moment().format('LT');
+    $("#time").append(`${time}`)
+
+    var date = moment().format("dddd Do YYYY");
+    $("#date").append(`${date}`)
+
+
+
+  //  $('').html(moment().format('D. MMMM YYYY H:mm:ss'));
 
 
 
 </script>
-
-{{!-- <style>
-    * {
-        box-sizing: border-box;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-
-    body {
-        font-family: Verdana, sans-serif;
-    }
-
-    .month {
-        padding: 70px 25px;
-        width: 100%;
-        background: #1abc9c;
-        text-align: center;
-    }
-
-    .month ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    .month ul li {
-        color: white;
-        font-size: 20px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-
-    .month .prev {
-        float: left;
-        padding-top: 10px;
-    }
-
-    .month .next {
-        float: right;
-        padding-top: 10px;
-    }
-
-    .weekdays {
-        margin: 0;
-        padding: 10px 0;
-        background-color: #ddd;
-    }
-
-    .weekdays li {
-        display: inline-block;
-        width: 13.6%;
-        color: #666;
-        text-align: center;
-    }
-
-    .days {
-        padding: 10px 0;
-        background: #eee;
-        margin: 0;
-    }
-
-    .days li {
-        list-style-type: none;
-        display: inline-block;
-        width: 13.6%;
-        text-align: center;
-        margin-bottom: 5px;
-        font-size: 12px;
-        color: #777;
-    }
-
-    .days li .active {
-        padding: 5px;
-        background: #1abc9c;
-        color: white !important
-    }
-
-    /* Add media queries for smaller screens */
-    /*  @media screen and (max-width:720px) {
-
-        .weekdays li,
-        .days li {
-            width: 13.1%;
-        }
-    }
-
-    @media screen and (max-width: 420px) {
-
-        .weekdays li,
-        .days li {
-            width: 12.5%;
-        }
-
-        .days li .active {
-            padding: 2px;
-        }
-    }
-
-    @media screen and (max-width: 290px) {
-
-        .weekdays li,
-        .days li {
-            width: 12.2%;
-        }
-    }*/
-</style> --}}
-
-<style>
-    :root {
-        --clr-lighter: hsl(250, 10%, 98%);
-        --clr-light: hsl(250, 10%, 92%);
-        --clr-dark: hsl(250, 10%, 22%);
-        --clr-theme: hsl(204, 70%, 53%);
-    }
-
-    main {
-        padding: 1rem;
-        /*   background: var(--dark-color);
-  color: var(--lighter-color); */
-    }
-
-    header {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: center;
-        align-items: center;
-    }
-
-    th {
-        text-align: center;
-        background-color: var(--clr-dark);
-        color: var(--clr-lighter);
-    }
-
-    td {
-        text-align: center;
-        background-color: var(--clr-lighter);
-    }
-
-    button {
-        border: none;
-        padding: .25rem .5rem;
-        background-color: var(--clr-light);
-        font-weight: bold;
-    }
-
-    .today {
-        color: var(--clr-theme);
-        background-color: var(--clr-light);
-        font-weight: bold;
-    }
-
-    td:hover {
-        background-color: var(--clr-light);
-        cursor: pointer;
-    }
-</style>
