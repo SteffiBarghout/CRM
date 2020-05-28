@@ -33,7 +33,7 @@ module.exports = function (
       where: { id: req.user.id },
     }).then(async (result) => {
       console.log("//////uploads", result.dataValues.profImg);
-      res.render("newTickets", {
+      res.render("myTickets", {
         img: result.dataValues.profImg,
         currentUser: req.user.username,
       });
@@ -69,17 +69,17 @@ module.exports = function (
       });
   });
 
-  app.get("/ticket", isAuthenticatedMiddleware(), (req, res) => {
-    db.Users.findOne({
-      where: { id: req.user.id },
-    }).then(async (result) => {
-      console.log("//////uploads", result.dataValues.profImg);
-      res.render("ticket", {
-        img: result.dataValues.profImg,
-        currentUser: req.user.username,
-      });
-    });
-  });
+  // app.get("/ticket", isAuthenticatedMiddleware(), (req, res) => {
+  //   db.Users.findOne({
+  //     where: { id: req.user.id },
+  //   }).then(async (result) => {
+  //     console.log("//////uploads", result.dataValues.profImg);
+  //     res.render("ticket", {
+  //       img: result.dataValues.profImg,
+  //       currentUser: req.user.username,
+  //     });
+  //   });
+  // });
 
   app.get("/logout", function (req, res) {
     req.logout();
