@@ -1,0 +1,90 @@
+<div class="wrapper">
+    {{> navbar/nav-block}}
+
+    <div class="content" id="ticket">
+        <h2 class="display-4">TICKETS</h2>
+
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="allTickets-tab" data-toggle="tab" href="#allTickets" role="tab"
+                    aria-controls="allTickets" aria-selected="true">All Tickets</a>
+            </li>
+            <li class="nav-item" id="openTic">
+                <a class="nav-link" id="openTickets-tab " data-toggle="tab" href="#openTickets" role="tab"
+                    aria-controls="openTickets" aria-selected="false">Open Tickets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="closedTickets-tab" data-toggle="tab" href="#closedTickets" role="tab"
+                    aria-controls="closedTickets" aria-selected="false">Closed Tickets</a>
+            </li>
+            <li class="nav-item ">
+                {{!-- <div class="navbar navbar-light bg-light">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div> --}}
+                <form class="form-inline ml-3">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+
+        </ul>
+        <button class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg"><i
+                class="far fa-plus-square"></i> Create Ticket</button>
+        <div class="tab-content">
+            <div class="tab-pane active" id="allTickets" role="tabpanel" aria-labelledby="allTickets-tab">
+                <div class="row">
+                    {{!-- smallTickets --}}
+                    <div class="col-md-4">
+                        <div class="row smallT_cont">
+
+                        </div>
+
+                    </div>
+                    {{!-- bigTickets --}}
+                    <div class="col-md-8">
+                        <div class="card big_ticket">
+                            <h3 style="padding:1.25rem">
+                                <div class="float-right"></div>
+                            </h3>
+                            <div class="card-body">
+                                {{!-- Customer first name & last name --}}
+                                <h5></h5>
+                                {{!-- ticket title --}}
+                                <h3></h3>
+                                {{!-- ticket text --}}
+                                <p></p>
+                                <button class="btn btn-outline-info" id="reply" style="float:right"
+                                    data-status="off">reply</button>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group" id="ticketTextArea" style="display:none">
+                                    <textarea class="form-control" style="min-height: 113px;"></textarea>
+                                    <br>
+                                    <button class="btn btn-info" style="float:right"><i
+                                            class="far fa-plus-square"></i>Post</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="openTickets" role="tabpanel" aria-labelledby="openTickets-tab">Open</div>
+            <div class="tab-pane" id="closedTickets" role="tabpanel" aria-labelledby="closedTickets-tab">Closed</div>
+        </div>
+
+    </div>
+</div>
+
+{{> createTicket/create-block}}
+
+{{> call/call-block}}
+
+<script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.7/twilio.min.js"></script>
+<script src="/assets/js/voice.js"></script>
+<script src="/assets/js/tickets.js"></script>

@@ -40,6 +40,18 @@ module.exports = function (
     });
   });
 
+  app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
+    db.Users.findOne({
+      where: { id: req.user.id },
+    }).then(async (result) => {
+      console.log("//////uploads", result.dataValues.profImg);
+      res.render("tickets", {
+        img: result.dataValues.profImg,
+        currentUser: req.user.username,
+      });
+    });
+  });
+
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
     // db.Users.findOne({
     //   where: { id: req.user.id },

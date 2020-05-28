@@ -146,6 +146,30 @@ module.exports = function (
     }
   });
 
+  app.get("/allTickets", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Tickets.findAll({
+      where: { UserId: req.user.id },
+      attributes: ["ticketTitle", "ticketText", "status"],
+      include: [
+        {
+          model: db.Customers,
+          attributes: ["firstName", "lastName"],
+        },
+      ],
+    })
+      .then((result) => {
+        var resArray = [];
+        for (row of result) {
+          resArray.push(row.dataValues);
+        }
+        res.send(resArray);
+      })
+      .catch((error) => {
+        console.log("/////feching all tickets Error: ", error);
+        res.status(500).end();
+      });
+  });
+
   app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
     console.log("///////////upload:");
     db.Users.findOne({
