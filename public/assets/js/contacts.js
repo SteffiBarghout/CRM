@@ -64,7 +64,7 @@ $(function () {
                   <i class="far fa-plus-square"></i> Create Ticket
               </button>
           </div>
-          <div class="col-4 align-self-center"></button <button>Write A Note</button>
+          <div class="col-4 align-self-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#callModal" >Make a Note</button>
           </div>
     
       </div>
