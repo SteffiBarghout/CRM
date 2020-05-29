@@ -12,89 +12,114 @@
 
 
         <div class="container">
+
+
+
             <div class="row">
+                <div class="col-sm">
+                    <div class="card text-white bg-info mb-3 analytics" id="grad1">
 
-                <div class="col-8 align-self-center">
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="card text-white bg-info mb-3 analytics" id="grad1">
-
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h3>2345</h3>
-                                            <h6 class="mt-0 mb-1">Total Tickets</h6>
-
-                                        </div>
-                                        <h2 class="align-self-center">
-                                            <i class="fas fa-inbox"></i>
-                                        </h2>
-                                    </div>
-
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h3>2345</h3>
+                                    <h6 class="mt-0 mb-1">Total Tickets</h6>
 
                                 </div>
+                                <h2 class="align-self-center">
+                                    <i class="fas fa-inbox"></i>
+                                </h2>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white bg-info mb-3 analytics" id="grad2">
 
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h3>2345</h3>
-                                            <h6 class="mt-0 mb-1">Total Customers</h6>
 
-                                        </div>
-                                        <h2 class="align-self-center ml-2">
-                                            <i class="fas fa-address-card"></i>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card text-white bg-info mb-3 analytics" id="grad3">
-
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h3>2345</h3>
-                                            <h6 class="mt-0 mb-1">Total Open Tickets</h6>
-
-                                        </div>
-                                        <h2 class="align-self-center">
-                                            <i class="fas fa-envelope-open-text"></i>
-                                        </h2>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white bg-info mb-3 analytics" id="grad4">
-
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h3>2345</h3>
-                                            <h6 class="mt-0 mb-1">Total Closed Tickets</h6>
-
-                                        </div>
-                                        <h2 class="align-self-center">
-                                            <i class="fas fa-envelope"></i>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                <div class="col align-self-center">
-                    <div class="jumbotron jumbotron-fluid clock py-3">
+                <div class="col">
+                    <div class="card text-white bg-info mb-3 analytics" id="grad2">
+
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h3>2345</h3>
+                                    <h6 class="mt-0 mb-1">Total Customers</h6>
+
+                                </div>
+                                <h2 class="align-self-center ml-2">
+                                    <i class="fas fa-address-card"></i>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card text-white bg-info mb-3 analytics" id="grad3">
+
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h3>2345</h3>
+                                    <h6 class="mt-0 mb-1">Total Open Tickets</h6>
+
+                                </div>
+                                <h2 class="align-self-center">
+                                    <i class="fas fa-envelope-open-text"></i>
+                                </h2>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-white bg-info mb-3 analytics" id="grad4">
+
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h3>2345</h3>
+                                    <h6 class="mt-0 mb-1">Total Closed Tickets</h6>
+
+                                </div>
+                                <h2 class="align-self-center">
+                                    <i class="fas fa-envelope"></i>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="line"></div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="card text-center">
+                    <div class="card-header clock">
+                        <h3 class="display-4" id="day"><i class="fas fa-calendar-alt"></i> </h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h1 class="display-4" id="date"></h1>
+                        </li>
+                        <li class="list-group-item">
+                            <h3 id="time"></h3>
+                        </li>
+
+                    </ul>
+                </div>
+                {{!-- <div class="jumbotron jumbotron-fluid clock py-3">
                         <div class="container">
                             <h3 class="display-4" id="month"><i class="fas fa-calendar-alt"></i> </h3>
                             <h3 class="display-4" id="date"></h3>
@@ -102,46 +127,117 @@
                             <h3 id="time"></h3>
                             </p>
                         </div>
+                    </div> --}}
+
+            </div>
+            <div class="col">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Recently Contacted Customers</h5>
+
                     </div>
-                    {{!-- <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div> --}}
-                    {{!-- <div id="clock" class="clock">
+                    <ul class="list-group list-group-flush" style="border: none;">
+                        <li class="list-group-item">
 
+                            <div class="media">
 
-                        <span>
-                            <h1 id="month"></h1>
-                        </span>
-                        <br>
-                        <span id="day"></span>
+                                <a href="" class="customerBtn activate" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                    <div class="avatar">CD</div>
+                                </a>
 
-                        <span id="year"></span>
+                                <div class="media-body">
 
+                                    <h6 class="mt-3 ml-3" id="customerName">
+                                        Cathy
+                                        Dates</h6>
 
-                        <div>
-                            <span id="time"></span>
-                        </div>
+                                </div>
+                            </div>
 
-                    </div> --}}
+                        </li>
+                        <li class="list-group-item">
+
+                            <div class="media">
+
+                                <a href="" class="customerBtn activate" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                    <div class="avatar">CD</div>
+                                </a>
+
+                                <div class="media-body">
+
+                                    <h6 class="mt-3 ml-3" id="customerName">
+                                        Cathy
+                                        Dates</h6>
+
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item">
+
+                            <div class="media">
+
+                                <a href="" class="customerBtn activate" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                    <div class="avatar">CD</div>
+                                </a>
+
+                                <div class="media-body">
+
+                                    <h6 class="mt-3 ml-3" id="customerName">
+                                        Cathy
+                                        Dates</h6>
+
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="list-group-item">
+
+                            <div class="media">
+
+                                <a href="" class="customerBtn activate" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                    <div class="avatar">CD</div>
+                                </a>
+
+                                <div class="media-body">
+
+                                    <h6 class="mt-3 ml-3" id="customerName">
+                                        Cathy
+                                        Dates</h6>
+
+                                </div>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                    <div class="card-body">
+                        <a style="float: right;" href="/contact" class="card-link">View Contacts</a>
+
+                    </div>
                 </div>
-
-
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of the card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-
-
-
-        <div class="line"></div>
-
-        <div class="container">
+        {{!-- GRAPHS?? MAYBE --}}
+        {{!-- <div class="container">
             <div class="row">
                 <div class="col">
 
@@ -152,11 +248,10 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
 
 
-        <br>
 
 
 
@@ -185,11 +280,13 @@
         text-align: center;
         border-radius: 2%;
         font-size: xx-large;
-
-
     }
 
-    #month {
+    .list-group-item {
+        border: none;
+    }
+
+    #day {
 
         font-weight: 700;
     }
@@ -204,7 +301,7 @@
     $("#month").append(`${month}`)
 
 
-    var day = moment().format("Do");
+    var day = moment().format("dddd");
     $("#day").append(`${day}`)
 
 
@@ -214,7 +311,7 @@
     var time = moment().format('LT');
     $("#time").append(`${time}`)
 
-    var date = moment().format("dddd Do YYYY");
+    var date = moment().format("MMMM Do YYYY");
     $("#date").append(`${date}`)
 
 
