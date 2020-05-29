@@ -1,0 +1,188 @@
+<div class="modal fade bd-example-modal-lg1" id="exampleModal1" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content create-modal" style="border: none;">
+            <div class="modal-header text-light" style="background-color:#7a6eb8">
+                <h1 class="modal-title" id="exampleModalLabel">Add Customer</h1>
+                <button type="button" class="close close_NewCus" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <hr>
+            <div class="modal-body">
+                <form>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label text-dark">First Name:</label>
+                                <input type="text" class="form-control" id="CusFirstName" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label text-dark">Last Name:</label>
+                                <input type="text" class="form-control" id="CusLastName" required>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">Email:</label>
+                                <input type="email" class="form-control" id="CusEmail" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">Phone:</label>
+                                <input type="text" class="form-control" id="CusPhone" required>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">Address:</label>
+                                <input type="text" class="form-control" id="CusAddress" required>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">City:</label>
+                                <input type="text" class="form-control" id="CusCity" required>
+                            </div>
+                        </div>
+                        <div class="col-2">
+
+                            <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">State:</label>
+                                <select name="state" class="form-control" id="CusState" required>
+                                    <option disabled selected value="..">Select..</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AK">AK</option>
+                                    <option value="AZ">AZ</option>
+                                    <option value="AR">AR</option>
+                                    <option value="CA">CA</option>
+                                    <option value="CO">CO</option>
+                                    <option value="CT">CT</option>
+                                    <option value="DE">DE</option>
+                                    <option value="DC">DC</option>
+                                    <option value="FL">FL</option>
+                                    <option value="GA">GA</option>
+                                    <option value="HI">HI</option>
+                                    <option value="ID">ID</option>
+                                    <option value="IL">IL</option>
+                                    <option value="IN">IN</option>
+                                    <option value="IA">IA</option>
+                                    <option value="KS">KS</option>
+                                    <option value="KY">KY</option>
+                                    <option value="LA">LA</option>
+                                    <option value="ME">ME</option>
+                                    <option value="MD">MD</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MI">MI</option>
+                                    <option value="MN">MN</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MO">MO</option>
+                                    <option value="MT">MT</option>
+                                    <option value="NE">NE</option>
+                                    <option value="NV">NV</option>
+                                    <option value="NH">NH</option>
+                                    <option value="NJ">NJ</option>
+                                    <option value="NM">NM</option>
+                                    <option value="NY">NY</option>
+                                    <option value="NC">NC</option>
+                                    <option value="ND">ND</option>
+                                    <option value="OH">OH</option>
+                                    <option value="OK">OK</option>
+                                    <option value="OR">OR</option>
+                                    <option value="PA">PA</option>
+                                    <option value="RI">RI</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SD">SD</option>
+                                    <option value="TN">TN</option>
+                                    <option value="TX">TX</option>
+                                    <option value="UT">UT</option>
+                                    <option value="VT">VT</option>
+                                    <option value="VA">VA</option>
+                                    <option value="WA">WA</option>
+                                    <option value="WV">WV</option>
+                                    <option value="WI">WI</option>
+                                    <option value="WY">WY</option>
+                                </select>
+                            </div>
+                            {{!-- <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">State:</label>
+                                <input type="text" class="form-control" id="CusState" required>
+                            </div> --}}
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="recipient-title" class="col-form-label text-dark">Zip Code:</label>
+                                <input type="text" class="form-control" id="CusZip" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    {{!-- 
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label text-dark">First Name:</label>
+                        <input type="text" class="form-control" id="CusFirstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label text-dark">Last Name:</label>
+                        <input type="text" class="form-control" id="CusLastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Address:</label>
+                        <input type="text" class="form-control" id="CusAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">City:</label>
+                        <input type="text" class="form-control" id="CusCity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">State:</label>
+                        <input type="text" class="form-control" id="CusState" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Zip Code:</label>
+                        <input type="text" class="form-control" id="CusZip" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Phone:</label>
+                        <input type="text" class="form-control" id="CusPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-title" class="col-form-label text-dark">Email:</label>
+                        <input type="email" class="form-control" id="CusEmail" required>
+                    </div> --}}
+
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="mt-2">
+                    <p id="newCusMsg" style="color:red; font-weight:600"></p>
+                </div>
+
+                <div>
+                    <button type="button" id="NewCus_btn" class="btn btn-outline-info">Create</button>
+                    <button type="button" class="btn btn-outline-secondary close_NewCus"
+                        data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

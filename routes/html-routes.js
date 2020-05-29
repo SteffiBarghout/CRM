@@ -1,4 +1,6 @@
 var db = require("../models");
+var CurrentUser;
+var ProfileImage;
 
 module.exports = function (
   app,
@@ -6,12 +8,11 @@ module.exports = function (
   isNotAuthenticatedMiddleware
 ) {
   app.get("/", isAuthenticatedMiddleware(), (req, res) => {
-    console.log("///////CurrentUser: ", req.user);
-
     db.Users.findOne({
       where: { id: req.user.id },
     }).then(async (result) => {
-      console.log("//////uploads", result.dataValues.profImg);
+      CurrentUser = req.user.username;
+      ProfileImage = result.dataValues.profImg;
       if (req.user.username === "admin") {
         console.log("returning admin......");
         res.render("admin");
@@ -28,31 +29,38 @@ module.exports = function (
     res.render("login");
   });
 
-  app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
-    res.render("tickets");
+  // app.get("/tickets", isAuthenticatedMiddleware(), (req, res) => {
+  //   res.render("tickets");
+  // });
+
+  app.get("/contacts", isAuthenticatedMiddleware(), (req, res) => {
+    res.render("contacts", {
+      img: ProfileImage,
+      currentUser: CurrentUser,
+    });
   });
 
   app.get("/settings", isAuthenticatedMiddleware(), (req, res) => {
-    db.Users.findOne({
-      where: { id: req.user.id },
-    }).then(async (result) => {
-      res.render("settings", {
-        img: result.dataValues.profImg,
-        currentUser: req.user.username,
-      });
+    // db.Users.findOne({
+    //   where: { id: req.user.id },
+    // }).then(async (result) => {
+    res.render("settings", {
+      img: ProfileImage,
+      currentUser: CurrentUser,
     });
+    // });
   });
 
   app.get("/ticket", isAuthenticatedMiddleware(), (req, res) => {
-    db.Users.findOne({
-      where: { id: req.user.id },
-    }).then(async (result) => {
-      console.log("//////uploads", result.dataValues.profImg);
-      res.render("ticket", {
-        img: result.dataValues.profImg,
-        currentUser: req.user.username,
-      });
+    // db.Users.findOne({
+    //   where: { id: req.user.id },
+    // }).then(async (result) => {
+    //   console.log("//////uploads", result.dataValues.profImg);
+    res.render("ticket", {
+      img: ProfileImage,
+      currentUser: CurrentUser,
     });
+    // });
   });
 
   app.get("/logout", function (req, res) {
