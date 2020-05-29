@@ -55,7 +55,7 @@ $(function () {
           <div class="row justify-content-md-center">
           <div class="col-4 align-self-center"> <button href="" class="customerBtn activate btn btn-outline-info" data-toggle="modal"
                   data-target="#exampleModalCenter" id="ready">
-                  Call Customer <i class="fas fa-phone"></i>
+                  <i class="fas fa-phone"></i> Call Customer 
               </button></div>
           <div class="col-4 align-self-center">
       
@@ -64,7 +64,7 @@ $(function () {
                   <i class="far fa-plus-square"></i> Create Ticket
               </button>
           </div>
-          <div class="col-4 align-self-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#callModal" >Make a Note</button>
+          <div class="col-4 align-self-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#callModal"> <i class="fas fa-pencil-alt"></i> Make a Note</button>
           </div>
     
       </div>
