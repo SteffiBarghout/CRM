@@ -146,10 +146,26 @@ module.exports = function (
     }
   });
 
+  app.post("/addNote", isAuthenticatedMiddleware(), async (req, res) => {
+    console.log("//////////////Adding Comments");
+    db.Comments.create({
+      UserId: req.user.id,
+      TicketId: req.body.TicketId,
+      commentText: req.body.commentText,
+    })
+      .then(() => {
+        res.send(true);
+      })
+      .catch((err) => {
+        console.log("error in adding comment: ", err);
+        res.send(false);
+      });
+  });
+
   app.get("/allTickets", isAuthenticatedMiddleware(), async (req, res) => {
     db.Tickets.findAll({
       where: { UserId: req.user.id },
-      attributes: ["ticketTitle", "ticketText", "status"],
+      attributes: ["id", "ticketTitle", "ticketText", "status"],
       include: [
         {
           model: db.Customers,

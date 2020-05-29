@@ -21,8 +21,8 @@ $(document).ready(() => {
   $.get("/allTickets", (result) => {
     console.log(result);
     $(".smallT_cont").text("");
-    var cardCounter = 0;
     for (row of result) {
+      var TicketId = row.id;
       var customerFirst = row.Customer.firstName;
       customerFirst = customerFirst[0].toUpperCase() + customerFirst.slice(1);
       var customerLast = row.Customer.lastName;
@@ -44,7 +44,9 @@ $(document).ready(() => {
       var ticketStatus = row.status;
 
       $(".smallT_cont").append(
-        '<div class="col"><div class="card small_ticket"><h5 style="padding:1.25rem"><div class="float-right ticketDate">Date opened</div></h5><div class="card-body"><a href="#" class="activate"><div class="avatar" style="background-color: rgb(220, 42, 42);">' +
+        '<div class="col"><div class="card small_ticket" id="' +
+          TicketId +
+          '"><h5 style="padding:1.25rem"><div class="float-right ticketDate">Date opened</div></h5><div class="card-body"><a href="#" class="activate"><div class="avatar" style="background-color: rgb(220, 42, 42);">' +
           Initial +
           "</div></a><h2 style='display:inline-block'>" +
           customerFirst +
@@ -59,15 +61,19 @@ $(document).ready(() => {
           SmallticketText +
           '</p><p class="bigTicketText" style="display:none">' +
           BigticketText +
-          '</div></div></div><div class="w-100"></div>'
+          '</p></div></div></div><div class="w-100"></div>'
       );
-      cardCounter++;
     }
+    lastCardID = $(".smallT_cont").children().last().prev().children(".card")[0]
+      .attributes.id.nodeValue;
   });
 
-  console.log("big card content: ", $(".big_ticket").html());
   $(document).on("click", ".small_ticket", function () {
     console.log("disFromTop: ", $(this).parent().offset().top);
+    var ID = $(this)[0].id;
+    $(".big_ticket")
+      .children(".card-body")
+      .children("button")[0].attributes.ticketid.nodeValue = ID;
     var Initial = $(this)
       .children(".card-body")
       .children("a")
@@ -81,6 +87,7 @@ $(document).ready(() => {
     var ticketText = $(this)
       .children(".card-body")
       .children(".bigTicketText")[0].innerHTML;
+    $("#recepient").text(CustomerName);
     $(".big_ticket").children("h5").children("div").text(ticketDate);
     $(".big_ticket")
       .children(".card-body")
@@ -90,58 +97,44 @@ $(document).ready(() => {
     $(".big_ticket").children(".card-body").children("h2").text(CustomerName);
     $(".big_ticket").children(".card-body").children("h4").text(ticketTitle);
     $(".big_ticket").children(".card-body").children("p").text(ticketText);
-    console.log("SmalldisFromTop: ", $(this).parent().offset().top);
-    $(".big_ticket")
-      .parent()
-      .offset({ top: $(this).parent().offset().top });
+    if (ID === lastCardID) {
+      var smallWidth = $(this).parent().height();
+
+      var bigWidth = $(".big_ticket").height();
+
+      var widthDefference = bigWidth - smallWidth;
+
+      $(".big_ticket").css({
+        top: $(this).parent().position().top - widthDefference,
+      });
+    } else {
+      console.log("top: ", $(this).parent().position().top);
+      $(".big_ticket").css({ top: $(this).parent().position().top });
+    }
+
     console.log("BigdisFromTop: ", $(".big_ticket").parent().offset().top);
     $(".big_ticket").show();
   });
-  //   $("#reply").on("click", () => {
-  //     if ($("#reply").data("status") === "off") {
-  //       $("#ticketTextArea").show();
-  //       $("#reply").data("status", "on");
-  //     } else {
-  //       $("#ticketTextArea").hide();
-  //       $("#reply").data("status", "off");
-  //     }
-  //   });
-  //   $("#sidebar").hover(
-  //     // () => {
-  //     //   setTimeout(() => {
-  //     //     console.log("hover: ", $(".clculate").width());
-  //     //   }, 500);
 
-  //     //   //   newWidth = (1 / 2) * $(".clculate").width();
-  //     //   //   $(".big_ticket_sec").animate({ width: "-=" + newWidth }, 300);
-  //     // },
-  //     // () => {
-  //     //   setTimeout(() => {
-  //     //     console.log("Unhover: ", $(".clculate").width());
-  //     //   }, 500);
-
-  //     //   //   newWidth = (2 / 3) * $(".clculate").width();
-  //     //   //   $(".big_ticket_sec").animate({ width: "+=" + newWidth }, 300);
-  //     // }
-  //     ///////////////////////
-  //     function () {
-  //       setTimeout(() => {
-  //         console.log("hover: ", $(".clculate").width());
-  //       }, 500);
-  //       onLoadWidth = (2 / 3) * $(".clculate").width();
-  //       NewWidth = onLoadWidth - 160;
-
-  //       $(".big_ticket_sec").animate({ width: "-=" + NewWidth }, 300);
-  //     },
-  //     function () {
-  //       setTimeout(() => {
-  //         console.log("Unhover: ", $(".clculate").width());
-  //       }, 500);
-  //       $(".big_ticket_sec").animate({ width: "+=" + NewWidth }, 300);
-  //     }
-  //   );
-
-  $("#reply").on("click", () => {
+  $("#reply").on("click", function () {
+    var TicketID = $(this)[0].attributes.ticketid.nodeValue;
+    $("#ticketTextArea > textarea").attr("ticketid", TicketID);
+    $("#ticketTextArea > textarea").val("");
     $(".reply-form").modal("show");
+  });
+
+  $("#PostComment").on("click", () => {
+    var Comment = $("#ticketTextArea > textarea").val().trim();
+    console.log("Comment :", Comment);
+    var TicketID = $("#ticketTextArea > textarea").attr("ticketid");
+    if (Comment === "") {
+      return $("#commMSG").text("No Comments !");
+    }
+    var NewComment = { commentText: Comment, TicketId: TicketID };
+    $.post("/addNote", NewComment, (result) => {
+      result
+        ? $("#commMSG").text("submitted")
+        : $("#commMSG").text("Error: try again!");
+    });
   });
 });

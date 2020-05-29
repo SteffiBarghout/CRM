@@ -44,7 +44,7 @@ span {
   max-width: 90px;
   background: #7a6eb8;
   color: #fff;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
 #sidebar.active {

@@ -1,27 +1,34 @@
 module.exports = function (sequelize, DataTypes) {
-  var Tickets = sequelize.define("Tickets", {
-    ticketTitle: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3, 200],
+  var Tickets = sequelize.define(
+    "Tickets",
+    {
+      ticketTitle: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [3, 200],
+        },
+      },
+      ticketText: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [3, 1000],
+        },
+      },
+      status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1],
+        },
       },
     },
-    ticketText: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3, 1000],
-      },
-    },
-    status: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
-    },
-  });
+
+    {
+      timestamps: false,
+    }
+  );
   // Tickets.associate = function (models) {
   //
   // };
