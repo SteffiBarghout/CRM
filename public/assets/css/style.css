@@ -427,3 +427,7 @@ label:focus input::placeholder {
   margin-top: 4%;
   margin-bottom: 2%;
 }
+
+.table td {
+  vertical-align: middle;
+}
