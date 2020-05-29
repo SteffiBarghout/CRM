@@ -428,10 +428,6 @@ label:focus input::placeholder {
   margin-bottom: 2%;
 }
 
-.canvasjs-chart-credit {
-  display: none;
-}
-
-#chartContainer1 {
-  padding-bottom: 10px;
+.table td {
+  vertical-align: middle;
 }

@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $(".activate").on("click", () => {
+  $(document).on("click", ".activate", function () {
     $("#logMsg").text("");
     $("#hangup").hide();
     $("#call").show();
@@ -19,7 +19,7 @@ $(document).ready(() => {
       });
       Twilio.Device.connect(function (conn) {
         console.log("Successfully established call!");
-        $("#logMsg").text("Calling 5045154776......");
+        $("#logMsg").text("Calling ......");
         $("#call").hide();
         $("#hangup").show();
       });
