@@ -137,4 +137,38 @@ $(document).ready(() => {
         : $("#commMSG").text("Error: try again!");
     });
   });
+
+  $("#NewTicket").on("click", () => {
+    var CustomerEmail = $("#recipient-name").val().trim();
+    var ticketTitle = $("#ticket-title").val().trim();
+    var ticketText = $("#ticket-text").val().trim();
+
+    if (CustomerEmail !== "" && ticketTitle !== "" && ticketText !== "") {
+      var NewTicekt = {
+        CustomerEmail: CustomerEmail,
+        ticketTitle: ticketTitle,
+        ticketText: ticketText,
+      };
+      $.post("/Newticket", NewTicekt, (result) => {
+        result
+          ? $("#ticketmsg").text("Submitted")
+          : $("#ticketmsg").text("Error: try again!!");
+      });
+    } else {
+      $("#ticketmsg").text("Please fill out all the required fields!!");
+    }
+  });
+
+  $("#create_ticket").on("click", () => {
+    $("#recipient-name").val("");
+    $("#ticket-title").val("");
+    $("#ticket-text").val("");
+    $("#ticketmsg").text("");
+    $(".Ticket_form").modal("show");
+  });
+
+  $(".close_ticket").on("click", () => {
+    $(".Ticket_form").modal("hide");
+    location.reload();
+  });
 });

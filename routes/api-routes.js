@@ -186,6 +186,32 @@ module.exports = function (
       });
   });
 
+  app.post("/Newticket", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Customers.findOne({
+      where: { email: req.body.CustomerEmail },
+    })
+      .then((result) => {
+        db.Tickets.create({
+          ticketTitle: req.body.ticketTitle,
+          ticketText: req.body.ticketText,
+          status: "open",
+          CustomerId: result.dataValues.id,
+          UserId: req.user.id,
+        })
+          .then(() => {
+            res.send(true);
+          })
+          .catch((err) => {
+            console.log("New ticket err :", err);
+            res.send(false);
+          });
+      })
+      .catch((err) => {
+        console.log("New ticket error :", err);
+        res.status(500).end();
+      });
+  });
+
   app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
     console.log("///////////upload:");
     db.Users.findOne({

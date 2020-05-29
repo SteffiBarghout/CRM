@@ -23,27 +23,27 @@ module.exports = function (sequelize, DataTypes) {
           len: [1],
         },
       },
-      city: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1],
-        },
-      },
-      state: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1],
-        },
-      },
-      zipCode: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1],
-        },
-      },
+      // city: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   validate: {
+      //     len: [1],
+      //   },
+      // },
+      // state: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   validate: {
+      //     len: [1],
+      //   },
+      // },
+      // zipCode: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   validate: {
+      //     len: [1],
+      //   },
+      // },
       phone: {
         type: DataTypes.STRING,
         validate: {
