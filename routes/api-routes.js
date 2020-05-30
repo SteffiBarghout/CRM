@@ -296,6 +296,22 @@ module.exports = function (
       });
   });
 
+  // app.get(
+  //   "/signedInSecialist",
+  //   isAuthenticatedMiddleware(),
+  //   async (req, res) => {
+  //     db.User.findOne({
+  //       where: { id: req.user.id },
+  //     })
+  //       .then((result) => {
+  //         res.send(result);
+  //       })
+  //       .catch(() => {
+  //         res.status(500).end();
+  //       });
+  //   }
+  // );
+
   app.get("/allCustomers", isAuthenticatedMiddleware(), async (req, res) => {
     db.Customers.findAll({
       where: { UserId: req.user.id },

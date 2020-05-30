@@ -30,15 +30,15 @@ $(function () {
         `
         <tr>
         <th scope="row"> ${rowCount} </th>
-          <td class="customerFirstName"> ${row.firstName} </td>
-          <td class="customerLastName"> ${row.lastName} </td>
+          <td class="customerFirstName userFirstName"> ${row.firstName} </td>
+          <td class="customerLastName userLastName"> ${row.lastName} </td>
           <td class="customerEmail"> ${row.email} </td>
           <td class="customerPhone"> ${row.phone.replace(
             /(\d{3})(\d{3})(\d{4})/,
             "$1-$2-$3"
           )} </td>
           <td>${row.address} </td>
-          <td>${row.city} </td>
+          <td class="userFirstName">${row.city} </td>
           <td>${row.state} </td>
           <td>${row.zipCode} </td>
           <td> <a class="btn btn-primary moreBtn" data-toggle="collapse" href="#${rowCount}" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -80,15 +80,12 @@ $(function () {
   });
 
   $(document).on("click", ".moreBtn", function () {
-    $(this).parent().parent().children(".customerEmail")[0].innerHTML;
-  });
-
-  $(document).on("click", ".moreBtn", function () {
-    var phoneNum = $(this).parent().parent().children(".customerPhone")[0]
-      .innerHTML;
-    $("#call").text(
-      "Call" + phoneNum.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")
-    );
+    var phoneNum = $(this)
+      .parent()
+      .parent()
+      .children(".customerPhone")[0]
+      .innerHTML.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "$1-$2-$3");
+    $("#call").text("Call" + phoneNum);
 
     var customerEmail = $(this).parent().parent().children(".customerEmail")[0]
       .innerHTML;
@@ -99,7 +96,8 @@ $(function () {
       .parent()
       .children(".customerFirstName")[0].innerHTML;
 
-    console.log(customerFirstName[0]);
+    console.log(customerFirstName.trim().charAt(0));
+    console.log(typeof customerFirstName);
 
     var customerLastName = $(this)
       .parent()
@@ -107,6 +105,12 @@ $(function () {
       .children(".customerLastName")[0].innerHTML;
 
     $("#customerName").text(customerFirstName + " " + customerLastName);
+
+    $(".avatar").text(
+      customerFirstName.trim().charAt(0) +
+        " " +
+        customerLastName.trim().charAt(0)
+    );
   });
 
   $("#NewCus_btn").on("click", () => {

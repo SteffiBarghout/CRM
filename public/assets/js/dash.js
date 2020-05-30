@@ -1,14 +1,19 @@
 $(document).ready(() => {
-  $("#tester").click(function () {
-    console.log($(this));
-  });
-
   //   $(document).on("click", "#tester", function () {
   //     var test = $(this).parent().parent();
   //     console.log(test);
   //   });
-
   $.get("/allSpecialists", (result) => {
-    console.log("All Specialists: ", result);
+    var firstName = result[0].firstName;
+    var lastName = result[0].lastName;
+    // console.log($(this.result));
+    $("#userFirstName").text("");
+    $("#userFirstName").append(`
+    ${firstName}
+        `);
+    $("#userLastName").text("");
+    $("#userLastName").append(`
+    ${lastName}
+        `);
   });
 });
