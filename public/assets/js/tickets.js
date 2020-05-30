@@ -42,10 +42,15 @@ $(document).ready(() => {
       }
 
       var ticketStatus = row.status;
-
+      var OpacityVal;
+      ticketStatus === "open" ? (OpacityVal = 1) : (OpacityVal = 0.6);
       $(".smallT_cont").append(
-        '<div class="col"><div class="card small_ticket" id="' +
+        '<div class="col"><div style="opacity:' +
+          OpacityVal +
+          '" class="card small_ticket" id="' +
           TicketId +
+          '"  ticketStat="' +
+          ticketStatus +
           '"><h5 style="padding:1.25rem"><div class="float-right ticketDate">Date opened</div></h5><div class="card-body"><a href="#" class="activate"><div class="avatar" style="background-color: rgb(220, 42, 42);">' +
           Initial +
           "</div></a><h2 style='display:inline-block'>" +
@@ -71,6 +76,7 @@ $(document).ready(() => {
   $(document).on("click", ".small_ticket", function () {
     console.log("disFromTop: ", $(this).parent().offset().top);
     var ID = $(this)[0].id;
+    var status = $(this).attr("ticketStat");
     $(".big_ticket")
       .children(".card-body")
       .children("button")[0].attributes.ticketid.nodeValue = ID;
@@ -97,22 +103,30 @@ $(document).ready(() => {
     $(".big_ticket").children(".card-body").children("h2").text(CustomerName);
     $(".big_ticket").children(".card-body").children("h4").text(ticketTitle);
     $(".big_ticket").children(".card-body").children("p").text(ticketText);
+
+    if (status === "closed") {
+      $(".big_ticket").css("opacity", "0.6");
+      $("#close_ticket").hide();
+      $("#reply").attr("disabled", "disabled");
+    } else {
+      $(".big_ticket").css("opacity", "1");
+      $("#reply").removeAttr("disabled", "disabled");
+      $("#close_ticket").show();
+    }
+    $("#ticket_closeMsg").text("");
     if (ID === lastCardID) {
-      var smallWidth = $(this).parent().height();
-
+      var smallWidth = $(`#${lastCardID}`).height();
+      console.log("small Width: ", smallWidth);
       var bigWidth = $(".big_ticket").height();
-
+      console.log("big Width: ", bigWidth);
       var widthDefference = bigWidth - smallWidth;
 
       $(".big_ticket").css({
         top: $(this).parent().position().top - widthDefference,
       });
     } else {
-      console.log("top: ", $(this).parent().position().top);
       $(".big_ticket").css({ top: $(this).parent().position().top });
     }
-
-    console.log("BigdisFromTop: ", $(".big_ticket").parent().offset().top);
     $(".big_ticket").show();
   });
 
@@ -120,6 +134,7 @@ $(document).ready(() => {
     var TicketID = $(this)[0].attributes.ticketid.nodeValue;
     $("#ticketTextArea > textarea").attr("ticketid", TicketID);
     $("#ticketTextArea > textarea").val("");
+    $(".ticket_closeMsg").text("");
     $(".reply-form").modal("show");
   });
 
@@ -170,5 +185,63 @@ $(document).ready(() => {
   $(".close_ticket").on("click", () => {
     $(".Ticket_form").modal("hide");
     location.reload();
+  });
+
+  $("#close_ticket").on("click", function () {
+    // var TicketID = $(this).parent().children("#reply")[0].attributes.ticketid
+    //   .nodeValue;
+    TicketID = $(this).prev().attr("ticketid");
+    $.post("/closeTicket", { id: TicketID }, (result) => {
+      if (result) {
+        $("#ticket_closeMsg").text("Ticket has been closed");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      } else {
+        $("#ticket_closeMsg").text("Error: try Again!");
+      }
+    });
+  });
+
+  $("#openTickets-tab").on("click", function () {
+    $(".big_ticket").hide();
+    $(".smallT_cont").children(".col").children(".small_ticket").show();
+    $(".smallT_cont")
+      .children(".col")
+      .children("div[ticketstat='closed']")
+      .hide();
+
+    lastCardID = $(".smallT_cont")
+      .children(".col")
+      .children("div[ticketstat='open']")
+      .last()
+      .attr("id");
+    console.log("lastIDOpen: ", lastCardID);
+  });
+
+  $("#allTickets-tab").on("click", function () {
+    $(".big_ticket").hide();
+    $(".smallT_cont").children(".col").children(".small_ticket").show();
+    lastCardID = $(".smallT_cont")
+      .children(".col")
+      .children(".small_ticket")
+      .last()
+      .attr("id");
+    console.log("lastIDAll: ", lastCardID);
+  });
+
+  $("#closedTickets-tab").on("click", function () {
+    $(".big_ticket").hide();
+    $(".smallT_cont").children(".col").children(".small_ticket").show();
+    $(".smallT_cont")
+      .children(".col")
+      .children("div[ticketstat='open']")
+      .hide();
+    lastCardID = $(".smallT_cont")
+      .children(".col")
+      .children("div[ticketstat='closed']")
+      .last()
+      .attr("id");
+    console.log("lastIDClose: ", lastCardID);
   });
 });

@@ -212,6 +212,23 @@ module.exports = function (
       });
   });
 
+  app.post("/closeTicket", isAuthenticatedMiddleware(), async (req, res) => {
+    db.Tickets.update(
+      {
+        status: "closed",
+      },
+      {
+        where: { id: req.body.id },
+      }
+    )
+      .then(() => {
+        res.send(true);
+      })
+      .catch(() => {
+        res.send(false);
+      });
+  });
+
   app.post("/upload", isAuthenticatedMiddleware(), async (req, res) => {
     console.log("///////////upload:");
     db.Users.findOne({
