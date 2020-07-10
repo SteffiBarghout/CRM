@@ -4,7 +4,7 @@ created by: Hisham Saymeh, Michael Stoddard, Niasha Abaglo-Grant, Steffi Welling
 ### Overview
 This CRM system has an Impactful eXperience for support technicians as it is intuitive with dashboard analytics, easy to use settings, ticketing system with unique  customers calling system accomplished within the CRM, and contact management page to manage internal as well as external contacts specific to the individual user. 
 
-### Link to Live Impact X CRM -- https://backup-crm.herokuapp.com/
+### Link to Live Impact X CRM -- https://impact-x.herokuapp.com
 
 ### Motivations
 
@@ -54,7 +54,7 @@ This CRM system has an Impactful eXperience for support technicians as it is int
 *Click the image below and log into Impact x with the following credentials.
    *Username: guest 
    *Password: 0123
-<a href="https://backup-crm.herokuapp.com/" target="_blank">
+<a href="https://impact-x.herokuapp.com/login" target="_blank">
 <img src="public/assets/images/Dashboard_photo.png">
 </a>
 
